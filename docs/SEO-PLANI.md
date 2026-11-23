@@ -51,7 +51,7 @@ Google `meta keywords` etiketini sıralama için kullanmadığından anahtar kel
 1. Alan adı / GitHub adresiyle yayını tamamlayın; HTTPS ve sayfaların açıldığını kontrol edin.
 2. Gerçek URL ile Search Console mülkünü doğrulayın. Oluşan `sitemap.xml` adresini gönderin.
 3. Ana sayfa ve okul/belediye hizmetlerini URL Denetimi’nde kontrol edin. İndeksleme talebi tarama veya sıralama garantisi değildir.
-4. Yeni etkinlik fotoğraflarını özgün açıklamalarla ekleyin. Mevcut galeride gönderilen 18 gerçek fotoğraf, banner ve video kapaklarında tanıtım çizimleri kullanılır.
+4. Yeni etkinlik fotoğraflarını özgün açıklamalarla ekleyin. Mevcut galeride seçilen 20 etkinlik fotoğrafı, banner ve video kapaklarında tanıtım çizimleri kullanılır.
 5. Instagram, YouTube ve Facebook profil açıklamalarına yayınlanan site adresini hesap sahibi eklesin. Şu anda hesaplarda değişiklik yapılmadı.
 6. İlk gösteriler için kurum izniyle gerçek etkinlik içerikleri ekleyin. Çocukların tanınabildiği fotoğraflar yalnızca uygun yayın izniyle kullanılsın.
 7. Search Console’da gösterim alan gerçek sorguları inceleyin; “gösteri”, “okul”, “belediye”, “23 Nisan” ve şehir gruplarını ayrı değerlendirin. Başlık ve içerikleri gelen veriye göre iyileştirin.

@@ -1,12 +1,14 @@
 # Tasarım varlıkları
 
-## Gerçek fotoğraflar
+## Gerçek etkinlik fotoğrafları
 
-Kullanıcının gönderdiği 18 etkinlik fotoğrafı `content/photos.json` listesinde tanımlıdır. Galeri, sanatçı portresi ve hizmet kartları bu kaynaklardan üretilir. Fotoğraflardaki yüzler, kıyafetler, kuklalar ve mekânlar üretken bir modelle yeniden çizilmedi. Kenardaki görüntüleyici okları ve alt sayfalama noktaları kırpıldı; hafif ışık ve keskinlik düzenlemesi uygulandı. Orijinal ölçüdeki WebP kopyaları ayrı klasörde bulunur.
+Galeri 20 ayrı fotoğraf içerir. Son gönderilen sekiz dosyalık arşivdeki farklı kareler eklendi. Yakın okul sahnesi fotoğrafının ayrıca gönderilen kopyasıyla tek bir galeri kaydı oluşturuldu. Önceki kaynaklardan aynı fotoğraf olan `01`, `04`, `05` ve `18` kayıtları daha yüksek çözünürlüklü yeni orijinalleriyle yenilendi. Dört yeni kayıt `19`, `20`, `21`, `22` kimliklerindedir. Ana sayfada bu sekiz güncel kare gösterilir.
 
-Her galeri kartının görüntüsü aynı 3:4 oranında, 480 × 640 ve 960 × 1280 pikseldir. Büyütme görünümü doğal oranı korur. Hizmet kartları 1200 × 900 pikseldir. Büyük indirme dosyalarının uzun kenarı 3840 pikseldir; bu ölçekleme kaynakta bulunmayan ayrıntının geri kazanıldığı anlamına gelmez.
+`14-ali-cengiz-imza` ve `09-mavi-perdeli-sahne` fotoğrafları, varyantları ve eski imza portresi çıkarıldı. Yeni kaynakların çoğu doğrudan gerçek fotoğraflardan WebP olarak üretilir. `19` kimlikli yakın okul sahnesine kontrollü fotoğraf restorasyonu uygulandı; bu işlem kayıp ince ayrıntıların birebir geri kazanımı olarak sunulmaz. Önceki `08` ve `12` düzenlenmiş kareleri galeride bulunur. Orijinal WebP yedekleri ve düzenlenmiş kaynaklar ayrı klasörlerdedir.
 
-Göksun etkinlik afişi geçmiş etkinlik görseli olarak kullanılır; fotoğraf açıklamasında “Arşiv afişi” yazar. Afişteki “bugün” ve saat bilgisi güncel etkinlik ilanı olarak sunulmaz.
+Bütün kartlar 3:4 oranında 480 × 640 ve 960 × 1280 pikseldir. Büyütme görünümü doğal fotoğraf oranını korur. Hizmet kartları 1200 × 900, tanışma görseli 1200 × 1500 pikseldir. Gerçek fotoğraflara hareketli dönme, sallanma veya zoom uygulanmaz. 3840 px büyük dosyalar ölçeklenmiş dışa aktarımlardır.
+
+Göksun etkinlik afişi geçmiş etkinlik görselidir; güncel saat/tarih ilanı olarak sunulmaz.
 
 ## Banner ve sosyal kapaklar
 
@@ -31,4 +33,18 @@ Bulut, güneş, balon, flama, yıldız, tepe ve küçük kukla çizimleri projey
 
 Fredoka başlık fontu, kullanıcının paylaştığı afişin dolgun ve eğlenceli harflerine yakın seçilmiştir. Nunito Sans gövde metninde kullanılır. Yazı tipleri yereldir, Türkçe karakterleri içerir ve `font-display: swap` ile yüklenir. Lisans metinleri bu klasördedir.
 
-Arayüz ikonları Lucide, sosyal medya işaretleri Simple Icons kaynaklıdır. Küçük inline SVG biçiminde kullanılır; emoji veya harici ikon betiği yoktur. Favicon projeye özel sade kukla sahnesi çizimidir; düzenlenebilir kaynak `assets/icons/favicon.svg` dosyasıdır.
+Arayüz ikonları Lucide, sosyal medya işaretleri Simple Icons kaynaklıdır. Küçük inline SVG biçiminde kullanılır; emoji veya harici ikon betiği yoktur. Favicon ve cihaz simgesi yeni logonun ikili karakter simgesinden hazırlanmıştır; PNG dosyaları ve PNG içeren SVG kapsayıcı `assets/icons/` içindedir.
+
+
+## Yeni logo ve arka plan kuklası
+
+Yeni yatay logo, kullanıcının sağladığı Ali Abi–Zoyo karakter çizimi referansıyla hazırlanmıştır. Koyu turkuaz ana yazı, mercan TV vurgusu ve iki karakterin birlikte yer aldığı açık halka simgesi kullanılır. Logo bir raster görseldir; vektör kaynak olduğu iddia edilmez. Şeffaf yüksek çözünürlüklü PNG ve WebP sürümleri pakettedir. Seçilen son istemler `docs/GORSEL-ISTEMLERI.json` dosyasındadır.
+
+Arka plandaki ek ipli kukla, mevcut SVG sahne diline uygun kodla çizilmiştir. Yalnızca dekoratiftir; pointer olaylarını yakalamaz. Hafif CSS dönüşümleriyle sallanır; ekran dışında, gizli sekmede veya hareket durdurulunca duraklar. Cihazın azaltılmış hareket tercihine uyar.
+
+
+## WhatsApp ve Instagram iletişim düğmeleri
+
+Instagram işareti projedeki Simple Icons kaynağından, WhatsApp işareti Bootstrap Icons projesinin gerçek `whatsapp.svg` dosyasından alınmıştır. Resmî kaynak: https://github.com/twbs/icons/blob/main/icons/whatsapp.svg . MIT lisans metni `docs/BOOTSTRAP-ICONS-LICENSE.txt` içindedir. Marka işaretleri değiştirilmeden inline SVG kullanılır; konuşma balonu biçimi, renk ve hareket CSS çerçevesidir.
+
+81 il görseli, mevcut vektör sahne diline uygun SVG ile kodlanmıştır. Buradaki Ali Abi–Zoyo görseli onaylanan tanıtım çizimidir; rota ve konum işaretleri dekoratiftir, gerçek bir turne takvimi veya güzergâh iddiası taşımaz.

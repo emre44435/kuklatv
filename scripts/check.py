@@ -97,7 +97,7 @@ for name in ('index.html','videolar.html'):
     if len(links)!=len(videos):errors.append(name+': missing social video cards')
     if any(a.get('target')!='_blank' or a.get('href') not in {v['url'] for v in videos} for a in links):errors.append(name+': social cards must open the supplied accounts or videos externally')
 photos=json.loads((ROOT/'content/photos.json').read_text())
-if len(photos)!=18 or len({p['id'] for p in photos})!=18:errors.append('Expected 18 unique supplied photos')
+if not photos or len({p['id'] for p in photos})!=len(photos):errors.append('Photo entries must be nonempty and unique')
 for photo in photos:
     for suffix in ('-480.webp','-960.webp','-large.webp'):
         if not (ROOT/'assets/img/photos'/(photo['file']+suffix)).exists():errors.append('Missing photo rendition: '+photo['file']+suffix)

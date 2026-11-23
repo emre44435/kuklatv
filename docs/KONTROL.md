@@ -1,38 +1,32 @@
 # Teslim öncesi kontrol
 
-23 Kasım 2026 güncellemesi: yeni banner, 18 gerçek fotoğraf, altı özgün sosyal kapak ve mobil kaydırma düzeni.
+23 Kasım 2026 güncellemesi.
 
 | Kontrol | Sonuç |
 | --- | --- |
-| 15 HTML sayfası, tek H1, özgün başlık ve açıklama | Geçti |
-| Yerel bağlantılar, görsel ve yazı tipi dosyaları | Geçti |
-| Sayfalardaki JSON verileri ve JavaScript söz dizimi | Geçti |
+| 15 HTML sayfası, başlıklar, açıklamalar, yerel dosyalar ve JSON | Geçti |
+| JavaScript söz dizimi | Geçti |
 | 81 benzersiz il | Geçti |
-| 4 YouTube Shorts ve 2 Instagram hesap kartı | Doğru HTTPS hedefleri; yeni sekme ve noopener |
-| Site içi video oynatıcısı | Yok; HTML veya JavaScript iframe oluşturmuyor |
-| Altı farklı WebP kapak | Her biri 960 × 1280 px; farklı sahne, renk ve poz |
-| 18 gerçek fotoğrafın kart sürümleri | Her biri 480 × 640 ve 960 × 1280 px |
-| Büyük WebP dosyaları | Banner, 18 fotoğraf, 6 kapak; toplam 25 dosya, uzun kenar 3840 px |
-| Kaynak ölçüsünde WebP yedekleri | Banner ve 18 fotoğraf; 19 dosya |
-| Masaüstünde kart hizaları | Tarayıcıda tüm galeri görüntüleri yaklaşık 377 × 503 CSS px; sosyal kapaklar yaklaşık 381 × 508 CSS px |
-| 320, 390 ve 768 px çerçevelerde ana sayfa | Yatay sayfa taşması yok; aynı gerçek HTML kaynaklarıyla kontrol edildi |
-| 390 px çerçevede mobil sosyal kapaklar | Altı eşit yaklaşık 285 × 380 CSS px kart; yatay kaydırma ve klavyeyle ilerleme çalışıyor |
-| 320 px çerçevede mobil sosyal kapaklar | Yaklaşık 233 × 311 CSS px; sayfa taşması yok, kapak şeridi bağımsız kayıyor |
-| Mobil kapak yazıları ve eylem | Başlık 26,4 px; platform eylemi en az 44 px yüksekliğinde |
-| Mobil menü | Açma ve sayfa seçimi çalışıyor; seçim sonrası kapanıyor |
-| Galeri filtreleri | “Okullar” seçimi 3 fotoğraf gösteriyor; sayaç güncelleniyor |
-| Fotoğraf büyütme | Doğal oran ve fotoğrafın tamamı korunuyor; WebP indirme yolu doğru |
-| Galeride önceki/sonraki ve klavye | Geçti; filtrelenmiş liste içinde dolaşıyor |
-| Fotoğraf penceresini kapatma | Escape ve düğme çalışıyor; odak açan karta dönüyor |
-| Mobil fotoğraf penceresi | Ekrana sığıyor; kapatma ve gezinme düğmeleri 44 × 44 px |
-| Arka plan hareketini durdurma | aria-pressed ve duraklatma durumu güncelleniyor |
-| Gerçek URL üretimi | Ayrı test kopyasında kök alan adı ve depo alt yolu geçti; her birinde 14 sitemap URL’si |
-| Alan adı belirtilmeyen teslim | Örnek alan adı yok; başlangıç sitemap’i boş, GitHub yayını gerçek adresle dolduruyor |
+| Dört YouTube ve iki Instagram kartı | Harici bağlantı; site içi video oynatıcısı yok |
+| Ana sayfadaki yeni fotoğraflar | Sekiz eşit kart; masaüstünde yaklaşık 281 × 374 CSS px |
+| Tam galeri | 20 fotoğraf |
+| WebP kart sürümleri | 480 × 640 ve 960 × 1280 px; toplam 60 dosya |
+| Büyük görseller ve kaynak yedekleri | 27 büyük WebP, 21 kaynak ölçüsünde WebP |
+| Kaldırılan kareler | 09 mavi perde ve 14 gri ceketli imza fotoğrafı pakette yok |
+| Sanatçıyı tanıtan görsel | Zoyo ile sahne fotoğrafı |
+| 320 / 390 / 768 px tarayıcı çerçeveleri | Yatay belge taşması yok; başlık sığıyor |
+| Mobil menü | Açma ve kapatma çalışıyor |
+| WhatsApp | +90 538 248 72 08; doğru wa.me hedefi, mesaj taslağı |
+| Instagram | kuklamuklatv hesabı |
+| Sabit iletişim düğmeleri | Mobilde 54 × 54, masaüstünde 60 × 60 CSS px |
+| Fotoğraf büyütme | 1920 px görsel yükleniyor, doğal oran korunuyor; Escape kapatıyor |
+| Fotoğraf penceresi başlığı | Koyu zeminde beyaz ve okunabilir |
+| Arka planı durdurma | aria-pressed ve motion-paused durumu doğrulandı |
+| Depo alt yolu ile yayın üretimi | Ayrı test kopyasında geçti; 14 sitemap URL’si |
+| Alan adı belirtilmeyen teslim | Örnek alan adı yok; başlangıç sitemap’i boş |
 
-Masaüstü ve dar genişlik kontrolleri tarayıcıda yapıldı; gerçek telefon donanımı üzerinde cihaz testi yapılmadı. Kaydırma çubuğu nedeniyle 320 / 390 / 768 px çerçevelerin içerik genişliği 305 / 375 / 753 px olabilir. Taşma karşılaştırmasında belgenin gerçek içerik genişliği kullanıldı.
+Renkli animasyonlu tema korunur. Gerçek fotoğraf katmanlarında sallanma veya yakınlaştırma animasyonu yoktur. 81 il sahnesi temsili dekorasyondur; gerçek turne takvimi değildir. Hareket azaltma tercihi desteklenir.
 
-Gerçek fotoğrafların yüzleri üretken düzenlemeyle yeniden çizilmedi. Büyük dosyalar kaynaklardan ölçeklenmiş dışa aktarımlardır; kayıp ayrıntı geri kazanımı iddiası yoktur. Resimli kapaklar tanıtım tasarımıdır; gerçek video karesi gibi sunulmaz. Instagram kartları belirli bir Reel yerine verilen hesaba gider.
+Üç fotoğrafın düzenlenmiş kaynakları ayrı tutulur: 08, 12 ve yeni 19 numaralı sahne portresi. Diğer yeni fotoğraflar daha yüksek çözünürlüklü özgün kaynaklardan hazırlanmıştır. Büyük 3840 px dosyalar ölçeklenmiş dışa aktarımlardır; kayıp yüz ayrıntısının birebir geri getirildiği iddia edilmez. Resimli video kapakları tanıtım tasarımıdır. Instagram kartları hesaba yönlenir.
 
-Önceki sürümde doğrulanan şehir araması, şehirden iletişime seçim taşıma, mesaj taslağı hazırlama ve SSS işlevleri korunur. Otomatik mesaj gönderme veya veri kaydetme yoktur.
-
-GitHub hesabı ve depo verilmediği için dosya yükleme, gerçek Actions çalıştırması, DNS, Search Console ve canlı yayın testi yapılmadı. Lighthouse veya gerçek kullanıcı performans puanı ölçülmedi.
+Kontroller tarayıcı çerçevelerinde yapıldı; gerçek telefon donanım testi veya Lighthouse puanı ölçümü yapılmadı. WhatsApp mesajı gönderilmedi. GitHub hesabı ve depo verilmediğinden canlı yayın, DNS veya gerçek Actions çalıştırması yapılmadı.
