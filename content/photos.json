@@ -1,0 +1,20 @@
+[
+  {"id":"01","file":"01-okul-sahnesi","source":"image(20261123-130403).png","title":"Ali Abi ve Zoyo sahnede","category":"Okullar","alt":"Ali Cengiz ve turuncu kuklası Zoyo okul sahnesinde gösteri yapıyor","focal":[0.54,0.52]},
+  {"id":"02","file":"02-tiyatro-bulusmasi","source":"image(20261123-130439).png","title":"Gösteri sonrası bir kare","category":"Sahne","alt":"Ali Cengiz gri kuklasıyla tiyatro salonunda çocukların önünde","focal":[0.46,0.48]},
+  {"id":"03","file":"03-goksun-afis","source":"image(20261123-130611).png","title":"Göksun etkinlik afişi","category":"Arşiv","alt":"Ali Abi ve Zoyo kukla gösterisinin Göksun etkinlik afişi, arşiv görseli","focal":[0.50,0.50]},
+  {"id":"04","file":"04-zoyo-ile-bir-kare","source":"image(20261123-130629).png","title":"Zoyo ile gösteri günü","category":"Buluşmalar","alt":"Ali Cengiz turuncu kuklası Zoyo ile açık havada","focal":[0.50,0.56]},
+  {"id":"05","file":"05-cocuklarla-toplu-kare","source":"image(20261123-130652).png","title":"Çocuklarla birlikte","category":"Buluşmalar","alt":"Ali Cengiz ve Zoyo çocuklar ve ailelerle etkinlik alanında","focal":[0.50,0.44]},
+  {"id":"06","file":"06-kitap-imzasi","source":"image(20261123-130703).png","title":"Küçük okurlarla buluşma","category":"Buluşmalar","alt":"Ali Cengiz açık hava etkinliğinde küçük bir okur için kitap imzalıyor","focal":[0.50,0.48]},
+  {"id":"07","file":"07-zoyo-sahne-gosterisi","source":"image(20261123-130730).png","title":"Zoyo’nun sahne zamanı","category":"Sahne","alt":"Ali Cengiz ve Zoyo salonda oturan çocuklara kukla gösterisi sunuyor","focal":[0.50,0.45]},
+  {"id":"08","file":"08-kucuk-okurlarla","source":"image(20261123-130743).png","title":"Birlikte güzel bir hatıra","category":"Buluşmalar","alt":"Ali Cengiz ve Zoyo kitaplarını tutan çocuklarla birlikte","focal":[0.50,0.48]},
+  {"id":"09","file":"09-mavi-perdeli-sahne","source":"image(20261123-130758).png","title":"Perde açılıyor","category":"Sahne","alt":"Ali Cengiz ve Zoyo mavi perdeli bir sahnede kukla gösterisi yapıyor","focal":[0.50,0.46]},
+  {"id":"10","file":"10-sahneden-cocuklara","source":"image(20261123-130807).png","title":"Sahneden çocuklara","category":"Sahne","alt":"Mavi perdeli sahnede Ali Cengiz ve Zoyo’yu izleyen çocuklar","focal":[0.52,0.44]},
+  {"id":"11","file":"11-salonda-bulusma","source":"image(20261123-130818).png","title":"Salonda bir araya geliyoruz","category":"Sahne","alt":"Ali Cengiz bir etkinlik salonunda çocuklara ve ailelere sesleniyor","focal":[0.48,0.50]},
+  {"id":"12","file":"12-cocuk-etkinligi","source":"image(20261123-130835).png","title":"Çocuklarla sahne buluşması","category":"Sahne","alt":"Ali Cengiz sahnede, çocuklar sahnenin önünde etkinliği takip ediyor","focal":[0.53,0.49]},
+  {"id":"13","file":"13-izleyicilerle-gosteri","source":"image(20261123-130847).png","title":"Kukla gösterisinden bir an","category":"Sahne","alt":"Ali Cengiz ve turuncu kuklası Zoyo kalabalık bir salonda gösteri yapıyor","focal":[0.48,0.50]},
+  {"id":"14","file":"14-ali-cengiz-imza","source":"image(20261123-130900).png","title":"Ali Cengiz’den bir imza","category":"Buluşmalar","alt":"Ali Cengiz gri ceketiyle bir okuru için kitap imzalarken","focal":[0.45,0.48]},
+  {"id":"15","file":"15-cocuk-senligi","source":"image(20261123-130919).png","title":"Çocuk şenliğinden bir kare","category":"Sahne","alt":"Ali Cengiz gri kuklasıyla bir çocuk şenliğinde sahnede","focal":[0.53,0.46]},
+  {"id":"16","file":"16-ailelerle-bulusma","source":"image(20261123-130935).png","title":"Gösterinin ardından","category":"Buluşmalar","alt":"Ali Cengiz, Zoyo, çocuklar ve aileler gösteri sonrasında bir arada","focal":[0.55,0.50]},
+  {"id":"17","file":"17-okulda-bir-an","source":"image(20261123-130951).png","title":"Okulda neşeli bir an","category":"Okullar","alt":"Ali Cengiz okul etkinliğinde bir çocukla birlikte sahnede","focal":[0.56,0.49]},
+  {"id":"18","file":"18-okul-salonunda","source":"image(20261123-131002).png","title":"Okul salonunda kukla gösterisi","category":"Okullar","alt":"Okul salonunda oturan çocuklar Ali Cengiz ve Zoyo’nun kukla gösterisini izliyor","focal":[0.55,0.46]}
+]

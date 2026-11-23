@@ -1,29 +1,38 @@
 # Teslim öncesi kontrol
 
-Çizgi film teması güncellemesinde masaüstü ve 320 / 390 / 768 CSS piksel genişlikler yeniden incelendi. Ana sayfada yatay taşma ve bozuk görsel görülmedi. Animasyonun çalışan → duraklatılmış → çalışan geçişi, düğme etiketi ve `aria-pressed` durumu tarayıcıda doğrulandı. Sahne ekran dışına çıktığında hareketlerin duraklatılması kontrol edildi. Yeni temada gerçek YouTube oynatıcısının açılması ve kapatılınca kaldırılması da doğrulandı. Azaltılmış hareket tercihi CSS düzeyinde desteklenir.
-
-23 Kasım 2026 tarihinde uygulanan kontroller:
+23 Kasım 2026 güncellemesi: yeni banner, 18 gerçek fotoğraf, altı özgün sosyal kapak ve mobil kaydırma düzeni.
 
 | Kontrol | Sonuç |
 | --- | --- |
-| 14 HTML dosyası, tek H1, özgün başlık ve açıklama | Geçti |
+| 15 HTML sayfası, tek H1, özgün başlık ve açıklama | Geçti |
 | Yerel bağlantılar, görsel ve yazı tipi dosyaları | Geçti |
-| Sayfa içi JSON verileri | Geçti |
-| JavaScript söz dizimi | Geçti |
-| 81 benzersiz il ve 4 geçerli video kimliği | Geçti |
-| Alan adı olmadan önizleme | Geçti; örnek alan adı yayınlanmıyor |
-| Gerçek URL tanımlama mantığı, kök alan adı ve depo alt yolu | Ayrı test kopyalarında geçti; her birinde 13 sitemap URL’si ve doğru canonical adresleri |
-| Masaüstü ana sayfa, video alanı ve hizmet sayfası | Tarayıcıda görsel kontrol yapıldı |
-| 320, 390 ve 768 CSS piksel genişlik | Tarayıcıda aynı kaynağı kullanan çerçevelerde kontrol edildi; yatay taşma yok |
-| Mobil menü ve Escape ile kapatma | Geçti |
-| Türkçe karakterli şehir araması | “MERSİN” araması yalnızca Mersin’i gösterdi |
-| Şehirden iletişim sayfasına geçiş | Mersin otomatik seçildi |
-| Mesaj taslağı hazırlama ve kopyalama | Geçti; otomatik mesaj gönderilmedi |
-| YouTube tıklamadan önce | Sayfada YouTube iframe’i yok |
-| Video penceresi açma | Gerçek Paylaşmak videosunun YouTube oynatıcısı yüklendi |
-| Video penceresini kapatma | Iframe kaldırıldı, odak oynat bağlantısına döndü |
-| Sık sorulan soru açma | Cevap görünür oldu |
+| Sayfalardaki JSON verileri ve JavaScript söz dizimi | Geçti |
+| 81 benzersiz il | Geçti |
+| 4 YouTube Shorts ve 2 Instagram hesap kartı | Doğru HTTPS hedefleri; yeni sekme ve noopener |
+| Site içi video oynatıcısı | Yok; HTML veya JavaScript iframe oluşturmuyor |
+| Altı farklı WebP kapak | Her biri 960 × 1280 px; farklı sahne, renk ve poz |
+| 18 gerçek fotoğrafın kart sürümleri | Her biri 480 × 640 ve 960 × 1280 px |
+| Büyük WebP dosyaları | Banner, 18 fotoğraf, 6 kapak; toplam 25 dosya, uzun kenar 3840 px |
+| Kaynak ölçüsünde WebP yedekleri | Banner ve 18 fotoğraf; 19 dosya |
+| Masaüstünde kart hizaları | Tarayıcıda tüm galeri görüntüleri yaklaşık 377 × 503 CSS px; sosyal kapaklar yaklaşık 381 × 508 CSS px |
+| 320, 390 ve 768 px çerçevelerde ana sayfa | Yatay sayfa taşması yok; aynı gerçek HTML kaynaklarıyla kontrol edildi |
+| 390 px çerçevede mobil sosyal kapaklar | Altı eşit yaklaşık 285 × 380 CSS px kart; yatay kaydırma ve klavyeyle ilerleme çalışıyor |
+| 320 px çerçevede mobil sosyal kapaklar | Yaklaşık 233 × 311 CSS px; sayfa taşması yok, kapak şeridi bağımsız kayıyor |
+| Mobil kapak yazıları ve eylem | Başlık 26,4 px; platform eylemi en az 44 px yüksekliğinde |
+| Mobil menü | Açma ve sayfa seçimi çalışıyor; seçim sonrası kapanıyor |
+| Galeri filtreleri | “Okullar” seçimi 3 fotoğraf gösteriyor; sayaç güncelleniyor |
+| Fotoğraf büyütme | Doğal oran ve fotoğrafın tamamı korunuyor; WebP indirme yolu doğru |
+| Galeride önceki/sonraki ve klavye | Geçti; filtrelenmiş liste içinde dolaşıyor |
+| Fotoğraf penceresini kapatma | Escape ve düğme çalışıyor; odak açan karta dönüyor |
+| Mobil fotoğraf penceresi | Ekrana sığıyor; kapatma ve gezinme düğmeleri 44 × 44 px |
+| Arka plan hareketini durdurma | aria-pressed ve duraklatma durumu güncelleniyor |
+| Gerçek URL üretimi | Ayrı test kopyasında kök alan adı ve depo alt yolu geçti; her birinde 14 sitemap URL’si |
+| Alan adı belirtilmeyen teslim | Örnek alan adı yok; başlangıç sitemap’i boş, GitHub yayını gerçek adresle dolduruyor |
 
-GitHub hesabı ve depo verilmediği için GitHub’a dosya yükleme, gerçek Actions çalıştırması, DNS, Search Console doğrulaması ve canlı yayın testi yapılmadı. Yayın akışı, mevcut resmi GitHub Pages belgelerine göre hazırlandı. Alan adı seçildiğinde yayın adresiyle sitemap ve canonical üretimi devreye girer.
+Masaüstü ve dar genişlik kontrolleri tarayıcıda yapıldı; gerçek telefon donanımı üzerinde cihaz testi yapılmadı. Kaydırma çubuğu nedeniyle 320 / 390 / 768 px çerçevelerin içerik genişliği 305 / 375 / 753 px olabilir. Taşma karşılaştırmasında belgenin gerçek içerik genişliği kullanıldı.
 
-Lighthouse puanı, gerçek kullanıcı Core Web Vitals verisi, trafik veya Google sıralaması ölçülmedi. Bunlar için canlı yayın ve yeterli kullanım verisi gerekir.
+Gerçek fotoğrafların yüzleri üretken düzenlemeyle yeniden çizilmedi. Büyük dosyalar kaynaklardan ölçeklenmiş dışa aktarımlardır; kayıp ayrıntı geri kazanımı iddiası yoktur. Resimli kapaklar tanıtım tasarımıdır; gerçek video karesi gibi sunulmaz. Instagram kartları belirli bir Reel yerine verilen hesaba gider.
+
+Önceki sürümde doğrulanan şehir araması, şehirden iletişime seçim taşıma, mesaj taslağı hazırlama ve SSS işlevleri korunur. Otomatik mesaj gönderme veya veri kaydetme yoktur.
+
+GitHub hesabı ve depo verilmediği için dosya yükleme, gerçek Actions çalıştırması, DNS, Search Console ve canlı yayın testi yapılmadı. Lighthouse veya gerçek kullanıcı performans puanı ölçülmedi.

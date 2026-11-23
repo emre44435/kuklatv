@@ -1,90 +1,73 @@
-# Ali Abi ve Zoyo · Ali Cengiz
+# Ali Abi ve Zoyo · kuklamukla TV
 
-Okul, belediye ve çocuk etkinlikleri için hazırlanmış Türkçe kukla gösterisi sitesi. HTML, CSS ve JavaScript ile çalışır. Ziyaretçiler için kurulum, üyelik veya uygulama indirme gerekmez.
+Ali Cengiz’in okul, belediye ve çocuk etkinlikleri için hazırlanmış Türkçe kukla gösterisi sitesi. HTML, CSS ve JavaScript ile çalışır. Masaüstünde hizalı kartlar, mobilde okunaklı içerik ve kaydırılabilen sosyal medya kapakları kullanılır.
 
-## Çizgi film ve kukla sahnesi teması
+## GitHub Pages ile yayın
 
-Bu sürümde tüm sayfalar neşeli bir kukla sahnesi temasına uyarlandı. Açık gökyüzü, sahne perdeleri, gülümseyen bulutlar, flamalar, balonlar ve çizgi kukla detayları kullanılır. Kartlar, video alanı ve iletişim bölümü aynı renk ve çizim dilini izler.
+1. ZIP’i çıkartın. İçindeki proje dosyalarını GitHub deponuzun **köküne** yükleyin; `index.html` alt klasörde kalmasın. `.github/workflows/pages.yml` dosyasını da ekleyin.
+2. GitHub’da **Settings → Pages → Build and deployment → Source → GitHub Actions** seçin.
+3. **Actions → Publish Ali Abi and Zoyo → Run workflow** ile yayını başlatın. `main` veya `master` dalındaki sonraki değişiklikler otomatik yayınlanır.
+4. Pages alanında gösterilen adresi açın. Canonical, paylaşım adresleri, robots.txt ve sitemap gerçek yayın adresiyle hazırlanır; GitHub proje alt yolları desteklenir.
 
-Arka plan hareketleri küçük SVG çizimleri ve CSS ile çalışır. Animasyon kütüphanesi, video arka planı veya GIF yüklenmez. Ekran dışına çıkan sahne ve gizlenen sekmedeki hareketler duraklatılır. “Hareketi durdur” düğmesi ziyaretçinin hareketleri kapatmasını sağlar; cihazın azaltılmış hareket tercihi de dikkate alınır.
-
-Tema düzeni `assets/css/cartoon.css`, sahne çizimleri `content/cartoon-scene.html` ve perde çizimi `content/stage-valance.svg` dosyalarındadır. Ana yerleşim, SEO içeriği ve video bağlantıları korunmuştur.
-
-## Hızlı başlangıç
-
-1. ZIP dosyasını çıkartın. `index.html` ile tasarımı açabilirsiniz. Gerçek video pencerelerini denemek için siteyi HTTP üzerinden açın; dosyaya çift tıklayarak açıldığında videolar YouTube bağlantısıyla çalışır.
-2. Dosyaları GitHub deponuzun **köküne** yükleyin. `index.html` bir alt klasörde kalmasın. `.github/workflows/pages.yml` dosyası da depoda bulunmalı.
-3. GitHub deposunda **Settings → Pages → Build and deployment → Source → GitHub Actions** seçin.
-4. **Actions → Publish Ali Abi and Zoyo → Run workflow** ile yayını başlatın. Sonraki `main` veya `master` değişikliklerinde yayın otomatik güncellenir.
-5. İşlem tamamlandığında Pages alanındaki adresi açın. Kanonik adresler, paylaşım görseli adresi, robots.txt ve sitemap gerçek GitHub yayın adresiyle otomatik hazırlanır. Depo adı içeren GitHub proje adresleri de desteklenir.
-
-Bu paket teslim edilirken bir GitHub hesabına yüklenmedi ve canlıya alınmadı. Yayın akışı dosyaları hazırdır; gerçek GitHub hesabınızdaki çalıştırma bu adımdan sonra yapılır.
-
-## Telefon ve WhatsApp
-
-Telefon verilmediği için iletişim bağlantıları mevcut Instagram hesabına yönlenir. Hayali telefon veya e-posta yoktur.
-
-`content/site.json` içindeki `phone` ve `whatsapp` alanlarına ülke koduyla gerçek numarayı yazın. Boş bırakılan kanal gösterilmez. GitHub değişikliği kaydedildiğinde sayfalar yeniden oluşturulur. GitHub dışında düzenliyorsanız `python3 scripts/build.py` komutunu çalıştırın.
-
-Etkinlik aracı bir **mesaj taslağı** hazırlar. Bilgileri kaydetmez veya kendiliğinden göndermez. Ziyaretçi mesajı kopyalar ve Instagram’da gönderir. WhatsApp numarası eklendiğinde hazırlanan metin WhatsApp bağlantısına da aktarılır.
+Bu teslim GitHub hesabınıza yüklenmedi; yayın dosyaları pakette hazırdır. Tasarımı yerel olarak `index.html` dosyasını açarak da inceleyebilirsiniz. Sosyal medya kartları doğrudan harici platforma gider.
 
 ## Alan adını daha sonra bağlama
 
-GitHub Pages → Custom domain alanına alan adınızı ekleyin, GitHub’ın gösterdiği DNS kayıtlarını alan adı sağlayıcınızda tanımlayın ve HTTPS’yi açın. Ardından yayın akışını yeniden çalıştırın. `configure-pages` gerçek adresi bildirdiği için SEO adresleri de güncellenir.
+GitHub Pages’te Custom domain alanına seçtiğiniz alan adını ekleyin, GitHub’ın gösterdiği DNS kayıtlarını sağlayıcınızda tanımlayın ve HTTPS’yi açın. Yayın akışını yeniden çalıştırın.
 
-GitHub’da otomatik URL kullanmak için `content/site.json` içindeki `site_url` alanını boş bırakın. GitHub dışındaki bir yayında adresi bu alana yazabilir veya `python3 scripts/build.py --url https://gercek-alan-adiniz` kullanabilirsiniz.
+`content/site.json` içindeki `site_url` boş olduğunda GitHub yayın adresini otomatik bildirir. GitHub dışındaki sunucular için bu alana gerçek HTTPS adresini yazıp derleyin. Adres belirtilmeyen ZIP’te örnek bir alan adı bulunmaz; sitemap başlangıç dosyası boştur. Gerçek adresle derlendiğinde 14 indekslenebilir sayfanın URL’si oluşur.
 
-**Alan adı bilinmeyen ZIP sürümünde** yanlış örnek adres yayınlamamak için canonical ve mutlak Open Graph adresleri eklenmez; sitemap.xml URL içermeyen başlangıç dosyasıdır. GitHub Actions yayını bunları gerçek adresle doldurur. Sadece dosya yükleyerek başka bir sunucuda yayınlayacaksanız önce gerçek URL ile derleyin.
+## Fotoğraflar ve eşit ölçüler
 
-GitHub proje adresinde robots.txt depo alt klasöründe kalabilir. Search Console’da proje URL’sini URL öneki mülkü olarak ekleyip sitemap adresini doğrudan gönderin. Özel alan adında dosya alan adı kökünden sunulur.
+Bannerda kullanıcının sağladığı Ali Abi ve Zoyo çizimi kullanılır. Galeride gönderilen **18 gerçek etkinlik fotoğrafı** bulunur. Gerçek fotoğraflarda yüzler yeniden çizilmedi; hafif ışık ve keskinlik düzenlemesi ile kenarlardaki ekran görüntüsü kontrollerinin kırpılması uygulandı.
 
-## Gerçek fotoğrafları ekleme
+| Dosya veya klasör | İçerik ve ölçü |
+| --- | --- |
+| `assets/img/ali-abi-zoyo-hero-640.webp` ve `-1280.webp` | 640 × 800 ve 1280 × 1600 banner |
+| `assets/img/photos/` | Her fotoğraf için 480 × 640, 960 × 1280 kart ve doğal oranlı büyük görüntü |
+| `assets/img/stage.webp`, `festival.webp`, `special.webp` | Gerçek fotoğraflardan 1200 × 900 hizmet görselleri |
+| `assets/img/ali-cengiz-portre.webp` | Gerçek Ali Cengiz fotoğrafı; 1200 × 1500 |
+| `assets/img/covers/` | Altı farklı resimli sosyal medya kapağı; her biri 960 × 1280 |
+| `gorseller-uhd/` | Banner, 18 fotoğraf ve altı kapağın uzun kenarı 3840 px olan WebP dışa aktarımları |
+| `gorseller-orijinal/` | Gönderilen banner ve 18 fotoğrafın kaynak ölçüsünde WebP kopyaları |
 
-Görseller geçici tanıtım illüstrasyonlarıdır. Kukla portresi, gerçek Zoyo’nun fotoğrafı değildir; sitede bu görseller “Tanıtım illüstrasyonu” olarak belirtilir. Ali Cengiz’e ait uydurma bir portre, müşteri yorumu veya referans kullanılmadı.
+3840 px dosyalar yüksek çözünürlüklü dışa aktarımlardır; düşük çözünürlüklü kaynaklarda bulunmayan gerçek ayrıntıyı geri getirdiği iddia edilmez. Site ilk açılışta büyük indirme dosyalarını yüklemez. Galeri kartları küçük WebP sürümlerini kullanır; fotoğrafa dokununca büyük sürüm açılır. Önceki/sonraki düğmeleri, klavye ve yatay dokunma hareketi desteklenir. “WebP indir” bağlantısı büyük dosyayı indirir. Eski etkinlik afişi **arşiv afişi** olarak etiketlenir.
 
-| Dosya | Kullanım | Önerilen oran |
-| --- | --- | --- |
-| `assets/img/puppet-hero-1120.webp` | Ana görsel | 4:5, yaklaşık 1120 × 1400 |
-| `assets/img/puppet-hero-640.webp` | Mobil ana görsel ve tanışma sayfası | Aynı fotoğrafın 640 px genişlikte sürümü |
-| `assets/img/stage.webp` | Okul ve sahne görseli | 3:2, 900 × 600 |
-| `assets/img/festival.webp` | Belediye ve şenlik görseli | 3:2, 900 × 600 |
-| `assets/img/social-cover.webp` | Sosyal paylaşım görseli | 1200 × 630 |
+Yeni fotoğraflar `content/photos.json` içinden yönetilir. `source` alanı fotoğraf hazırlama sırasında kullanılan kaynak dosya adıdır. `scripts/prepare-media.py`, kaynak yüklemeler mevcutsa ImageMagick ve Pillow ile tüm boyutları yeniden üretir; GitHub yayını bu işleme ihtiyaç duymaz. Yeni dosyalarda kart ölçülerini aynı tutun. Hazır HTML yerine kaynak şablonları düzenleyin.
 
-Fotoğrafları aynı dosya adlarıyla değiştirin. Gerçek fotoğraf geldiğinde ilgili `alt` metinlerini ve illüstrasyon etiketlerini `scripts/build.py` içindeki şablonlarda güncelleyin, sonra yeniden derleyin. Sadece oluşturulmuş HTML’yi değiştirirseniz sonraki otomatik derleme o değişikliği ezer.
+## YouTube ve Instagram
 
-## Videolar
+**Sitede video oynatılmaz.** Dört YouTube kartı ilgili gerçek Shorts videosunu, iki Instagram kartı verilen `@kuklamuklatv` hesabını yeni sekmede açar. Instagram kartları belirli bir Reel’in varlığını iddia etmez; hesaptaki paylaşımlara yönlendirir.
 
-Kanalda erişilebilen dört gerçek Shorts kullanıldı. Başlık ve bağlantılar 23 Kasım 2026 tarihinde kontrol edildi. Her videonun yerel WebP kapağı, siteye uyumlu başlık alanı ve oynat düğmesi vardır. İlk sayfa açılışında YouTube oynatıcısı, API betiği veya uzak kapak isteği yoktur. Oynatıcı tıklayınca açılır; pencere kapanınca kaldırılır.
+Altı kapak, gönderilen çizimli Ali Abi ve Zoyo referansıyla farklı pozlarda, sahnelerde ve renklerde hazırlandı. Turkuaz sahne, yeşil park, gece mavisi gezegen, mercan sahne, pembe–mint ve lila–mavi masal dünyası kullanılır. Yazılar ve platform işaretleri HTML/CSS katmanındadır. Mobilde büyük kapaklar yatay kaydırılarak gezilir.
 
-Yeni video için `content/site.json` içindeki `videos` listesine gerçek 11 karakterli YouTube kimliği, başlık ve etiket ekleyin. Yerel kapağı `assets/img/short-VIDEO_ID.webp` adıyla kaydedin. Tekrar derleyin. Liste, kanala sonradan eklenen videoları kendiliğinden çekmez; API anahtarı gerektirmez.
+Sayfa açılışında YouTube veya Instagram oynatıcısı, API betiği ve uzak kapak isteği yoktur. Her kapak yerel WebP dosyasıdır. Sosyal içerikler otomatik çekilmez; API anahtarı gerekmez.
 
-Yerleştirmeye kapatılan veya platform tarafından sınırlandırılan videolar için pencerede “YouTube’da aç” bağlantısı bulunur. Kanalın yerleştirme izinleri sitenin kontrolünde değildir.
+Yeni kartlar için `content/site.json` dosyasındaki `videos` listesine `id`, `platform`, `url`, `cover`, `title` ve `label` ekleyin. Kapağı `assets/img/covers/` içine koyun. `platform` değeri YouTube veya Instagram olabilir. YouTube’da gerçek Shorts kimliğini; Instagram’da gerçek hesap ya da paylaşım bağlantısını kullanın. Desteklenen bağlantı denetimini `scripts/check.py` içinde de güncelleyin.
 
-## Düzenleme ve kontrol
+## İletişim
+
+Telefon verilmediği için iletişim mevcut Instagram hesabına yönlenir. `content/site.json` içindeki `phone` ve `whatsapp` alanlarına ülke koduyla gerçek numara eklendiğinde ilgili kanallar görünür.
+
+Etkinlik aracı yalnızca **mesaj taslağı** hazırlar. Bilgileri kaydetmez ve mesaj göndermez. Ziyaretçi metni kopyalayıp Instagram’dan iletir; WhatsApp numarası eklendiğinde bağlantı da oluşur.
+
+## Tema ve mobil kullanım
+
+Perdeler, bulutlar, güneş, flamalar, balonlar ve dekoratif kukla çizimleri hafif SVG ve CSS ile hareket eder. “Hareketi durdur” düğmesi ve cihazın azaltılmış hareket tercihi desteklenir. Ekran dışındaki veya gizli sekmedeki hareketler duraklatılır.
+
+Tema `assets/css/cartoon.css`, galeri ve sosyal kart düzenleri `assets/css/media.css` içindedir. Yerel Fredoka başlık ve Nunito Sans gövde yazı tipleri Türkçe karakterleri içerir. Gerçek Lucide ve Simple Icons ikonları kullanılır. Marka tüm metinlerde **kuklamukla TV** biçimindedir.
+
+## Düzenleme ve doğrulama
 
 ```bash
 python3 scripts/build.py
 python3 scripts/check.py
 node --check assets/js/main.js
+python3 scripts/export.py
 ```
 
-Yerel önizleme için:
+Komutları proje klasöründe çalıştırın. Derleme ve kontrol betikleri Python standart kütüphanesiyle çalışır. `prepare-media.py` ayrıca ImageMagick ve Pillow ister; normal yayın için çalıştırılmaz. Tarayıcıda JavaScript kullanıldığından `.java` yerine `.js` bulunur.
 
-```bash
-python3 -m http.server 8000
-```
+`_site/`, ziyaretçiye sunulacak HTML ve varlıkları içerir. Kaynak JSON, belgeler ve orijinal görsel yedekleri bu çıktıya eklenmez; indirilebilir `gorseller-uhd/` eklenir.
 
-Ardından `http://localhost:8000` adresini açın. Bu komutlar proje klasöründe çalıştırılır. Python derleyicisinin dış paket bağımlılığı yoktur. `.java` yerine tarayıcıların çalıştırdığı `.js` dosyası kullanılır.
-
-Yalnızca ziyaretçiye sunulacak dosyaları ayırmak için `python3 scripts/export.py` çalıştırın. `_site/` çıktısı hazır HTML ve varlıkları içerir; kaynak içerikler ve belgeler bu çıktıya eklenmez.
-
-## Paket
-
-- 14 HTML sayfası: ana sayfa, 6 özgün hizmet/rehber sayfası, tanışma, videolar, 81 il, SSS, iletişim, gizlilik ve 404.
-- Yerel yazı tipleri: Fredoka ve Nunito Sans. Harici font bağlantısı yoktur.
-- Gerçek Lucide arayüz ve Simple Icons sosyal medya ikonları.
-- Mobil menü, klavyeyle kullanılabilen video penceresi, SSS alanı, Türkçe karakter destekli il arama ve mesaj hazırlama.
-- Azaltılmış hareket tercihi, görünür klavye odağı, anlamsal HTML ve ekran okuyucu etiketleri.
-- Site haritası, robots.txt, yapılandırılmış veri, paylaşım etiketleri ve GitHub Pages yayın akışı.
-
-SEO arama niyeti eşlemesi ve yayın sonrası adımlar `docs/SEO-PLANI.md` dosyasındadır. Tasarım varlıkları ve lisansları `docs/VARLIKLAR.md` dosyasında açıklanır.
+Paket 15 HTML sayfası, 81 il listesi, özgün hizmet içerikleri, fotoğraf galerisi, sosyal video kartları, iletişim, SSS, gizlilik ve 404 sayfasını içerir. SEO eşlemesi `docs/SEO-PLANI.md`, görsel ve lisans bilgileri `docs/VARLIKLAR.md`, doğrulama sonuçları `docs/KONTROL.md` içindedir.

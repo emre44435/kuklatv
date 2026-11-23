@@ -50,7 +50,7 @@ for p in files:
     base_prefix=base.path.rsplit('/',1)[0]+'/' if base and base.path.endswith('.html') else base.path if base else ''
     for tag,a in doc.tags:
         if tag=='img' and not all(k in a for k in ('alt','width','height')):errors.append(f'{p.name}: image lacks alt or dimensions')
-        if tag=='iframe':errors.append(f'{p.name}: iframe must only load on a play click')
+        if tag=='iframe':errors.append(f'{p.name}: embedded video is not allowed')
         if tag=='a' and a.get('target')=='_blank' and 'noopener' not in a.get('rel',''):errors.append(f'{p.name}: insecure blank target')
         for key in ('href','src'):
             ref=a.get(key)
@@ -81,11 +81,31 @@ provinces=json.loads((ROOT/'content/provinces.json').read_text())
 if len(provinces)!=81 or len(set(provinces))!=81:errors.append('Province list must have 81 unique entries')
 videos=json.loads((ROOT/'content/site.json').read_text())['videos']
 for v in videos:
-    if not re.fullmatch('[A-Za-z0-9_-]{11}',v['id']):errors.append('Invalid video ID')
-    if not (ROOT/f'assets/img/short-{v["id"]}.webp').exists():errors.append('Missing local video cover')
+    platform=v.get('platform')
+    u=urlparse(v.get('url',''))
+    if platform=='YouTube':
+        if not re.fullmatch('[A-Za-z0-9_-]{11}',v['id']):errors.append('Invalid YouTube video ID')
+        if u.netloc!='www.youtube.com' or u.path!='/shorts/'+v['id']:errors.append('Incorrect YouTube destination')
+    elif platform=='Instagram':
+        if u.netloc!='www.instagram.com' or u.path!='/kuklamuklatv/':errors.append('Incorrect Instagram account destination')
+    else:errors.append('Unknown social video platform')
+    if u.scheme!='https':errors.append('Social destination must use HTTPS')
+    if not (ROOT/'assets/img/covers'/v['cover']).exists():errors.append('Missing local video cover')
+if len({v['cover'] for v in videos})!=len(videos):errors.append('Social covers must be unique')
+for name in ('index.html','videolar.html'):
+    links=[a for t,a in parsed[name].tags if t=='a' and 'social-video' in a.get('class','').split()]
+    if len(links)!=len(videos):errors.append(name+': missing social video cards')
+    if any(a.get('target')!='_blank' or a.get('href') not in {v['url'] for v in videos} for a in links):errors.append(name+': social cards must open the supplied accounts or videos externally')
+photos=json.loads((ROOT/'content/photos.json').read_text())
+if len(photos)!=18 or len({p['id'] for p in photos})!=18:errors.append('Expected 18 unique supplied photos')
+for photo in photos:
+    for suffix in ('-480.webp','-960.webp','-large.webp'):
+        if not (ROOT/'assets/img/photos'/(photo['file']+suffix)).exists():errors.append('Missing photo rendition: '+photo['file']+suffix)
+    if not (ROOT/'gorseller-uhd'/(photo['file']+'.webp')).exists():errors.append('Missing large WebP download')
+if re.search(r'createElement\([\'"]iframe|youtube(?:-nocookie)?\.com/embed', (ROOT/'assets/js/main.js').read_text()):errors.append('On-site video player code remains')
 for css in (ROOT/'assets/css').glob('*.css'):
     for ref in re.findall(r'url\([\'"]?([^\)\'\"]+)',css.read_text()):
         if not ref.startswith('data:') and not (css.parent/ref).exists():errors.append('Missing CSS asset: '+ref)
 if errors:
     print('\n'.join(errors),file=sys.stderr);raise SystemExit(1)
-print(f'PASS · {len(files)} HTML pages · {len(provinces)} provinces · {len(videos)} verified video entries · {len(locs)} sitemap URLs')
+print(f'PASS · {len(files)} HTML pages · {len(provinces)} provinces · {len(videos)} external social cards · {len(photos)} photos · {len(locs)} sitemap URLs')

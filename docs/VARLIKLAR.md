@@ -1,40 +1,34 @@
 # Tasarım varlıkları
 
-## Çizgi film sahnesi
+## Gerçek fotoğraflar
 
-Yeni temanın bulut, güneş, balon, flama, yıldız, tepe ve küçük dekoratif kukla çizimleri projeye özel SVG olarak yazıldı. Bunlar `content/cartoon-scene.html` içinde yer alır. Perde üstlüğü `content/stage-valance.svg`, küçük arka plan deseni `assets/img/cartoon-sprinkles.svg` dosyasındadır. Harici bir çizim veya animasyon servisine istek göndermez.
+Kullanıcının gönderdiği 18 etkinlik fotoğrafı `content/photos.json` listesinde tanımlıdır. Galeri, sanatçı portresi ve hizmet kartları bu kaynaklardan üretilir. Fotoğraflardaki yüzler, kıyafetler, kuklalar ve mekânlar üretken bir modelle yeniden çizilmedi. Kenardaki görüntüleyici okları ve alt sayfalama noktaları kırpıldı; hafif ışık ve keskinlik düzenlemesi uygulandı. Orijinal ölçüdeki WebP kopyaları ayrı klasörde bulunur.
 
-Çizimler dekoratiftir; ekran okuyucu ve tıklama akışına katılmaz. Hareket CSS dönüşümleriyle sağlanır; ziyaretçi kapatabilir. Ekran dışında kalan sahne ve gizli sekmedeki hareketler duraklar. Cihazın azaltılmış hareket tercihi animasyonları kaldırır. Çizimlerin renk ve hareketleri `assets/css/cartoon.css` dosyasında düzenlenebilir.
+Her galeri kartının görüntüsü aynı 3:4 oranında, 480 × 640 ve 960 × 1280 pikseldir. Büyütme görünümü doğal oranı korur. Hizmet kartları 1200 × 900 pikseldir. Büyük indirme dosyalarının uzun kenarı 3840 pikseldir; bu ölçekleme kaynakta bulunmayan ayrıntının geri kazanıldığı anlamına gelmez.
 
-## Yazı tipleri
+Göksun etkinlik afişi geçmiş etkinlik görseli olarak kullanılır; fotoğraf açıklamasında “Arşiv afişi” yazar. Afişteki “bugün” ve saat bilgisi güncel etkinlik ilanı olarak sunulmaz.
 
-Başlıklardaki Fredoka, kullanıcının paylaştığı afişin dolgun ve eğlenceli harflerine yakın bir seçimdir. Gövde metinlerinde okunabilirliği korumak için Nunito Sans kullanılır. Dosyalar yereldir, Türkçe karakterleri içerir ve `font-display: swap` ile yüklenir. Lisans metinleri bu klasördedir.
+## Banner ve sosyal kapaklar
 
-## İkonlar
+Banner, kullanıcının verdiği çizimli Ali Abi ve turuncu Zoyo görselinden hazırlanmıştır. Bu bir tanıtım çizimidir. Sosyal medya kapakları aynı karakter referansıyla özgün olarak üretilmiştir. Referanstaki siyah çerçeveli gözlük, belirgin kıvrık bıyık, pembe gömlek, koyu askılar; Zoyo’nun turuncu tüyleri, uzun kulakları, mavi burnu ve iki ön dişi korunur. Pozlar ve çevre kapaklara göre değişir.
 
-Arayüz ikonları Lucide, sosyal medya işaretleri Simple Icons kaynaklıdır. Uygulama ikonları rastgele emoji veya uydurma sosyal medya simgesi değildir. Siteye küçük inline SVG’ler olarak eklenir; bir ikon kütüphanesi betiği indirilmez.
+| Kapak | Sahne ve renk | Bağlantı |
+| --- | --- | --- |
+| `youtube-01.webp` | Hediye paylaşma, turkuaz ve altın | Paylaşmak · B8wlJ1Jrzro |
+| `youtube-02.webp` | Parkta bank, yeşil ve gökyüzü mavisi | Parktaki Çocuklar · g4sx3WoJEy4 |
+| `youtube-03.webp` | Hayalî gezegen, gece mavisi ve altın yıldızlar | Büyük Z Gezegeni · g3krZ8XySIY |
+| `youtube-04.webp` | Şaşkın sohbet, mercan ve sıcak turuncu | Yalan · YAKxwfMalA4 |
+| `instagram-01.webp` | Neşeli sahne, pembe ve mint | @kuklamuklatv Instagram hesabı |
+| `instagram-02.webp` | Masal kitabı ve şato, lila ve açık mavi | @kuklamuklatv Instagram hesabı |
 
-Favicon projeye özel, basit bir sahne ve gülen kukla çizimidir. `assets/icons/favicon.svg` düzenlenebilir vektör kaynaktır.
+Kapak çizimleri gerçek videolardan alınmış kareler değildir; tanıtım tasarımıdır. Başlık, platform rozeti, marka ve bağlantı eylemi kodla eklenir. Her görsel 960 × 1280 piksel WebP’dir; büyük dışa aktarımlar `gorseller-uhd/kapak-*.webp` içindedir. Video dosyaları pakete kopyalanmaz; platformların hesabına veya YouTube videosuna dış bağlantı verilir. Sitede oynatıcı yoktur.
 
-## Video kapakları
+## Dekoratif sahne
 
-Kapak dosyaları, kullanıcının belirttiği kanalın gerçek dört Shorts videosunun `frame0.jpg` görsellerinin yerel WebP sürümleridir. Görüntüler başka bir videoya bağlanmaz. Site başlıkları, okunabilir koyu katman, marka etiketi ve oynat düğmesi CSS ile eklenir; video dosyası kopyalanmaz veya kendi sunucusunda barındırılmaz.
+Bulut, güneş, balon, flama, yıldız, tepe ve küçük kukla çizimleri projeye özel SVG olarak yazıldı. `content/cartoon-scene.html`, `content/stage-valance.svg` ve `assets/img/cartoon-sprinkles.svg` içinde yer alır. Ekran okuyucu ve tıklama akışına katılmayan dekorlardır. CSS hareketleri kapatılabilir; harici animasyon kütüphanesi kullanılmaz.
 
-| Kimlik | Kanalda doğrulanan başlık |
-| --- | --- |
-| B8wlJ1Jrzro | Paylaşmak |
-| g4sx3WoJEy4 | Ben Zoyo 2. Bölüm: Parktaki Çocuklar |
-| g3krZ8XySIY | Ben Zoyo 1. Bölüm: Büyük Z Gezegeni |
-| YAKxwfMalA4 | Yalan |
+## Yazı tipleri ve ikonlar
 
-## Üretilen tanıtım görselleri
+Fredoka başlık fontu, kullanıcının paylaştığı afişin dolgun ve eğlenceli harflerine yakın seçilmiştir. Nunito Sans gövde metninde kullanılır. Yazı tipleri yereldir, Türkçe karakterleri içerir ve `font-display: swap` ile yüklenir. Lisans metinleri bu klasördedir.
 
-Üç görsel yerleşik görsel üretimiyle oluşturuldu, ardından site performansı için farklı boyutlarda WebP olarak dışa aktarıldı. Bunlar gerçek bir etkinliğin fotoğrafı veya gerçek Zoyo’nun görünüşüne ilişkin belge değildir. Kullanıcı daha sonra gerçek fotoğrafları sağlayacaktır. Görsellerde uydurma bir Ali Cengiz portresi yoktur.
-
-Son istem seti:
-
-1. **Kukla portresi:** Dikey 4:5; bal sarısı keçe kumaşlı, neşeli, turuncu burunlu özgün bir kukla; turkuaz kadife yelek ve küçük mercan papyon; el sallama; turkuaz tiyatro perdesi ve sıcak sahne ışığı. Dokulu profesyonel kukla fotoğrafçılığı; insan, yazı, logo ve filigran yok. Mevcut gerçek bir karakterin temsili olarak kullanılmayan geçici tanıtım karakteri.
-2. **Okul sahnesi:** Yatay 3:2; okulun çok amaçlı salonunda mercan perdeli, turkuaz fonlu, sıcak ampullü küçük kukla sahnesi; ahşap zemin, ölçülü renkli flamalar ve önde boş sandalyeler. Dokulu, özenle hazırlanmış sahne illüstrasyonu; insan, çocuk, yazı ve logo yok.
-3. **Açık hava sahnesi:** Yatay 3:2; yapraklı bir parkta altın saat ışığında turkuaz perdeli, mercan cepheli küçük kukla sahnesi; sıcak ampuller, ölçülü flamalar ve doğal ağaç dokusu. İnsan, yazı, logo ve filigran yok. Gerçek etkinlik belgesi yerine tanıtım illüstrasyonu.
-
-Projedeki son dosyalar `assets/img/puppet-hero-1120.webp`, `assets/img/puppet-hero-640.webp`, `assets/img/stage.webp`, `assets/img/festival.webp` ve okul sahnesinden hazırlanan `assets/img/social-cover.webp` dosyalarıdır.
+Arayüz ikonları Lucide, sosyal medya işaretleri Simple Icons kaynaklıdır. Küçük inline SVG biçiminde kullanılır; emoji veya harici ikon betiği yoktur. Favicon projeye özel sade kukla sahnesi çizimidir; düzenlenebilir kaynak `assets/icons/favicon.svg` dosyasıdır.

@@ -9,5 +9,6 @@ out.mkdir()
 for p in list(ROOT.glob('*.html'))+[ROOT/'robots.txt',ROOT/'sitemap.xml',ROOT/'site.webmanifest',ROOT/'.nojekyll']:
     shutil.copy2(p,out/p.name)
 shutil.copytree(ROOT/'assets',out/'assets')
+if (ROOT/'gorseller-uhd').exists():shutil.copytree(ROOT/'gorseller-uhd',out/'gorseller-uhd')
 if (ROOT/'CNAME').exists():shutil.copy2(ROOT/'CNAME',out/'CNAME')
 print('Public site exported to _site/')

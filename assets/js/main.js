@@ -58,47 +58,68 @@
     $$('.nav-dropdown[open]').forEach(node => { node.open = false; });
     if (wasOpen) toggle.focus();
   });
-  window.matchMedia('(min-width: 1001px)').addEventListener('change', closeMenu);
+  window.matchMedia('(min-width: 1121px)').addEventListener('change', closeMenu);
 
-  // No iframe, YouTube script, remote thumbnail, or preconnect before a play click.
-  const dialog = $('#video-dialog');
-  const frameHost = $('#video-frame');
-  let previousFocus = null;
-  function resetVideo() {
-    frameHost?.replaceChildren();
-    document.body.classList.remove('dialog-open');
-    previousFocus?.focus();
+  // Photographs open in an accessible local viewer; social videos are ordinary external links.
+  const photoDialog = $('#photo-dialog');
+  const photoImage = $('#photo-full');
+  const photoTriggers = $$('[data-photo]');
+  let activePhoto = -1;
+  let photoFocus = null;
+  const visiblePhotos = () => photoTriggers.filter(link => !link.closest('.photo-card').hidden);
+  function showPhoto(index) {
+    const current = visiblePhotos();
+    if (!current.length) return;
+    activePhoto = ((index % current.length) + current.length) % current.length;
+    const trigger = current[activePhoto];
+    photoImage.src = trigger.href;
+    photoImage.alt = trigger.dataset.alt || trigger.dataset.title || '';
+    $('#photo-title').textContent = trigger.dataset.title;
+    $('#photo-position').textContent = `${activePhoto+1} / ${current.length}`;
+    $('#photo-download').href = trigger.dataset.full;
   }
-  $$('[data-video]').forEach(trigger => {
-    trigger.addEventListener('click', event => {
-      const id = trigger.dataset.video;
-      // file:// has no HTTP Referer; the verified YouTube link is the fallback.
-      if (!dialog?.showModal || !/^[A-Za-z0-9_-]{11}$/.test(id) || location.protocol === 'file:') return;
-      event.preventDefault();
-      previousFocus = trigger;
-      const title = trigger.dataset.title || 'Zoyo kukla videosu';
-      $('#video-dialog-title').textContent = title;
-      $('#video-external').href = `https://www.youtube.com/shorts/${id}`;
-      const player = document.createElement('iframe');
-      const params = new URLSearchParams({autoplay: '1', playsinline: '1', rel: '0', origin: location.origin});
-      player.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`;
-      player.title = `${title} — YouTube video oynatıcısı`;
-      player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      player.allowFullscreen = true;
-      player.referrerPolicy = 'strict-origin-when-cross-origin';
-      frameHost.replaceChildren(player);
-      dialog.showModal();
-      document.body.classList.add('dialog-open');
-    });
+  photoTriggers.forEach(trigger => trigger.addEventListener('click', event => {
+    if (!photoDialog?.showModal) return;
+    event.preventDefault();
+    photoFocus = trigger;
+    showPhoto(visiblePhotos().indexOf(trigger));
+    photoDialog.showModal();
+    document.body.classList.add('dialog-open');
+  }));
+  $('[data-close-photo]')?.addEventListener('click', () => photoDialog.close());
+  $('[data-prev-photo]')?.addEventListener('click', () => showPhoto(activePhoto-1));
+  $('[data-next-photo]')?.addEventListener('click', () => showPhoto(activePhoto+1));
+  photoDialog?.addEventListener('close', () => {
+    document.body.classList.remove('dialog-open');
+    photoImage.removeAttribute('src');
+    photoFocus?.focus();
   });
-  $('[data-close-video]')?.addEventListener('click', () => dialog.close());
-  dialog?.addEventListener('close', resetVideo);
-  dialog?.addEventListener('click', event => {
-    if (event.target === dialog) {
-      const bounds = dialog.getBoundingClientRect();
-      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-    }
+  photoDialog?.addEventListener('click', event => {
+    if (event.target !== photoDialog) return;
+    const box = photoDialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) photoDialog.close();
   });
+  document.addEventListener('keydown', event => {
+    if (!photoDialog?.open) return;
+    if (event.key === 'ArrowLeft') { event.preventDefault(); showPhoto(activePhoto-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); showPhoto(activePhoto+1); }
+  });
+  let swipeStart = null;
+  photoImage?.addEventListener('pointerdown', event => { swipeStart = {x:event.clientX,y:event.clientY}; });
+  photoImage?.addEventListener('pointercancel', () => { swipeStart = null; });
+  photoImage?.addEventListener('pointerup', event => {
+    if (!swipeStart) return;
+    const dx=event.clientX-swipeStart.x,dy=event.clientY-swipeStart.y;
+    swipeStart=null;
+    if (Math.abs(dx)>45 && Math.abs(dy)<80) showPhoto(activePhoto+(dx<0?1:-1));
+  });
+  $$('[data-photo-filter]').forEach(button => button.addEventListener('click', () => {
+    const category=button.dataset.photoFilter;
+    $$('[data-photo-filter]').forEach(other => other.setAttribute('aria-pressed',String(other===button)));
+    $$('.photo-card').forEach(card => { card.hidden = category !== 'Tümü' && card.dataset.category !== category; });
+    const count=$$('.photo-card').filter(card=>!card.hidden).length;
+    if ($('#photo-count')) $('#photo-count').textContent = `${count} fotoğraf`;
+  }));
 
   const normalize = text => text.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i').trim();
   const search = $('#province-search');

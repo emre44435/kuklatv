@@ -1,7 +1,7 @@
 {
   "name": "Ali Abi ve Zoyo",
   "artist": "Ali Cengiz",
-  "brand": "Kukla Mukla TV",
+  "brand": "kuklamukla TV",
   "site_url": "",
   "phone": "",
   "whatsapp": "",
@@ -10,9 +10,55 @@
   "facebook": "https://www.facebook.com/kuklamuklatv/",
   "description": "Ali Cengiz, Ali Abi ve kuklası Zoyo ile okullarda, belediye etkinliklerinde ve çocuk şenliklerinde kukla gösterisi yapıyor. Türkiye’nin 81 ilinde gösteri için iletişime geçin.",
   "videos": [
-    {"id": "B8wlJ1Jrzro", "title": "Paylaşmak", "label": "Zoyo’dan bir hikâye"},
-    {"id": "g4sx3WoJEy4", "title": "Parktaki Çocuklar", "full_title": "Ben Zoyo 2. Bölüm: Parktaki Çocuklar", "label": "Ben Zoyo · 2. bölüm"},
-    {"id": "g3krZ8XySIY", "title": "Büyük Z Gezegeni", "full_title": "Ben Zoyo 1. Bölüm: Büyük Z Gezegeni", "label": "Ben Zoyo · 1. bölüm"},
-    {"id": "YAKxwfMalA4", "title": "Yalan", "label": "Zoyo’dan bir hikâye"}
+    {
+      "id": "B8wlJ1Jrzro",
+      "title": "Paylaşmak",
+      "label": "Zoyo’dan bir hikâye",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/shorts/B8wlJ1Jrzro",
+      "cover": "youtube-01.webp"
+    },
+    {
+      "id": "g4sx3WoJEy4",
+      "title": "Parktaki Çocuklar",
+      "full_title": "Ben Zoyo 2. Bölüm: Parktaki Çocuklar",
+      "label": "Ben Zoyo · 2. bölüm",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/shorts/g4sx3WoJEy4",
+      "cover": "youtube-02.webp"
+    },
+    {
+      "id": "g3krZ8XySIY",
+      "title": "Büyük Z Gezegeni",
+      "full_title": "Ben Zoyo 1. Bölüm: Büyük Z Gezegeni",
+      "label": "Ben Zoyo · 1. bölüm",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/shorts/g3krZ8XySIY",
+      "cover": "youtube-03.webp"
+    },
+    {
+      "id": "YAKxwfMalA4",
+      "title": "Yalan",
+      "label": "Zoyo’dan bir hikâye",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/shorts/YAKxwfMalA4",
+      "cover": "youtube-04.webp"
+    },
+    {
+      "id": "instagram-01",
+      "title": "Sahneden neşeli anlar",
+      "label": "Instagram paylaşımları",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/kuklamuklatv/",
+      "cover": "instagram-01.webp"
+    },
+    {
+      "id": "instagram-02",
+      "title": "Zoyo’nun dünyasına katılın",
+      "label": "Instagram paylaşımları",
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/kuklamuklatv/",
+      "cover": "instagram-02.webp"
+    }
   ]
 }
