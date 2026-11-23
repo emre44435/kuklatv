@@ -6,15 +6,7 @@
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
   $$('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
 
-  // The animated theatre remains decorative; visitors can pause all motion.
-  // No cookies, storage, timers, third-party scripts, or animation dependencies.
-  const motionToggle = $('#motion-toggle');
-  motionToggle?.addEventListener('click', () => {
-    const paused = document.body.classList.toggle('motion-paused');
-    motionToggle.setAttribute('aria-pressed', String(paused));
-    motionToggle.setAttribute('aria-label', paused ? 'Arka plan hareketini başlat' : 'Arka plan hareketini durdur');
-    $('[data-motion-label]', motionToggle).textContent = paused ? 'Hareketi başlat' : 'Hareketi durdur';
-  });
+  // All decoration is automatic; the operating system controls reduced motion.
   document.addEventListener('visibilitychange', () => {
     document.body.classList.toggle('motion-suspended', document.hidden);
   });
@@ -24,6 +16,55 @@
     }, {rootMargin:'80px'});
     $$('.theatre-scene').forEach(scene => sceneObserver.observe(scene));
   }
+
+  // Reveal each theatre once, when its picture enters view. No replay controls.
+  // Open curtains are the CSS fallback if JavaScript or an observer is unavailable.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  $$('[data-auto-stage]').forEach(stage => {
+    const portrait = $('.tour-stage-portrait', stage);
+    const image = $('[data-stage-image]', stage);
+    if (!portrait || !image) return;
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+      stage.classList.add('is-revealed');
+      return;
+    }
+    let revealing = false;
+    let observer;
+    const reveal = async () => {
+      if (revealing || stage.classList.contains('is-revealed')) return;
+      revealing = true;
+      // A decode failure must never leave the scene hidden behind the curtains.
+      let fallback;
+      try {
+        if (!image.complete && image.decode) {
+          await Promise.race([
+            image.decode().catch(() => {}),
+            new Promise(resolve => { fallback = window.setTimeout(resolve, 1600); })
+          ]);
+        }
+      } finally {
+        window.clearTimeout(fallback);
+        stage.classList.add('is-revealed');
+        observer?.disconnect();
+      }
+    };
+    stage.classList.add('stage-ready');
+    observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) reveal();
+    }, {threshold:.22, rootMargin:'0px 0px -24px 0px'});
+    observer.observe(portrait);
+    const visibilityObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => stage.classList.toggle('scene-asleep', !entry.isIntersecting));
+    }, {rootMargin:'80px'});
+    visibilityObserver.observe(stage);
+    reducedMotion.addEventListener?.('change', event => {
+      if (event.matches) {
+        stage.classList.remove('stage-ready');
+        stage.classList.add('is-revealed');
+        observer.disconnect();
+      }
+    });
+  });
 
   const menu = $('#main-nav');
   const toggle = $('.menu-toggle');

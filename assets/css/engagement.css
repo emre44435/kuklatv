@@ -5,20 +5,6 @@
 .photo-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:23px; }
 .photo-card figcaption { min-height:103px; }
 .photo-card figcaption>strong { font-size:.94rem; }
-.tour-visual { position:relative; width:100%; max-width:500px; height:440px; margin-inline:auto; border:1.5px solid #bed9df; border-radius:30px; background:#ffffff7a; box-shadow:0 7px 0 #d0e8e9; overflow:hidden; }
-.tour-scene { border-radius:inherit; }
-.tour-scene>.tour-svg { position:static; width:100%; height:100%; }
-.tour-stat { position:absolute; bottom:18px; left:24px; right:24px; display:flex; align-items:center; justify-content:center; gap:16px; padding:12px 18px; border:1px solid #e5cf8f; border-radius:17px; background:#fff7d9; box-shadow:0 3px 0 #e4d5ad; }
-.tour-stat>strong { font:600 3.2rem/1 var(--display); color:#d5a345; }
-.tour-stat>span { display:flex; flex-direction:column; gap:3px; }
-.tour-stat b { font:600 1.35rem/1.15 var(--display); color:#3b6572; }
-.tour-stat small { font-size:.8rem; color:#627780; }
-.tour-route { animation:tour-route 22s linear infinite; }
-.tour-curtain { transform-box:fill-box; transform-origin:50% 0; animation:tour-curtain 9s ease-in-out infinite; }
-.tour-curtain-right { animation-delay:-4.5s; }
-.tour-pin { transform-box:fill-box; transform-origin:center; animation:tour-pin 7s ease-in-out infinite; }
-.tour-pin-two { animation-delay:-3.5s; }
-.tour-spark { transform-box:fill-box; transform-origin:center; animation:tour-spark 8s ease-in-out infinite; }
 .floating-socials { position:fixed; z-index:45; right:24px; bottom:max(24px,env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:12px; align-items:flex-end; }
 .quick-contact { position:relative; display:grid; place-items:center; width:60px; height:60px; border:3px solid #fff9de; border-radius:20px 20px 10px 20px; color:white; box-shadow:0 4px 0 #314c543b,0 8px 24px #29444b24; transition:box-shadow .2s; }
 .quick-contact:hover { box-shadow:0 5px 0 #314c544d,0 9px 26px #29444b38; }
@@ -29,15 +15,10 @@
 .motion-toggle { left:16px; right:auto; }
 .footer-bottom { padding-bottom:95px; }
 .dialog-open .floating-socials,.dialog-open .motion-toggle { visibility:hidden; }
-@keyframes tour-route { to { stroke-dashoffset:-192; } }
-@keyframes tour-curtain { 0%,100% { transform:rotate(-1deg); } 50% { transform:rotate(1deg); } }
-@keyframes tour-pin { 0%,75%,100% { transform:scale(1); } 84% { transform:scale(1.06); } }
-@keyframes tour-spark { 0%,100% { opacity:.65; } 50% { opacity:1; } }
 @keyframes contact-invite { 0%,70%,100% { transform:translateY(0); } 80% { transform:translateY(-3px); } 90% { transform:translateY(0); } }
 @keyframes contact-halo { 0%,65% { transform:scale(.95); opacity:0; } 72% { opacity:.65; } 88%,100% { transform:scale(1.13); opacity:0; } }
-@media(max-width:1100px) { .photo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .tour-visual { height:385px; } }
+@media(max-width:1100px) { .photo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 @media(max-width:900px) { .photo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(max-width:760px) { .tour-visual { max-width:440px; height:375px; } .nationwide-grid { gap:36px; } }
 @media(max-width:600px) {
   .photo-grid { gap:17px 12px; }
   .photo-card figcaption { min-height:105px; }
@@ -48,15 +29,14 @@
   .quick-contact>.icon { width:26px; height:26px; }
   .quick-tip { display:none; }
   .motion-toggle { left:13px; right:auto; bottom:15px; }
-  .tour-visual { height:350px; border-radius:24px; }
+ 
   .tour-stat { left:16px; right:16px; bottom:15px; padding:11px 12px; gap:12px; }
   .tour-stat>strong { font-size:2.8rem; }
   .tour-stat b { font-size:1.2rem; }
   .tour-stat small { font-size:.75rem; }
   .footer-bottom { padding-bottom:104px; }
 }
-@media(max-width:360px) { .tour-visual { height:310px; } .tour-stat { left:11px; right:11px; padding-inline:8px; } .tour-stat small { font-size:.69rem; } }
 
 /* Keep the viewer title readable over its dark surface. */
 .photo-dialog-top h2 { color:#fff; }
-@media(prefers-reduced-motion:reduce) { .tour-route,.tour-curtain,.tour-pin,.tour-spark,.quick-contact { animation:none!important; } }
+@media(prefers-reduced-motion:reduce) { .quick-contact { animation:none!important; } }

@@ -154,7 +154,22 @@ def cta():
 
 
 def tour_visual():
-    return (ROOT/'content/tour-scene.html').read_text().replace('TOUR_IMAGE',link('assets/img/ali-abi-zoyo-hero-640.webp'))
+    return ((ROOT/'content/tour-scene.html').read_text()
+            .replace('TOUR_IMAGE_SMALL', link('assets/img/ali-abi-zoyo-hero-640.webp'))
+            .replace('TOUR_IMAGE_LARGE', link('assets/img/ali-abi-zoyo-hero-1280.webp')))
+
+
+def tour_banner(regions_page=False):
+    title = 'Şehirler farklı,<span>neşemiz ortak.</span>' if regions_page else 'Sıradaki durak,<span>sizin şehriniz.</span>'
+    discovery = '' if regions_page else f'<a class="tour-discovery" href="{link("hizmet-bolgeleri.html")}">81 ili keşfedin {icon("ChevronRight")}</a>'
+    return f'''<section class="tour-banner" id="turkiye-geneli" data-auto-stage aria-labelledby="tour-title">
+    <div class="tour-light tour-light--one" aria-hidden="true"></div><div class="tour-light tour-light--two" aria-hidden="true"></div>
+    <div class="container tour-grid">{tour_visual()}
+    <div class="tour-copy"><span class="tour-eyebrow">ALİ ABİ &amp; ZOYO · TÜRKİYE GENELİNDE</span>
+    <h2 id="tour-title">{title}</h2><p class="tour-description">{IG_DESCRIPTION}</p>
+    <div class="tour-actions"><a class="tour-instagram" href="{esc(IG)}" target="_blank" rel="noopener noreferrer">{icon("Instagram")}<span>Instagram’dan mesaj atın</span><span class="sr-only"> (yeni sekme)</span></a>{discovery}</div>
+    <p class="tour-note">Çocuklar için, sevgiyle.</p><div class="tour-audiences"><span>Okullarda</span><span>Belediye etkinliklerinde</span><span>Çocuk şenliklerinde</span></div></div></div>
+    <svg class="tour-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 66C250 0 382 110 640 62S1050 10 1250 59 1390 62 1440 37V100H0Z"/></svg></section>'''
 
 
 def page_intro(eyebrow,title,intro):
@@ -174,7 +189,7 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
         ld['@graph']+=extra_schema
     canonical_tag=f'<link rel="canonical" href="{esc(canonical)}"><meta property="og:url" content="{esc(canonical)}">' if canonical else ''
     social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi tanıtım illüstrasyonu"><meta name="twitter:card" content="summary_large_image">' if image else '<meta name="twitter:card" content="summary">'
-    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision'])
+    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour'])
     ld_text=json.dumps(ld,ensure_ascii=False).replace('<','\\u003c')
     output=f'''<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(title)}</title>
@@ -183,7 +198,7 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
 <link rel="icon" href="{link('assets/icons/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="{link('assets/icons/favicon.png')}" type="image/png"><link rel="apple-touch-icon" href="{link('assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="{link('site.webmanifest')}">
 <link rel="preload" href="{link('assets/fonts/fredoka-600.ttf')}" as="font" type="font/ttf" crossorigin><link rel="preload" href="{link('assets/fonts/nunito-sans-400.ttf')}" as="font" type="font/ttf" crossorigin>
 {styles}<script src="{link('assets/js/main.js')}" defer></script><script type="application/ld+json">{ld_text}</script></head>
-<body class="cartoon-theme">{header(active)}<main id="icerik">{body}</main>{footer()}{floating_contacts()}<button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Arka plan hareketini durdur">{icon('Sun')}<span data-motion-label>Hareketi durdur</span></button>{photo_dialog()}<div id="live-status" class="sr-only" role="status" aria-live="polite"></div></body></html>'''
+<body class="cartoon-theme">{header(active)}<main id="icerik">{body}</main>{footer()}{floating_contacts()}{photo_dialog()}<div id="live-status" class="sr-only" role="status" aria-live="polite"></div></body></html>'''
     (ROOT/filename).write_text(output,encoding='utf-8')
     rendered.append(filename)
 
@@ -197,7 +212,7 @@ home=f'''
 <section class="section" id="gosteriler"><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE BULUŞALIM</span><h2>Her buluşmada bir kahkaha.</h2></div><p>Okulda, kültür merkezinde, şenlikte…<br> Ali Abi ve Zoyo’yla gösteri zamanı.</p></div><div class="program-grid">{program_cards}</div></div></section>
 <section class="section about-section"><div class="container about-grid">{photo_figure('12','index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('fotograflar.html')}">Gösterilerden fotoğraflar</a></div></div></section>
 <section class="section videos-section" id="videolar"><div class="container"><div class="section-heading"><div><span class="eyebrow">kuklamukla TV</span><h2>Biraz Zoyo, bolca neşe.</h2></div><a class="text-link text-link--light" href="{link('videolar.html')}">Gösteri videolarını keşfedin</a></div><p class="section-lead">YouTube ve Instagram’da neşeli anlar. İzlemek için bir kapak seçin.</p>{video_cards()}<p class="video-privacy">Kapaklar sizi YouTube veya Instagram’a götürür.</p></div></section>
-<section class="section nationwide" id="turkiye-geneli"><div class="container nationwide-grid">{tour_visual()}<div><span class="eyebrow">ŞEHRİNİZ NERESİ OLURSA OLSUN</span><h2>Kukla gösterisi<br> şehrinize geliyor.</h2><p>İstanbul’dan Mersin’e, İzmir’den Erzurum’a… Ali Abi ve Zoyo, Türkiye’nin 81 ilinde çocuklarla buluşabiliyor.</p><p>{IG_DESCRIPTION}</p>{instagram('Instagram’da bize ulaşın','outline')}<a class="text-link" href="{link('hizmet-bolgeleri.html')}">81 ili keşfedin</a></div></div></section>
+{tour_banner()}
 <section class="section faq-section"><div class="container faq-grid"><div><span class="eyebrow">AKLINIZDAKİLER</span><h2>Birkaç küçük<br> soru, açık cevaplar.</h2><p>Gösteriler hakkında merak ettikleriniz.</p><a class="text-link" href="{link('sik-sorulan-sorular.html')}">Tüm soruları görün</a></div>{faq_html(common_faqs[:4])}</div></section>{cta()}'''
 layout('index.html','Ali Cengiz | Ali Abi ve Zoyo Kukla Gösterisi · kuklamukla TV',config['description'],home,extra_schema=[faq_schema(common_faqs[:4])])
 
@@ -239,7 +254,7 @@ gallery_schema=[{'@type':'ImageGallery','name':'Sahneden güzel hatıralar','ima
 layout('fotograflar.html','Ali Cengiz ve Zoyo Fotoğrafları | kuklamukla TV','Ali Cengiz ve Zoyo’nun sahne ve çocuk etkinliklerinden gerçek fotoğrafları. Buluşmalardan kalan hatıraları galeride inceleyin.',gallery,'fotograflar',gallery_schema)
 
 regions=page_intro('TÜRKİYE’NİN 81 İLİNDE','Bir sonraki durak sizin şehriniz.','Ali Abi ve Zoyo, kukla gösterisi için Türkiye’nin her ilinde çocuklarla buluşabiliyor.')
-regions+=f'<section class="section nationwide"><div class="container nationwide-grid">{tour_visual()}<div><span class="eyebrow">BULUŞMAYA HAZIR MISINIZ?</span><h2>Şehirler farklı,<br> neşemiz ortak.</h2><p>Okulunuzda, kültür merkezinde ya da çocuk şenliğinde… Kukla gösterisi hakkında merak ettiklerinizi bize yazabilirsiniz.</p><p>{IG_DESCRIPTION}</p>{instagram()}</div></div></section>'
+regions+=tour_banner(regions_page=True)
 regions+='<section class="section"><div class="container"><div class="region-intro"><div><h2>Türkiye’nin 81 ilinde.</h2><p>Listeden şehrinizi bulup Instagram hesabımıza ulaşabilirsiniz.</p></div></div><div class="province-search js-only"><label for="province-search">Şehrinizi bulun</label><div>'+icon('Search')+'<input id="province-search" type="search" placeholder="Örneğin Mersin" autocomplete="off" aria-controls="province-list"></div></div><p class="province-count" id="province-count" role="status">81 ilde gösteri yapılabiliyor.</p><ul id="province-list" class="province-list">'
 regions+=''.join(f'<li><a href="{esc(IG)}" target="_blank" rel="noopener noreferrer" aria-label="{esc(p)} için Instagram’da bize ulaşın (yeni sekme)">{icon("MapPin")}{esc(p)}</a></li>' for p in provinces)
 regions+=f'</ul><p id="province-empty" hidden>Bu adla bir il bulunamadı. İl adını kontrol edin.</p><div class="region-note"><h2>Gösteriler hakkında bize yazın.</h2><p>{IG_DESCRIPTION}</p>{instagram("Instagram hesabımız","outline")}</div></div></section>{cta()}'
@@ -254,7 +269,7 @@ contact+=f'''<section class="section contact-section"><div class="container inst
 layout('iletisim.html','Instagram’dan Bize Ulaşın | Ali Abi ve Zoyo · kuklamukla TV','Ali Abi ve Zoyo kukla gösterileri hakkında ayrıntılı bilgi için kuklamukla TV Instagram hesabımızdan bize mesaj atın.',contact,'iletisim')
 
 privacy=page_intro('GİZLİLİK & ÇEREZLER','Bilgileriniz hakkında.','Bu sitenin nasıl çalıştığını ve dış bağlantıları burada açıklıyoruz.')
-privacy+=f'''<section class="section"><article class="container narrow prose"><section><h2>Instagram üzerinden iletişim</h2><p>Gösteriler hakkında iletişim kurmak için Instagram hesabımızı ziyaret edebilirsiniz. Instagram’da paylaştığınız bilgiler ilgili platformun koşullarına tabidir.</p></section><section><h2>Video ve sosyal medya bağlantıları</h2><p>Video kapakları bu siteye ait yerel dosyalardır. Bir kapağa tıkladığınızda YouTube veya Instagram yeni sekmede açılır. İlgili platformu ziyaret ettiğinizde o platformun gizlilik politikası geçerlidir.</p><p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google gizlilik politikası</a></p></section><section><h2>Çerezler ve hareket tercihi</h2><p>Bu site kendiliğinden reklam, analiz veya takip çerezi kurmaz. Yazı tipleri ve görseller site dosyalarından yüklenir. Hareketi durdurma düğmesi yalnızca açık sayfadaki animasyonları denetler; tercihiniz kaydedilmez. Yayın hizmetinin erişim kayıtları kendi politikalarına göre işlenebilir.</p></section><section><h2>Gösteriler hakkında</h2><p>{IG_DESCRIPTION}</p>{instagram('Instagram hesabımız','outline')}</section></article></section>'''
+privacy+=f'''<section class="section"><article class="container narrow prose"><section><h2>Instagram üzerinden iletişim</h2><p>Gösteriler hakkında iletişim kurmak için Instagram hesabımızı ziyaret edebilirsiniz. Instagram’da paylaştığınız bilgiler ilgili platformun koşullarına tabidir.</p></section><section><h2>Video ve sosyal medya bağlantıları</h2><p>Video kapakları bu siteye ait yerel dosyalardır. Bir kapağa tıkladığınızda YouTube veya Instagram yeni sekmede açılır. İlgili platformu ziyaret ettiğinizde o platformun gizlilik politikası geçerlidir.</p><p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google gizlilik politikası</a></p></section><section><h2>Çerezler ve hareket tercihi</h2><p>Bu site kendiliğinden reklam, analiz veya takip çerezi kurmaz. Yazı tipleri ve görseller site dosyalarından yüklenir. Dekoratif hareketler otomatik çalışır ve cihazınızın azaltılmış hareket tercihine uyar. Bu tercih site tarafından kaydedilmez. Yayın hizmetinin erişim kayıtları kendi politikalarına göre işlenebilir.</p></section><section><h2>Gösteriler hakkında</h2><p>{IG_DESCRIPTION}</p>{instagram('Instagram hesabımız','outline')}</section></article></section>'''
 layout('gizlilik.html','Gizlilik ve Çerez Bilgileri | Ali Abi ve Zoyo','Instagram ve YouTube dış bağlantıları, yerel görseller, çerezler ve hareket tercihi hakkında bilgi.',privacy)
 
 not_found=page_intro('SAYFA BULUNAMADI','Bu sahne henüz kurulmamış.','Aradığınız sayfa taşınmış veya bağlantı yanlış yazılmış olabilir.')

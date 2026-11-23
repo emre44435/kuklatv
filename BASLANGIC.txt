@@ -1,0 +1,13 @@
+kuklamukla TV · Ali Abi ve Zoyo
+
+1. ZIP dosyasını önce tamamen bir klasöre çıkarın.
+2. Klasördeki index.html dosyasını tarayıcıda açın.
+3. Yeni otomatik sahne ana sayfanın 81 il bölümündedir.
+   Sayfayı bu bölüme kaydırdığınızda perde bir kez açılır ve açık kalır.
+   Aynı sahne 81 ilde gösteri sayfasında da bulunur.
+4. Perde için aç/kapa düğmesi yoktur. Cihazda azaltılmış hareket
+   açıksa görsel doğrudan açık gösterilir.
+5. GitHub'a yükleme ve içerik güncelleme bilgileri README.md içindedir.
+
+Görseller, yazı tipleri, stiller ve animasyon kodu bu klasördedir.
+Dosyaları tek tek taşımayın; klasör yapısını koruyun.

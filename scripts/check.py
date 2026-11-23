@@ -96,6 +96,14 @@ for file in files:
         try:json.loads(script)
         except json.JSONDecodeError:errors.append(name+': invalid structured data')
 
+# The public touring scene must keep its automatic, decorative behavior.
+for name in ('index.html','hizmet-bolgeleri.html'):
+    doc=docs[name]
+    if sum('data-auto-stage' in a for t,a in doc.tags)!=1:errors.append(name+': expected one automatic theatre')
+    if any(a.get('id')=='motion-toggle' for t,a in doc.tags):errors.append(name+': unexpected manual animation control')
+    if not any(t=='img' and 'data-stage-image' in a and a.get('srcset') for t,a in doc.tags):errors.append(name+': responsive theatre image missing')
+    if any({'tour-route','tour-pin'} & set(a.get('class','').split()) for t,a in doc.tags):errors.append(name+': obsolete route decoration')
+
 if len(photos)!=18 or len(by_id)!=18 or len({p['source'] for p in photos})!=18:errors.append('Expected exactly 18 distinct photographic sources')
 if set(uses)!=set(by_id) or any(n!=1 for n in uses.values()):errors.append('Every photograph must appear in exactly one content position')
 expected_files=set()

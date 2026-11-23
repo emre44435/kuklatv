@@ -15,7 +15,7 @@ GitHub’da mevcut projenin kökündeki dosyaları bu sürümdekilerle değişti
 - `content/site.json`: marka, Instagram hesabı ve dış platformlarda açılan video bağlantıları.
 - `content/pages.json`: gösteri sayfaları, açıklamalar ve sık sorulan sorular.
 - `content/photos.json`: 18 özgün fotoğrafın tekil sayfa konumları, boyutları ve ekran sürümleri.
-- `content/cartoon-scene.html`, `content/tour-scene.html`: mevcut dekoratif sahne ve 81 il çizimi.
+- `content/cartoon-scene.html`, `content/tour-scene.html`: dekoratif sahne ve otomatik perdeli 81 il sahnesi.
 
 İçerik dosyaları değişince:
 
@@ -28,6 +28,10 @@ node --check assets/js/main.js
 `SITE_URL` ortam değişkeni gerçek yayın adresini belirler. GitHub iş akışı bunu otomatik sağlar. Adres bilinmiyorsa yerel bağlantılar göreli kalır; alan adı uydurulmaz. İsteğe bağlı `python3 scripts/build.py --url GERÇEK_HTTPS_YAYIN_ADRESİNİZ` komutuyla kendi yayın adresinizi kullanabilirsiniz.
 
 Yalnızca yayın dosyalarını dışa aktarmak için `python3 scripts/export.py` çalıştırın. Sonuç `_site/` dizinine yazılır. Kaynaklar ve bu belgeler dışa aktarıma eklenmez.
+
+## Yeni 81 il sahnesi
+
+Ana sayfa ve 81 il sayfasında aynı hizalı, mor/altın sahne tasarımı kullanılır. Çizgili çember ve konum işaretleri kaldırılmıştır. Görsel, bilgi satırı ve metin sütunu ortak ölçülere oturur. Mobilde önce metin ve Instagram bağlantısı, ardından sahne gelir. Perde yaklaşık 1,9 saniyede açılır ve açık kalır; arka plan ışıkları hafifçe hareket eder. Ali Abi ve Zoyo’nun çizimi sabittir. Stil kaynağı `assets/css/tour.css`, davranış kaynağı `assets/js/main.js` dosyasıdır; bir kurulum veya harici animasyon servisi gerekmez.
 
 ## Fotoğraflar
 
@@ -47,7 +51,7 @@ Normal yayın ve sayfa üretiminde Pillow gerekmez; hazır WebP dosyaları kulla
 
 ## Etkileşimler
 
-Mobil menü, fotoğraf büyütme, galeri kategorileri, il arama ve hareket durdurma kontrolü yerel JavaScript ile çalışır. Sisteminizin azaltılmış hareket tercihi gözetilir. Gerçek fotoğraflar sabittir; hareket yalnızca temaya ait dekorlarda ve Instagram düğmesinin hafif ışık efektindedir.
+Mobil menü, fotoğraf büyütme, galeri kategorileri ve il arama yerel JavaScript ile çalışır. 81 il sahnesinin perdesi görsel ekrana geldiğinde bir kez otomatik açılır. Aç/kapa veya tekrar oynat düğmesi yoktur. Sisteminizin azaltılmış hareket tercihi gözetilir. JavaScript kapalıysa perde açık kalır; içerik kaybolmaz. Gerçek fotoğraflar sabittir; hareket yalnızca temaya ait dekorlarda ve Instagram düğmesinin hafif ışık efektindedir.
 
 Video kapakları ilgili YouTube videosunu veya Instagram hesabını güvenli yeni sekmede açar. Ana iletişim çağrıları Instagram hesabına yönlenir.
 
