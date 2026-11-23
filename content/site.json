@@ -1,0 +1,18 @@
+{
+  "name": "Ali Abi ve Zoyo",
+  "artist": "Ali Cengiz",
+  "brand": "Kukla Mukla TV",
+  "site_url": "",
+  "phone": "",
+  "whatsapp": "",
+  "instagram": "https://www.instagram.com/kuklamuklatv/",
+  "youtube": "https://www.youtube.com/@KuklamuklaTV/shorts",
+  "facebook": "https://www.facebook.com/kuklamuklatv/",
+  "description": "Ali Cengiz, Ali Abi ve kuklası Zoyo ile okullarda, belediye etkinliklerinde ve çocuk şenliklerinde kukla gösterisi yapıyor. Türkiye’nin 81 ilinde gösteri için iletişime geçin.",
+  "videos": [
+    {"id": "B8wlJ1Jrzro", "title": "Paylaşmak", "label": "Zoyo’dan bir hikâye"},
+    {"id": "g4sx3WoJEy4", "title": "Parktaki Çocuklar", "full_title": "Ben Zoyo 2. Bölüm: Parktaki Çocuklar", "label": "Ben Zoyo · 2. bölüm"},
+    {"id": "g3krZ8XySIY", "title": "Büyük Z Gezegeni", "full_title": "Ben Zoyo 1. Bölüm: Büyük Z Gezegeni", "label": "Ben Zoyo · 1. bölüm"},
+    {"id": "YAKxwfMalA4", "title": "Yalan", "label": "Zoyo’dan bir hikâye"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Ali Abi ve Zoyo · Kukla Gösterisi",
+  "short_name": "Ali Abi & Zoyo",
+  "lang": "tr",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#fffdf8",
+  "theme_color": "#123f42",
+  "icons": [
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
