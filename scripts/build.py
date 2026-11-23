@@ -86,7 +86,7 @@ def header(active=''):
     <a href="{link('23-nisan-kukla-gosterisi.html')}">{icon('PartyPopper')}23 Nisan &amp; özel günler</a>
     <a href="{link('cocuk-tiyatrosu.html')}">{icon('Ticket')}Çocuklar için kukla tiyatrosu</a></div></details>
     <a href="{link('videolar.html')}" {'aria-current="page"' if active=='videolar' else ''}>Videolar</a>
-    <a href="{link('fotograflar.html')}" {'aria-current="page"' if active=='fotograflar' else ''}>Fotoğraflar</a>
+    <a href="{link('index.html#fotograflar')}" {'aria-current="page"' if active=='fotograflar' else ''}>Fotoğraflar</a>
     <a href="{link('hizmet-bolgeleri.html')}" {'aria-current="page"' if active=='hizmet-bolgeleri' else ''}>81 ilde gösteri</a>
     {instagram('Instagram’dan mesaj atın','small')}</nav></div></header>'''
 
@@ -94,7 +94,7 @@ def header(active=''):
 def footer():
     return f'''<footer class="site-footer"><div class="container footer-grid"><div>{logo()}<p>Bir kukla, bir ses, birlikte atılan kahkahalar.<br> Ali Abi ve Zoyo’yla sahnede buluşalım.</p><div class="socials">{socials()}</div></div>
     <div><h2>Gösteriler</h2><a href="{link('kukla-gosterisi.html')}">Kukla gösterisi</a><a href="{link('okullarda-kukla-gosterisi.html')}">Okullar için gösteri</a><a href="{link('belediye-kukla-gosterisi.html')}">Belediye etkinlikleri</a><a href="{link('cocuk-tiyatrosu.html')}">Çocuklar için kukla tiyatrosu</a><a href="{link('23-nisan-kukla-gosterisi.html')}">23 Nisan etkinlikleri</a></div>
-    <div><h2>Tanışalım</h2><a href="{link('ali-cengiz.html')}">Ali Cengiz &amp; Zoyo</a><a href="{link('videolar.html')}">Gösteri videoları</a><a href="{link('fotograflar.html')}">Fotoğraflar</a><a href="{link('hizmet-bolgeleri.html')}">81 ilde gösteri</a><a href="{link('sik-sorulan-sorular.html')}">Sık sorulan sorular</a><a href="{link('kukla-gosterisi-planlama.html')}">Etkinlik rehberi</a></div>
+    <div><h2>Tanışalım</h2><a href="{link('ali-cengiz.html')}">Ali Cengiz &amp; Zoyo</a><a href="{link('videolar.html')}">Gösteri videoları</a><a href="{link('index.html#fotograflar')}">Fotoğraflar</a><a href="{link('hizmet-bolgeleri.html')}">81 ilde gösteri</a><a href="{link('sik-sorulan-sorular.html')}">Sık sorulan sorular</a><a href="{link('kukla-gosterisi-planlama.html')}">Etkinlik rehberi</a></div>
     <div><h2>Instagram’da buluşalım</h2><p>{IG_DESCRIPTION}</p><a class="footer-contact" href="{esc(IG)}" target="_blank" rel="noopener noreferrer">{icon('Instagram')} Instagram’dan mesaj atın</a><a href="{link('iletisim.html')}">İletişim</a></div></div>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> Ali Cengiz · kuklamukla TV</span><span><a href="{link('gizlilik.html')}">Gizlilik &amp; çerezler</a><span>Çocuklar için, sevgiyle.</span>{icon('Heart')}</span></div></footer>'''
 
@@ -132,11 +132,11 @@ def photo_media(photo_id, page, sizes='(max-width:600px) calc(100vw - 40px), (ma
 
 def photo_figure(photo_id, page, cls='', sizes='(max-width:600px) calc(100vw - 40px), (max-width:1120px) 44vw, 360px'):
     p=photo_by_id[photo_id]
-    return f'<figure class="photo-card {esc(cls)}" data-photo-item data-category="{esc(p["category"])}">{photo_media(photo_id,page,sizes)}<figcaption><span>{esc(p["category"])}</span><strong>{esc(p["title"])}</strong></figcaption></figure>'
+    return f'<figure class="photo-card {esc(cls)}" id="foto-{esc(photo_id)}" data-photo-item data-category="{esc(p["category"])}">{photo_media(photo_id,page,sizes)}<figcaption><span>{esc(p["category"])}</span><strong>{esc(p["title"])}</strong></figcaption></figure>'
 
 
 def photo_dialog():
-    return f'''<dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-title"><div class="photo-dialog-inner"><div class="photo-dialog-top"><h2 id="photo-title">Gösterilerden bir kare</h2><button class="icon-button" data-close-photo type="button" aria-label="Fotoğrafı kapat">{icon('X')}</button></div><div class="photo-viewer-media"><img id="photo-full" alt="" width="1600" height="1200"></div><div class="photo-dialog-bottom"><div class="photo-navigation"><button class="icon-button" data-prev-photo type="button" aria-label="Önceki fotoğraf">{icon('ChevronLeft')}</button><span id="photo-position" aria-live="polite"></span><button class="icon-button" data-next-photo type="button" aria-label="Sonraki fotoğraf">{icon('ChevronRight')}</button></div><a id="photo-download" href="{link('fotograflar.html')}" download>WebP indir</a></div></div></dialog>'''
+    return f'''<dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-title"><div class="photo-dialog-inner"><div class="photo-dialog-top"><h2 id="photo-title">Gösterilerden bir kare</h2><button class="icon-button" data-close-photo type="button" aria-label="Fotoğrafı kapat">{icon('X')}</button></div><div class="photo-viewer-media"><img id="photo-full" alt="" width="1600" height="1200"></div><div class="photo-dialog-bottom"><div class="photo-navigation"><button class="icon-button" data-prev-photo type="button" aria-label="Önceki fotoğraf">{icon('ChevronLeft')}</button><span id="photo-position" aria-live="polite"></span><button class="icon-button" data-next-photo type="button" aria-label="Sonraki fotoğraf">{icon('ChevronRight')}</button></div><a id="photo-download" href="{link('index.html#fotograflar')}" download>WebP indir</a></div></div></dialog>'''
 
 
 def video_cards():
@@ -153,21 +153,23 @@ def cta():
     return f'''<section class="section cta-section"><div class="container cta-panel"><div class="cta-doodle" aria-hidden="true">{icon('Sparkles')}</div><div><span class="eyebrow">BİR MERHABAYLA BAŞLAYALIM</span><h2>Instagram’da buluşalım.</h2><p>{IG_DESCRIPTION}</p></div>{instagram(style='light')}</div></section>'''
 
 
-def tour_visual():
+def tour_visual(hero=False):
     return ((ROOT/'content/tour-scene.html').read_text()
             .replace('TOUR_IMAGE_SMALL', link('assets/img/ali-abi-zoyo-hero-640.webp'))
-            .replace('TOUR_IMAGE_LARGE', link('assets/img/ali-abi-zoyo-hero-1280.webp')))
+            .replace('TOUR_IMAGE_LARGE', link('assets/img/ali-abi-zoyo-hero-1280.webp'))
+            .replace('loading="lazy"', 'fetchpriority="high"' if hero else 'loading="lazy"'))
 
 
-def tour_banner(regions_page=False):
+def tour_banner(regions_page=False, hero=False):
     title = 'Şehirler farklı,<span>neşemiz ortak.</span>' if regions_page else 'Sıradaki durak,<span>sizin şehriniz.</span>'
-    discovery = '' if regions_page else f'<a class="tour-discovery" href="{link("hizmet-bolgeleri.html")}">81 ili keşfedin {icon("ChevronRight")}</a>'
-    return f'''<section class="tour-banner" id="turkiye-geneli" data-auto-stage aria-labelledby="tour-title">
+    heading = 'h1' if hero else 'h2'
+    variant = ' tour-banner--hero' if hero else ''
+    return f'''<section class="tour-banner{variant}" id="turkiye-geneli" data-auto-stage aria-labelledby="tour-title">
     <div class="tour-light tour-light--one" aria-hidden="true"></div><div class="tour-light tour-light--two" aria-hidden="true"></div>
-    <div class="container tour-grid">{tour_visual()}
+    <div class="container tour-grid">{tour_visual(hero=hero)}
     <div class="tour-copy"><span class="tour-eyebrow">ALİ ABİ &amp; ZOYO · TÜRKİYE GENELİNDE</span>
-    <h2 id="tour-title">{title}</h2><p class="tour-description">{IG_DESCRIPTION}</p>
-    <div class="tour-actions"><a class="tour-instagram" href="{esc(IG)}" target="_blank" rel="noopener noreferrer">{icon("Instagram")}<span>Instagram’dan mesaj atın</span><span class="sr-only"> (yeni sekme)</span></a>{discovery}</div>
+    <{heading} id="tour-title">{title}</{heading}><p class="tour-description">{IG_DESCRIPTION}</p>
+    <div class="tour-actions"><a class="tour-instagram" href="{esc(IG)}" target="_blank" rel="noopener noreferrer">{icon("Instagram")}<span>Instagram’dan mesaj atın</span><span class="sr-only"> (yeni sekme)</span></a></div>
     <p class="tour-note">Çocuklar için, sevgiyle.</p><div class="tour-audiences"><span>Okullarda</span><span>Belediye etkinliklerinde</span><span>Çocuk şenliklerinde</span></div></div></div>
     <svg class="tour-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 66C250 0 382 110 640 62S1050 10 1250 59 1390 62 1440 37V100H0Z"/></svg></section>'''
 
@@ -189,7 +191,7 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
         ld['@graph']+=extra_schema
     canonical_tag=f'<link rel="canonical" href="{esc(canonical)}"><meta property="og:url" content="{esc(canonical)}">' if canonical else ''
     social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi tanıtım illüstrasyonu"><meta name="twitter:card" content="summary_large_image">' if image else '<meta name="twitter:card" content="summary">'
-    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour'])
+    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour','harmony'])
     ld_text=json.dumps(ld,ensure_ascii=False).replace('<','\\u003c')
     output=f'''<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(title)}</title>
@@ -205,14 +207,18 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
 
 # Home: each photograph belongs only to this one content position.
 programs=[('04','school','School','Okullar için','Anaokulu ve ilkokul etkinliklerinde Ali Abi ve Zoyo çocuklarla buluşsun.','okullarda-kukla-gosterisi.html','Okul gösterisini inceleyin'),('07','city','Landmark','Belediyeler için','Kültür merkezlerinde ve çocuk şenliklerinde şehrin çocuklarıyla bir araya gelelim.','belediye-kukla-gosterisi.html','Belediye gösterisini inceleyin'),('10','special','PartyPopper','23 Nisan & özel günler','Çocukların bayramına, okul şenliğine ve özel etkinliğinize neşe katalım.','23-nisan-kukla-gosterisi.html','Özel günleri inceleyin')]
-program_cards=''.join(f'<article class="program-card program-card--{kind}" data-photo-item><div class="program-image">{photo_media(pid,"index.html","(max-width:760px) calc(100vw - 40px), 30vw")}<span>{icon(symbol)}</span></div><div class="program-copy"><h3>{esc(title)}</h3><p>{esc(text)}</p><a href="{link(path)}">{esc(action)}</a></div></article>' for pid,kind,symbol,title,text,path,action in programs)
+program_cards=''.join(f'<article class="program-card program-card--{kind}" id="foto-{pid}" data-photo-item><div class="program-image">{photo_media(pid,"index.html","(max-width:760px) calc(100vw - 40px), 30vw")}<span>{icon(symbol)}</span></div><div class="program-copy"><h3>{esc(title)}</h3><p>{esc(text)}</p><a href="{link(path)}">{esc(action)}</a></div></article>' for pid,kind,symbol,title,text,path,action in programs)
+home_gallery_photos=[p for p in photos if p['id'] not in {'04','07','10','12'}]
+home_gallery_cards=''.join(photo_figure(p['id'],'index.html',sizes='(max-width:359px) calc(100vw - 40px), (max-width:600px) calc((100vw - 54px) / 2), (max-width:900px) 44vw, 360px') for p in home_gallery_photos)
+home_gallery=f'''<section class="section photo-section home-photo-gallery" id="fotograflar" data-photo-gallery><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE YAŞANAN ANLAR</span><h2>Sahneden gerçek hatıralar.</h2></div><p>Okullarda, salonlarda, şenliklerde…<br>Birlikte güldüğümüz buluşmalardan.</p></div><div class="gallery-filters js-only" role="group" aria-label="Fotoğraf kategorileri"><button class="gallery-filter" type="button" data-photo-filter="Tümü" aria-pressed="true">Tümü</button><button class="gallery-filter" type="button" data-photo-filter="Sahne" aria-pressed="false">Sahne</button><button class="gallery-filter" type="button" data-photo-filter="Buluşmalar" aria-pressed="false">Buluşmalar</button></div><p class="photo-count" id="photo-count" role="status">{len(home_gallery_photos)} fotoğraf</p><div class="photo-grid">{home_gallery_cards}</div></div></section>'''
 home=f'''
-<section class="hero">{scene_markup}<div class="container hero-grid"><div class="hero-copy"><span class="eyebrow"><span class="eyebrow-line"></span> ALİ CENGİZ · KUKLA SANATÇISI</span><h1><span class="hero-title-first">Ali Abi ve <span class="zoyo-word">Zoyo</span></span><span class="hero-title-second">ile kukla gösterisi.</span></h1><p>Bir ses, bir kukla, birlikte atılan kahkahalar. Ali Abi ve Zoyo; okullarda, belediye etkinliklerinde ve çocuk şenliklerinde çocuklarla buluşuyor.</p><p class="hero-contact-note">{IG_DESCRIPTION}</p><div class="hero-actions">{instagram()}{button('Zoyo’yu izleyin','videolar.html','outline','Play')}</div><div class="hero-footnote">{icon('Heart')} Çocuklar için, sevgiyle.</div></div><div class="hero-art"><div class="hero-photo"><img src="{link('assets/img/ali-abi-zoyo-hero-1280.webp')}" srcset="{link('assets/img/ali-abi-zoyo-hero-640.webp')} 640w, {link('assets/img/ali-abi-zoyo-hero-1280.webp')} 1280w" sizes="(max-width:600px) calc(100vw - 40px), (max-width:820px) 44vw, 480px" alt="Ali Abi ve turuncu, mavi burunlu Zoyo’nun çizimli tanıtım görseli" width="1280" height="1600" fetchpriority="high" decoding="async"></div></div></div></section>
+{tour_banner(hero=True)}
+<section class="home-intro">{scene_markup}<div class="container home-intro-grid"><div><span class="eyebrow">ALİ CENGİZ · KUKLA SANATÇISI</span><h2>Bir kukla, bir ses.<br>Birlikte atılan kahkahalar.</h2></div><div class="home-intro-copy"><p>Ali Abi ve Zoyo; okullarda, belediye etkinliklerinde ve çocuk şenliklerinde çocuklarla buluşuyor.</p><a class="text-link" href="{link('videolar.html')}">{icon('Play')} Zoyo’yu izleyin</a></div></div></section>
 <div class="audience-strip"><div class="container"><span>{icon('School')}Okul etkinlikleri</span><span>{icon('Landmark')}Belediye programları</span><span>{icon('Theater')}Çocuk şenlikleri</span><span>{icon('MapPin')}Türkiye’nin 81 ili</span></div></div>
 <section class="section" id="gosteriler"><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE BULUŞALIM</span><h2>Her buluşmada bir kahkaha.</h2></div><p>Okulda, kültür merkezinde, şenlikte…<br> Ali Abi ve Zoyo’yla gösteri zamanı.</p></div><div class="program-grid">{program_cards}</div></div></section>
-<section class="section about-section"><div class="container about-grid">{photo_figure('12','index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('fotograflar.html')}">Gösterilerden fotoğraflar</a></div></div></section>
+<section class="section about-section"><div class="container about-grid">{photo_figure('12','index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('index.html#fotograflar')}">Gösterilerden fotoğraflar</a></div></div></section>
+{home_gallery}
 <section class="section videos-section" id="videolar"><div class="container"><div class="section-heading"><div><span class="eyebrow">kuklamukla TV</span><h2>Biraz Zoyo, bolca neşe.</h2></div><a class="text-link text-link--light" href="{link('videolar.html')}">Gösteri videolarını keşfedin</a></div><p class="section-lead">YouTube ve Instagram’da neşeli anlar. İzlemek için bir kapak seçin.</p>{video_cards()}<p class="video-privacy">Kapaklar sizi YouTube veya Instagram’a götürür.</p></div></section>
-{tour_banner()}
 <section class="section faq-section"><div class="container faq-grid"><div><span class="eyebrow">AKLINIZDAKİLER</span><h2>Birkaç küçük<br> soru, açık cevaplar.</h2><p>Gösteriler hakkında merak ettikleriniz.</p><a class="text-link" href="{link('sik-sorulan-sorular.html')}">Tüm soruları görün</a></div>{faq_html(common_faqs[:4])}</div></section>{cta()}'''
 layout('index.html','Ali Cengiz | Ali Abi ve Zoyo Kukla Gösterisi · kuklamukla TV',config['description'],home,extra_schema=[faq_schema(common_faqs[:4])])
 
@@ -233,8 +239,8 @@ for page in pages:
     layout(name,page['seo_title'],page['description'],body,page['slug'],schema)
 
 about=page_intro('ALİ CENGİZ & ZOYO','Ali Abi’yle tanışın.','Zoyo’nun sesi ve sahnedeki yol arkadaşı: kukla sanatçısı Ali Cengiz.')
-about+=f'''<section class="section"><div class="container about-grid">{photo_figure('06','ali-cengiz.html','feature-photo','(max-width:760px) calc(100vw - 76px), 44vw')}<div class="prose"><span class="eyebrow">SAHNENİN ARKASINDAKİ İSİM</span><h2>Ali Cengiz, çocukların Ali Abisi.</h2><p>Ali Cengiz bir kukla sanatçısı. Kuklası Zoyo’yu seslendiriyor ve oynatıyor. Sahnedeki adıyla Ali Abi, Zoyo ile birlikte çocuklara canlı kukla gösterisi sunuyor.</p><p>Okullar, belediyeler ve çocuklara yönelik etkinlikler için Türkiye’nin 81 ilinde çocuklarla buluşabiliyor.</p><p>{IG_DESCRIPTION}</p>{instagram()}</div></div></section>
-<section class="section artist-story"><div class="container about-grid"><div class="about-copy"><span class="eyebrow">BİRLİKTE GÜLÜNEN ANLAR</span><h2>Zoyo’nun dünyası,<br> çocukların merakı.</h2><p>Gösterinin merkezinde canlı bir buluşma var. Zoyo’nun sesini duyan, hareketlerini izleyen çocuklar Ali Abi’yle aynı hikâyenin içinde yer alıyor.</p><p>kuklamukla TV’de bu dünyayı ekran başında da keşfedebilirsiniz.</p>{button('Zoyo’nun videoları','videolar.html','outline','Play')}</div>{photo_figure('18','ali-cengiz.html','feature-photo','(max-width:760px) calc(100vw - 76px), 44vw')}</div></section>{cta()}'''
+about+=f'''<section class="section"><div class="container about-grid"><aside class="artist-note">{icon('Theater')}<span class="eyebrow">ALİ ABİ &amp; ZOYO</span><strong>Bir sahne,<br>iki yol arkadaşı.</strong><a class="text-link" href="{link('index.html#foto-06')}">Ali Abi ve Zoyo’nun fotoğrafını görün</a></aside><div class="prose"><span class="eyebrow">SAHNENİN ARKASINDAKİ İSİM</span><h2>Ali Cengiz, çocukların Ali Abisi.</h2><p>Ali Cengiz bir kukla sanatçısı. Kuklası Zoyo’yu seslendiriyor ve oynatıyor. Sahnedeki adıyla Ali Abi, Zoyo ile birlikte çocuklara canlı kukla gösterisi sunuyor.</p><p>Okullar, belediyeler ve çocuklara yönelik etkinlikler için Türkiye’nin 81 ilinde çocuklarla buluşabiliyor.</p><p>{IG_DESCRIPTION}</p>{instagram()}</div></div></section>
+<section class="section artist-story"><div class="container about-grid"><div class="about-copy"><span class="eyebrow">BİRLİKTE GÜLÜNEN ANLAR</span><h2>Zoyo’nun dünyası,<br> çocukların merakı.</h2><p>Gösterinin merkezinde canlı bir buluşma var. Zoyo’nun sesini duyan, hareketlerini izleyen çocuklar Ali Abi’yle aynı hikâyenin içinde yer alıyor.</p><p>kuklamukla TV’de bu dünyayı ekran başında da keşfedebilirsiniz.</p>{button('Zoyo’nun videoları','videolar.html','outline','Play')}</div><aside class="artist-note artist-note--light">{icon('School')}<span class="eyebrow">ÇOCUKLARLA BİRLİKTE</span><strong>Her buluşmada<br>yeni bir kahkaha.</strong><a class="text-link" href="{link('index.html#foto-18')}">Sınıftaki buluşmayı görün</a></aside></div></section>{cta()}'''
 layout('ali-cengiz.html','Ali Cengiz Kimdir? | Kukla Sanatçısı Ali Abi ve Zoyo','Zoyo’yu seslendiren ve oynatan kukla sanatçısı Ali Cengiz ile tanışın. Ali Abi ve Zoyo, Türkiye genelinde çocuklarla kukla gösterilerinde buluşuyor.',about,'ali-cengiz')
 
 videos=page_intro('kuklamukla TV','Zoyo’yu izlemeye ne dersiniz?','YouTube ve Instagram paylaşımlarından neşeli anlar. Bir kapak seçin; ilgili platformda izlemeye devam edin.')
@@ -242,16 +248,11 @@ videos+=f'<section class="section videos-section videos-page"><div class="contai
 video_schema={'@type':'ItemList','name':'kuklamukla TV YouTube ve Instagram paylaşımları','itemListElement':[{'@type':'ListItem','position':i+1,'name':v.get('full_title',v['title']),'url':v['url']} for i,v in enumerate(config['videos'])]}
 layout('videolar.html','Zoyo Videoları | YouTube ve Instagram | kuklamukla TV','Ali Abi ve Zoyo’nun kuklamukla TV YouTube videolarını ve Instagram paylaşımlarını keşfedin. İzlemek için ilgili platforma geçin.',videos,'videolar',[video_schema])
 
-gallery_photos=[p for p in photos if p['page']=='fotograflar.html']
-gallery=page_intro('FOTOĞRAFLAR','Sahneden güzel hatıralar.','Salonlarda, okullarda ve çocuklarla buluşmalarda birlikte yaşanan anlar. Fotoğraflara dokunarak tam görünümde açabilirsiniz.')
-gallery+='<section class="section photo-section gallery-page"><div class="container"><div class="gallery-filters js-only" role="group" aria-label="Fotoğraf kategorileri">'
-for category in ['Tümü','Sahne','Buluşmalar']:
-    gallery+=f'<button class="gallery-filter" type="button" data-photo-filter="{esc(category)}" aria-pressed="{str(category=="Tümü").lower()}">{esc(category)}</button>'
-gallery+=f'</div><p id="photo-count" class="photo-count" role="status">{len(gallery_photos)} fotoğraf</p><div class="photo-grid">'
-gallery+=''.join(photo_figure(p['id'],'fotograflar.html',sizes='(max-width:600px) calc(100vw - 40px), (max-width:900px) 44vw, 30vw') for p in gallery_photos)
+gallery=page_intro('FOTOĞRAFLAR','Birlikte yaşanan gerçek anlar.','Ali Abi ve Zoyo’nun okul, salon ve çocuk şenliği buluşmalarından 18 gerçek fotoğrafı ana sayfada keşfedin.')
+gallery+=f'<section class="section"><div class="container"><div class="gallery-directory-intro"><h2>Sahneden hatıralar.</h2><p>Bir kare seçerek fotoğrafın bulunduğu bölüme geçebilirsiniz.</p>{button("Fotoğraf galerisini açın","index.html#fotograflar","primary","Search")}</div><div class="photo-directory">'
+gallery+=''.join(f'<a class="photo-directory-card" href="{link("index.html#foto-"+p["id"])}">{icon("Search")}<span><small>{esc(p["category"])}</small><strong>{esc(p["title"])}</strong></span></a>' for p in photos)
 gallery+='</div></div></section>'+cta()
-gallery_schema=[{'@type':'ImageGallery','name':'Sahneden güzel hatıralar','image':[link('assets/img/photos/'+p['full']) for p in gallery_photos]}] if site_url else []
-layout('fotograflar.html','Ali Cengiz ve Zoyo Fotoğrafları | kuklamukla TV','Ali Cengiz ve Zoyo’nun sahne ve çocuk etkinliklerinden gerçek fotoğrafları. Buluşmalardan kalan hatıraları galeride inceleyin.',gallery,'fotograflar',gallery_schema)
+layout('fotograflar.html','Ali Cengiz ve Zoyo Fotoğrafları | kuklamukla TV','Ali Cengiz ve Zoyo’nun sahne ve çocuk etkinliklerinden 18 gerçek fotoğrafını ana sayfada inceleyin.',gallery,'fotograflar')
 
 regions=page_intro('TÜRKİYE’NİN 81 İLİNDE','Bir sonraki durak sizin şehriniz.','Ali Abi ve Zoyo, kukla gösterisi için Türkiye’nin her ilinde çocuklarla buluşabiliyor.')
 regions+=tour_banner(regions_page=True)

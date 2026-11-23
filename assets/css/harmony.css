@@ -1,0 +1,87 @@
+/* The existing cartoon background continues around the reference stage. */
+.home-intro {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:104px 0 102px;
+  background:linear-gradient(#f6efdd,#eff9fb 35%,#edf8ef);
+}
+.home-intro .theatre-scene { opacity:.65; }
+.home-intro .scene-bunting { height:64px; }
+.home-intro .scene-hills { height:116px; }
+.home-intro .scene-sun { width:68px; top:21px; }
+.home-intro .scene-star { width:26px; }
+.home-intro .scene-balloon { width:48px; }
+.home-intro .scene-puppet { width:68px; left:-20px; }
+.home-intro .scene-marionette { width:57px; right:1%; top:20%; }
+.home-intro-grid { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(40px,6vw,80px); }
+.home-intro h2 { margin-top:15px; max-width:540px; font-size:clamp(29px,3vw,42px); line-height:1.18; }
+.home-intro-copy { max-width:490px; }
+.home-intro-copy p { font-size:17px; line-height:1.85; color:#455b63; }
+.home-intro-copy .text-link { display:inline-flex; align-items:center; gap:8px; min-height:44px; margin-top:15px; }
+.home-intro-copy .icon { width:19px; height:19px; }
+.home-photo-gallery { background:#fff9eb url('../img/cartoon-sprinkles.svg') repeat; }
+.home-photo-gallery .gallery-filters { margin:0 0 12px; }
+.home-photo-gallery .photo-count { margin:0 0 22px; }
+.home-photo-gallery .photo-grid { gap:24px; }
+.home-photo-gallery .photo-card { display:flex; flex-direction:column; min-width:0; }
+.home-photo-gallery .photo-launch { flex:none; aspect-ratio:4/3; background:#f0f0e9; }
+.home-photo-gallery .photo-card figcaption { flex:1; min-height:97px; }
+.home-photo-gallery .photo-card figcaption strong { line-height:1.4; }
+[id^='foto-'],#fotograflar { scroll-margin-top:122px; }
+.artist-note { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:22px; padding:48px; min-height:365px; border:1px solid #705f84; border-radius:23px; background:#423357 url('../img/cartoon-sprinkles.svg') repeat; color:#fbf3df; }
+.artist-note>.icon { width:49px; height:49px; color:#e7d17e; }
+.artist-note>.eyebrow { color:#e7d17e; }
+.artist-note>strong { font:600 clamp(30px,3vw,43px)/1.18 var(--display); }
+.artist-note>.text-link { font-size:14px; line-height:1.6; color:#fbf3df; }
+.artist-note--light { background:#fff4dc url('../img/cartoon-sprinkles.svg') repeat; border-color:#e4d2ab; color:#493a56; }
+.artist-note--light>.icon,.artist-note--light>.eyebrow,.artist-note--light>.text-link { color:#695080; }
+.gallery-directory-intro { max-width:680px; margin-bottom:36px; }
+.gallery-directory-intro h2 { margin-bottom:16px; }
+.gallery-directory-intro p { margin-bottom:22px; }
+.photo-directory { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.photo-directory-card { display:flex; align-items:center; gap:15px; padding:20px; min-height:100px; border:1px solid #d9e3df; border-radius:16px; background:#fffdf7; }
+.photo-directory-card>.icon { color:#8764a2; flex-shrink:0; }
+.photo-directory-card>span { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.photo-directory-card small { font-size:13px; color:#746d7c; }
+.photo-directory-card strong { font-size:16px; line-height:1.45; }
+.photo-directory-card:hover { background:#f4ecf7; }
+@media(max-width:900px) {
+  .photo-directory { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .artist-note { padding:34px; min-height:310px; }
+}
+@media(max-width:800px) {
+  .home-intro { padding:85px 0 82px; }
+  .home-intro-grid { grid-template-columns:1fr; gap:23px; }
+  .home-intro-copy { max-width:600px; }
+  .home-intro-copy p { font-size:16px; }
+  .home-intro h2 { font-size:clamp(29px,5.5vw,38px); }
+  .home-intro .scene-marionette { opacity:.45; }
+}
+@media(max-width:600px) {
+  .home-intro { padding:74px 0 76px; }
+  .home-intro .scene-bunting { height:43px; }
+  .home-intro .scene-sun { width:47px; }
+  .home-intro .scene-cloud { opacity:.55; }
+  .home-intro .scene-marionette { width:43px; right:-7px; }
+  .home-intro .scene-puppet { width:58px; left:-22px; }
+  .home-intro h2 { font-size:29px; }
+  .home-photo-gallery .photo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px 12px; }
+  .home-photo-gallery .photo-card { border-radius:15px; }
+  .home-photo-gallery .photo-card figcaption { padding:13px 12px; min-height:106px; }
+  .home-photo-gallery .photo-card figcaption strong { font-size:14px; line-height:1.45; }
+  .home-photo-gallery .photo-card figcaption>span { font-size:12px; }
+  .home-photo-gallery .photo-zoom { min-width:32px; min-height:32px; padding:7px; left:8px; bottom:8px; border-radius:10px; }
+  .home-photo-gallery .photo-zoom>.icon { width:16px; height:16px; }
+  .home-photo-gallery .photo-zoom>span { display:none; }
+  .home-photo-gallery .gallery-filter { padding-inline:15px; }
+  .artist-note { padding:28px; min-height:290px; }
+  .photo-directory { grid-template-columns:1fr; gap:12px; }
+  .photo-directory-card { min-height:88px; }
+  [id^='foto-'],#fotograflar { scroll-margin-top:96px; }
+}
+@media(max-width:359px) {
+  .home-photo-gallery .photo-grid { grid-template-columns:1fr; }
+  .home-photo-gallery .photo-card figcaption { min-height:90px; padding:16px 18px; }
+  .home-photo-gallery .photo-card figcaption strong { font-size:16px; }
+}

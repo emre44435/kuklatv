@@ -26,8 +26,10 @@
     if (!portrait || !image) return;
     if (reducedMotion.matches || !('IntersectionObserver' in window)) {
       stage.classList.add('is-revealed');
+      stage.dataset.stageState = 'open';
       return;
     }
+    stage.dataset.stageState = 'waiting';
     let revealing = false;
     let observer;
     const reveal = async () => {
@@ -44,10 +46,14 @@
         }
       } finally {
         window.clearTimeout(fallback);
+        stage.dataset.stageState = 'opening';
         stage.classList.add('is-revealed');
         observer?.disconnect();
       }
     };
+    stage.addEventListener('animationend', event => {
+      if (event.animationName === 'tour-curtain-open' && event.target.classList.contains('tour-curtain-right')) stage.dataset.stageState = 'open';
+    });
     stage.classList.add('stage-ready');
     observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) reveal();
@@ -59,6 +65,7 @@
     visibilityObserver.observe(stage);
     reducedMotion.addEventListener?.('change', event => {
       if (event.matches) {
+        stage.dataset.stageState = 'open';
         stage.classList.remove('stage-ready');
         stage.classList.add('is-revealed');
         observer.disconnect();
@@ -106,7 +113,8 @@
   const photoTriggers = $$('[data-photo]');
   let activePhoto = -1;
   let photoFocus = null;
-  const visiblePhotos = () => photoTriggers.filter(link => !link.closest('[data-photo-item]')?.hidden);
+  let photoGroup = null;
+  const visiblePhotos = () => photoTriggers.filter(link => (!photoGroup || photoGroup.contains(link)) && !link.closest('[data-photo-item]')?.hidden);
   function showPhoto(index) {
     const current = visiblePhotos();
     if (!current.length) return;
@@ -124,6 +132,7 @@
     if (!photoDialog?.showModal) return;
     event.preventDefault();
     photoFocus = trigger;
+    photoGroup = trigger.closest('[data-photo-gallery]');
     showPhoto(visiblePhotos().indexOf(trigger));
     photoDialog.showModal();
     document.body.classList.add('dialog-open');
@@ -157,10 +166,13 @@
   });
   $$('[data-photo-filter]').forEach(button => button.addEventListener('click', () => {
     const category=button.dataset.photoFilter;
-    $$('[data-photo-filter]').forEach(other => other.setAttribute('aria-pressed',String(other===button)));
-    $$('.photo-card').forEach(card => { card.hidden = category !== 'Tümü' && card.dataset.category !== category; });
-    const count=$$('.photo-card').filter(card=>!card.hidden).length;
-    if ($('#photo-count')) $('#photo-count').textContent = `${count} fotoğraf`;
+    const gallery=button.closest('[data-photo-gallery]');
+    if (!gallery) return;
+    $$('[data-photo-filter]', gallery).forEach(other => other.setAttribute('aria-pressed',String(other===button)));
+    $$('.photo-card', gallery).forEach(card => { card.hidden = category !== 'Tümü' && card.dataset.category !== category; });
+    const count=$$('.photo-card', gallery).filter(card=>!card.hidden).length;
+    const counter=$('#photo-count', gallery);
+    if (counter) counter.textContent = `${count} fotoğraf`;
   }));
 
   const normalize = text => text.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i').trim();

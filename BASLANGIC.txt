@@ -1,13 +1,14 @@
-kuklamukla TV · Ali Abi ve Zoyo
+kuklamukla TV · Mobil öncelikli son düzenleme
 
-1. ZIP dosyasını önce tamamen bir klasöre çıkarın.
+1. Bu ZIP'in tamamını yeni bir klasöre çıkarın.
 2. Klasördeki index.html dosyasını tarayıcıda açın.
-3. Yeni otomatik sahne ana sayfanın 81 il bölümündedir.
-   Sayfayı bu bölüme kaydırdığınızda perde bir kez açılır ve açık kalır.
-   Aynı sahne 81 ilde gösteri sayfasında da bulunur.
-4. Perde için aç/kapa düğmesi yoktur. Cihazda azaltılmış hareket
-   açıksa görsel doğrudan açık gösterilir.
-5. GitHub'a yükleme ve içerik güncelleme bilgileri README.md içindedir.
+3. Mor sahne artık ana sayfanın açılış bannerıdır.
+   Perde sahne görünür olduğunda yaklaşık 2,3 saniyede otomatik açılır.
+   Işıklar hareket etmeyi sürdürür. Aç/kapa düğmesi yoktur.
+4. Ana sayfada 18 gerçek fotoğrafın tamamı birer kez yer alır.
+   Fotoğraflara dokunarak büyük ve tam oranlı görünümünü açabilirsiniz.
+5. Cihazın azaltılmış hareket tercihi açıksa perde doğrudan açık gösterilir.
+6. GitHub yayını ve içerik güncelleme bilgileri README.md içindedir.
 
-Görseller, yazı tipleri, stiller ve animasyon kodu bu klasördedir.
-Dosyaları tek tek taşımayın; klasör yapısını koruyun.
+Görseller, yazı tipleri, stiller ve animasyon kodu arşivdedir.
+Klasör yapısını koruyun.

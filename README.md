@@ -29,13 +29,13 @@ node --check assets/js/main.js
 
 Yalnızca yayın dosyalarını dışa aktarmak için `python3 scripts/export.py` çalıştırın. Sonuç `_site/` dizinine yazılır. Kaynaklar ve bu belgeler dışa aktarıma eklenmez.
 
-## Yeni 81 il sahnesi
+## Referanstaki açılış bannerı
 
-Ana sayfa ve 81 il sayfasında aynı hizalı, mor/altın sahne tasarımı kullanılır. Çizgili çember ve konum işaretleri kaldırılmıştır. Görsel, bilgi satırı ve metin sütunu ortak ölçülere oturur. Mobilde önce metin ve Instagram bağlantısı, ardından sahne gelir. Perde yaklaşık 1,9 saniyede açılır ve açık kalır; arka plan ışıkları hafifçe hareket eder. Ali Abi ve Zoyo’nun çizimi sabittir. Stil kaynağı `assets/css/tour.css`, davranış kaynağı `assets/js/main.js` dosyasıdır; bir kurulum veya harici animasyon servisi gerekmez.
+Ana sayfanın ilk ekranında ve 81 il sayfasında referanstaki hizalı, mor/altın sahne tasarımı kullanılır. Çizgili çember ve konum işaretleri kaldırılmıştır. Görsel, bilgi satırı ve metin sütunu ortak ölçülere oturur. Mobilde önce iki satırlı başlık ve tam genişlikte Instagram bağlantısı, ardından sahne gelir. Eski çizgi film dekoru, renkli bayraklar ve kukla arka planı bannerın devamındaki tanıtım bölümünde korunur. Galeri dar ekranlarda taşmadan tek veya iki sütuna uyarlanır. Perde yaklaşık 2,3 saniyede açılır ve açık kalır; arka plan ışıkları görünür biçimde otomatik hareket eder. Ali Abi ve Zoyo’nun çizimi sabittir. Stil kaynakları `assets/css/tour.css` ve `assets/css/harmony.css`, davranış kaynağı `assets/js/main.js` dosyasıdır; bir kurulum veya harici animasyon servisi gerekmez.
 
 ## Fotoğraflar
 
-18 yeni görselin tamamı `assets/img/photos/` altında optimize edilmiş WebP olarak bulunur. Her fotoğraf site genelinde tek bir içerik konumundadır. Düşük ve yüksek ekran çözünürlükleri aynı fotoğrafın responsive sürümleridir. Büyük görünüm kendi kartından açılır ve fotoğrafın tamamını doğal oranıyla gösterir.
+18 yeni görselin tamamı `assets/img/photos/` altında optimize edilmiş WebP olarak bulunur. 18 fotoğrafın tamamı ana sayfada birer kez gösterilir: üç gösteri kartı, bir tanıtım fotoğrafı ve 14 karelik galeri. Diğer sayfalardaki bağlantılar bu fotoğrafların ana sayfadaki konumlarına gider. Düşük ve yüksek ekran çözünürlükleri aynı fotoğrafın responsive sürümleridir. Büyük görünüm kendi kartından açılır ve fotoğrafın tamamını doğal oranıyla gösterir.
 
 Karelere yalnızca ölçülü, tüm görüntüye uygulanan ışık ve renk ayarları, gerekli yerlerde doğal kadraj ve iki sınıf fotoğrafına hafif doğrultma uygulanmıştır. İnsanlar, yüzler, kıyafetler ve kukla yeniden üretilmemiştir. Kaynakta bulunmayan ayrıntı eklenmemiştir. Görseller kaynak çözünürlüklerinin üstüne büyütülmemiştir.
 

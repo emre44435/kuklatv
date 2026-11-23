@@ -36,9 +36,7 @@
       "belediye-kukla-gosterisi",
       "kukla-gosterisi-planlama"
     ],
-    "photos": [
-      "08"
-    ]
+    "photos": []
   },
   {
     "slug": "okullarda-kukla-gosterisi",
@@ -81,10 +79,7 @@
       "23-nisan-kukla-gosterisi",
       "kukla-gosterisi-planlama"
     ],
-    "photos": [
-      "09",
-      "03"
-    ]
+    "photos": []
   },
   {
     "slug": "belediye-kukla-gosterisi",
@@ -123,9 +118,7 @@
       "hizmet-bolgeleri",
       "kukla-gosterisi-planlama"
     ],
-    "photos": [
-      "02"
-    ]
+    "photos": []
   },
   {
     "slug": "cocuk-tiyatrosu",
@@ -164,9 +157,7 @@
       "kukla-gosterisi",
       "kukla-gosterisi-planlama"
     ],
-    "photos": [
-      "11"
-    ]
+    "photos": []
   },
   {
     "slug": "23-nisan-kukla-gosterisi",
@@ -201,9 +192,7 @@
       "belediye-kukla-gosterisi",
       "iletisim"
     ],
-    "photos": [
-      "05"
-    ]
+    "photos": []
   },
   {
     "slug": "kukla-gosterisi-planlama",
@@ -242,8 +231,6 @@
       "okullarda-kukla-gosterisi",
       "belediye-kukla-gosterisi"
     ],
-    "photos": [
-      "16"
-    ]
+    "photos": []
   }
 ]

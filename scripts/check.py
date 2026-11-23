@@ -104,6 +104,9 @@ for name in ('index.html','hizmet-bolgeleri.html'):
     if not any(t=='img' and 'data-stage-image' in a and a.get('srcset') for t,a in doc.tags):errors.append(name+': responsive theatre image missing')
     if any({'tour-route','tour-pin'} & set(a.get('class','').split()) for t,a in doc.tags):errors.append(name+': obsolete route decoration')
 
+if any(p['page']!='index.html' for p in photos):errors.append('All 18 real photographs must be on the home page')
+if sum(t=='img' and 'real-photo' in a.get('class','').split() for t,a in docs['index.html'].tags)!=18:errors.append('Home page must display all 18 real photographs exactly once')
+
 if len(photos)!=18 or len(by_id)!=18 or len({p['source'] for p in photos})!=18:errors.append('Expected exactly 18 distinct photographic sources')
 if set(uses)!=set(by_id) or any(n!=1 for n in uses.values()):errors.append('Every photograph must appear in exactly one content position')
 expected_files=set()

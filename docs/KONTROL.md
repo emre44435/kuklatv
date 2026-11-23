@@ -18,13 +18,21 @@ Yerel Chromium tarayıcısında 15 sayfa, aşağıdaki yedi görünüm genişli�
 
 Matris; yatay sayfa taşması, içeriklerin görünüm dışına çıkması, kesilen başlıklar, mobil menü açılıp kapanması, menü üzerindeki sabit kontroller, elle animasyon kontrolü bulunmaması, fotoğrafın doğal oranlı görünümü, gerçek fotoğraflarda hareket uygulanmaması, Instagram hedefleri ve sabit Instagram düğmesinin en az 44 × 44 px olması için çalıştırıldı.
 
-Fotoğraf penceresi bu sürümün matrisinde toplam 126 kez açıldı. Her açılışta görsel boyutları ve doğal oranlı gösterim doğrulandı. Mobil ve masaüstü sahne düzeni tarayıcıda ayrıca görsel olarak incelendi.
+Fotoğraf penceresi bu sürümün matrisinde toplam 126 kez açıldı. Her açılışta görsel boyutları ve doğal oranlı gösterim doğrulandı. Mobil ve masaüstü sahne düzeni tarayıcıda ayrıca görsel olarak incelendi. 390 px mobil görünümde menünün açılıp kapanması, Sahne filtresi, gerçek fotoğrafın açılması, sonraki kareye geçilmesi ve Escape ile kapatılması gerçek tıklamalarla ayrıca doğrulandı.
 
 ## Otomatik sahne kontrolü
 
-Ana sayfa ve 81 il sayfasındaki yeni sahne, yedi ekran genişliğinin her birinde sınandı: **14 kontrol, 0 hata**. Bu kontrollerde perde görsel ekrana geldikten sonra açıldı, son konumu doğrulandı ve sayfa yeniden kaydırıldığında açılış tekrarlanmadı. Metin, başlık ve ana bağlantının sol hizaları; sahnenin ve alt bilgi satırının genişlikleri; mobil bağlantının tam genişliği ölçüldü. Karakter çiziminde hareket, sahnede aç/kapa düğmesi, çizgili çember veya konum işareti bulunmadığı denetlendi.
+Ana sayfanın ilk bölümündeki banner ve 81 il sayfasındaki sahne, yedi ekran genişliğinin her birinde sınandı: **14 kontrol, 0 hata**. Bu kontrollerde perde görsel ekrana geldikten sonra açıldı, son konumu doğrulandı ve sayfa yeniden kaydırıldığında açılış tekrarlanmadı. Metin, başlık ve ana bağlantının sol hizaları; sahnenin ve alt bilgi satırının genişlikleri; mobil bağlantının tam genişliği ölçüldü. Karakter çiziminde hareket, sahnede aç/kapa düğmesi, çizgili çember veya konum işareti bulunmadığı denetlendi.
 
 JavaScript kapalı görünüm 320, 390 ve 1440 px genişliklerde ayrıca sınandı: **3 kontrol, 0 hata**. Perde varsayılan olarak açık kaldı ve çizim görünür oldu. Toplam **17 yeni sahne kontrolü başarılı**.
+
+### Görünür animasyon ölçümü
+
+Perdenin yalnızca sınıf değiştirmediği, ekranda gerçekten hareket ettiği ölçüldü. 390 px ve 1440 px genişliklerde ilk perde ölçeği `1`, ara ölçüm yaklaşık `0,43`, bitiş ölçeği `0,11` oldu. Spot ışığının dönüş matrisi aynı aralıkta değişti; ışık hareketi de doğrulandı. Perde yaklaşık 2,3 saniyede açılır; ışıklar 8 ve 10 saniyelik otomatik döngülerde devam eder. Sahne ilk açılış bannerındadır; görmek için aşağı kaydırmak gerekmez.
+
+### Fotoğraflar ve filtreler
+
+Bu sürümde 18 gerçek fotoğrafın tümü ana sayfadadır: üç gösteri kartında 3, tanıtım bölümünde 1, galeride 14 kare. Yedi genişlikte 18’er fotoğraf açılarak toplam 126 büyük görünüm kontrol edildi. Galeri filtresinin diğer dört ana sayfa fotoğrafını gizlemediği de denetlendi. Fotoğraf dizini ve diğer sayfalardaki bağlantılar tekil ana sayfa konumlarına gider; bütün bu bölüm bağlantıları kaynak kontrolünden geçti.
 
 Azaltılmış hareket için hem CSS kuralı hem JavaScript başlangıç ve tercih değişikliği davranışı kaynakta denetlendi. Bu özel işletim sistemi ayarı için ayrı bir cihaz testi yapılmadı.
 
@@ -35,7 +43,7 @@ Kaynak ZIP ile dosya karşılaştırmasında 52 WebP fotoğraf dosyasının ve G
 `python3 scripts/check.py` başarılı:
 
 - 15 HTML sayfası, her sayfada tek ana başlık ve farklı sayfa açıklamaları.
-- 18 ayrı kaynak fotoğraf ve her biri için yalnızca bir sayfa/içerik konumu.
+- 18 ayrı kaynak fotoğraf; tamamı ana sayfada ve her biri yalnızca bir içerik konumunda.
 - 52 WebP ekran sürümü; kaynak boyutunun üzerine büyütme yok.
 - Yerel sayfa bağlantıları, bölüm bağlantıları, görseller, srcset hedefleri ve stil dosyalarındaki varlıklar mevcut.
 - Instagram bağlantılarının tamamı belirtilen hesaba, güvenli yeni sekmede yönleniyor.
