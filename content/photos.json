@@ -1,261 +1,834 @@
 [
   {
     "id": "01",
-    "file": "01-okul-sahnesi",
-    "source": "new-show-photos/show-06.jpg",
-    "title": "Ali Abi ve Zoyo sahnede",
-    "category": "Okullar",
-    "alt": "Ali Cengiz ve turuncu kuklası Zoyo okul sahnesinde gösteri yapıyor",
-    "focal": [
-      0.53,
-      0.53
+    "source": "028b875e-db04-42c3-9898-89ac28616be9.jpg",
+    "file": "01-salonda-cocuklarla",
+    "page": "fotograflar.html",
+    "section": "Salon buluşmaları",
+    "title": "Salonda gösteri zamanı",
+    "category": "Sahne",
+    "alt": "Ali Cengiz, okul salonunda oturan çocuklara sahneden sesleniyor",
+    "adjustments": {
+      "crop": [
+        0,
+        160,
+        1440,
+        1440
+      ],
+      "white_balance": [
+        1.015,
+        0.99,
+        0.99
+      ],
+      "brightness": 1.01,
+      "contrast": 0.99,
+      "color": 0.98,
+      "rotation": 0
+    },
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1280,
+    "renditions": [
+      {
+        "file": "01-salonda-cocuklarla-480.webp",
+        "width": 480,
+        "height": 427
+      },
+      {
+        "file": "01-salonda-cocuklarla-960.webp",
+        "width": 960,
+        "height": 853
+      },
+      {
+        "file": "01-salonda-cocuklarla-1440.webp",
+        "width": 1440,
+        "height": 1280
+      }
     ],
-    "retouched": false,
-    "card_zoom": 0.87,
-    "source_crop": false
+    "full": "01-salonda-cocuklarla-1440.webp"
   },
   {
     "id": "02",
-    "file": "02-tiyatro-bulusmasi",
-    "source": "image(20261123-130439).png",
-    "title": "Gösteri sonrası bir kare",
+    "source": "05ee6c64-7252-4d78-878c-41deb7349527.jpg",
+    "file": "02-kultur-merkezinde-gosteri",
+    "page": "belediye-kukla-gosterisi.html",
+    "section": "Kültür merkezlerinde gösteri",
+    "title": "Kültür merkezinde kukla gösterisi",
     "category": "Sahne",
-    "alt": "Ali Cengiz gri kuklasıyla tiyatro salonunda çocukların önünde",
-    "focal": [
-      0.46,
-      0.48
-    ]
+    "alt": "Ali Cengiz, kültür merkezi sahnesinde kuklasıyla çocukların karşısında",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1,
+        1,
+        1
+      ],
+      "brightness": 1,
+      "contrast": 0.95,
+      "color": 0.96,
+      "rotation": 0
+    },
+    "source_width": 1800,
+    "source_height": 1500,
+    "width": 1600,
+    "height": 1333,
+    "renditions": [
+      {
+        "file": "02-kultur-merkezinde-gosteri-480.webp",
+        "width": 480,
+        "height": 400
+      },
+      {
+        "file": "02-kultur-merkezinde-gosteri-960.webp",
+        "width": 960,
+        "height": 800
+      },
+      {
+        "file": "02-kultur-merkezinde-gosteri-1600.webp",
+        "width": 1600,
+        "height": 1333
+      }
+    ],
+    "full": "02-kultur-merkezinde-gosteri-1600.webp"
   },
   {
     "id": "03",
-    "file": "03-goksun-afis",
-    "source": "image(20261123-130611).png",
-    "title": "Göksun etkinlik afişi",
-    "category": "Arşiv",
-    "alt": "Ali Abi ve Zoyo kukla gösterisinin Göksun etkinlik afişi, arşiv görseli",
-    "focal": [
-      0.5,
-      0.5
-    ]
+    "source": "0970b240-dc6d-4d6c-bb66-009a87abe856.jpg",
+    "file": "03-sinifta-zoyoyla",
+    "page": "okullarda-kukla-gosterisi.html",
+    "section": "Sınıfta Zoyo ile",
+    "title": "Sınıfta Zoyo’yla bir arada",
+    "category": "Okullar",
+    "alt": "Ali Cengiz turuncu kuklası Zoyo ile sınıfta oturan çocuklara gösteri yapıyor",
+    "adjustments": {
+      "crop": [
+        0,
+        210,
+        1200,
+        1500
+      ],
+      "white_balance": [
+        1.01,
+        1,
+        0.99
+      ],
+      "brightness": 1.035,
+      "contrast": 1.015,
+      "color": 1.01,
+      "rotation": -1.2
+    },
+    "source_width": 1200,
+    "source_height": 1600,
+    "width": 1171,
+    "height": 1259,
+    "renditions": [
+      {
+        "file": "03-sinifta-zoyoyla-480.webp",
+        "width": 480,
+        "height": 516
+      },
+      {
+        "file": "03-sinifta-zoyoyla-960.webp",
+        "width": 960,
+        "height": 1032
+      },
+      {
+        "file": "03-sinifta-zoyoyla-1171.webp",
+        "width": 1171,
+        "height": 1259
+      }
+    ],
+    "full": "03-sinifta-zoyoyla-1171.webp"
   },
   {
     "id": "04",
-    "file": "04-zoyo-ile-bir-kare",
-    "source": "new-show-photos/show-04.jpg",
-    "title": "Zoyo ile gösteri günü",
-    "category": "Buluşmalar",
-    "alt": "Ali Cengiz turuncu kuklası Zoyo ile açık havada",
-    "focal": [
-      0.5,
-      0.66
+    "source": "0bd11e4c-f2f1-4a21-9c79-64241780aea0.jpg",
+    "file": "04-okulda-sahne-bulusmasi",
+    "page": "index.html",
+    "section": "Okullar için gösteri kartı",
+    "title": "Okulda sahne buluşması",
+    "category": "Okullar",
+    "alt": "Ali Cengiz mikrofonuyla okul salonunda çocukların karşısında",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1.005,
+        1,
+        0.995
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.985,
+      "rotation": 0
+    },
+    "source_width": 900,
+    "source_height": 900,
+    "width": 900,
+    "height": 900,
+    "renditions": [
+      {
+        "file": "04-okulda-sahne-bulusmasi-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "04-okulda-sahne-bulusmasi-900.webp",
+        "width": 900,
+        "height": 900
+      }
     ],
-    "retouched": false,
-    "card_zoom": 0.86,
-    "source_crop": false
+    "full": "04-okulda-sahne-bulusmasi-900.webp"
   },
   {
     "id": "05",
-    "file": "05-cocuklarla-toplu-kare",
-    "source": "new-show-photos/show-01.jpg",
-    "title": "Çocuklarla birlikte",
-    "category": "Buluşmalar",
-    "alt": "Ali Cengiz ve Zoyo çocuklar ve ailelerle etkinlik alanında",
-    "focal": [
-      0.5,
-      0.58
+    "source": "12ae8b3d-e86d-4b61-8bb8-5444012cf43a.jpg",
+    "file": "05-ozel-gunde-kukla-sahnesi",
+    "page": "23-nisan-kukla-gosterisi.html",
+    "section": "Özel günlerde kukla sahnesi",
+    "title": "Sahnede kukla ve kahkaha",
+    "category": "Sahne",
+    "alt": "Ali Cengiz kuklasıyla kırmızı perdeli okul sahnesinde gösteri yapıyor",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.995,
+        1,
+        1.01
+      ],
+      "brightness": 1.015,
+      "contrast": 0.995,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "source_width": 900,
+    "source_height": 900,
+    "width": 900,
+    "height": 900,
+    "renditions": [
+      {
+        "file": "05-ozel-gunde-kukla-sahnesi-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "05-ozel-gunde-kukla-sahnesi-900.webp",
+        "width": 900,
+        "height": 900
+      }
     ],
-    "source_crop": false,
-    "card_zoom": 1,
-    "retouched": false
+    "full": "05-ozel-gunde-kukla-sahnesi-900.webp"
   },
   {
     "id": "06",
-    "file": "06-kitap-imzasi",
-    "source": "image(20261123-130703).png",
-    "title": "Küçük okurlarla buluşma",
+    "source": "148441ed-360d-4e58-9676-3b322adb8510.jpg",
+    "file": "06-ali-abi-ve-zoyo",
+    "page": "ali-cengiz.html",
+    "section": "Ali Abi ve Zoyo ile tanışın",
+    "title": "Ali Abi ve Zoyo",
     "category": "Buluşmalar",
-    "alt": "Ali Cengiz açık hava etkinliğinde küçük bir okur için kitap imzalıyor",
-    "focal": [
-      0.5,
-      0.48
-    ]
+    "alt": "Ali Cengiz ve turuncu, mavi burunlu kuklası Zoyo tiyatro salonunda",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.995,
+        1,
+        1.015
+      ],
+      "brightness": 1,
+      "contrast": 0.99,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "source_width": 1600,
+    "source_height": 1200,
+    "width": 1600,
+    "height": 1200,
+    "renditions": [
+      {
+        "file": "06-ali-abi-ve-zoyo-480.webp",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "file": "06-ali-abi-ve-zoyo-960.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "06-ali-abi-ve-zoyo-1600.webp",
+        "width": 1600,
+        "height": 1200
+      }
+    ],
+    "full": "06-ali-abi-ve-zoyo-1600.webp"
   },
   {
     "id": "07",
-    "file": "07-zoyo-sahne-gosterisi",
-    "source": "image(20261123-130730).png",
-    "title": "Zoyo’nun sahne zamanı",
-    "category": "Sahne",
-    "alt": "Ali Cengiz ve Zoyo salonda oturan çocuklara kukla gösterisi sunuyor",
-    "focal": [
-      0.5,
-      0.45
-    ]
+    "source": "21ddf0cb-b86d-46b7-b39e-cf03607f8dfb.jpg",
+    "file": "07-acik-havada-cocuklarla",
+    "page": "index.html",
+    "section": "Belediyeler için gösteri kartı",
+    "title": "Açık havada birlikte",
+    "category": "Okullar",
+    "alt": "Ali Cengiz açık hava etkinliğinde çocuklarla kukla gösterisinde buluşuyor",
+    "adjustments": {
+      "crop": [
+        0,
+        100,
+        1170,
+        1170
+      ],
+      "white_balance": [
+        1,
+        1,
+        1
+      ],
+      "brightness": 1,
+      "contrast": 0.98,
+      "color": 0.97,
+      "rotation": 0
+    },
+    "source_width": 1170,
+    "source_height": 1170,
+    "width": 1170,
+    "height": 1070,
+    "renditions": [
+      {
+        "file": "07-acik-havada-cocuklarla-480.webp",
+        "width": 480,
+        "height": 439
+      },
+      {
+        "file": "07-acik-havada-cocuklarla-960.webp",
+        "width": 960,
+        "height": 878
+      },
+      {
+        "file": "07-acik-havada-cocuklarla-1170.webp",
+        "width": 1170,
+        "height": 1070
+      }
+    ],
+    "full": "07-acik-havada-cocuklarla-1170.webp"
   },
   {
     "id": "08",
-    "file": "08-kucuk-okurlarla",
-    "source": "image(20261123-130743).png",
-    "title": "Birlikte güzel bir hatıra",
-    "category": "Buluşmalar",
-    "alt": "Ali Cengiz ve Zoyo kitaplarını tutan çocuklarla birlikte",
-    "focal": [
-      0.5,
-      0.48
+    "source": "3e5920d6-91b2-41b6-8190-a26e9b3c599d.jpg",
+    "file": "08-zoyoya-ses-veren-ali-abi",
+    "page": "kukla-gosterisi.html",
+    "section": "Zoyo’nun sesi ve hareketleri",
+    "title": "Zoyo’ya ses veren Ali Abi",
+    "category": "Sahne",
+    "alt": "Ali Cengiz mikrofonuyla Zoyo’yu seslendirip elleriyle kuklanın kollarını oynatıyor",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1.01,
+        1,
+        0.99
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1440,
+    "renditions": [
+      {
+        "file": "08-zoyoya-ses-veren-ali-abi-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "08-zoyoya-ses-veren-ali-abi-960.webp",
+        "width": 960,
+        "height": 960
+      },
+      {
+        "file": "08-zoyoya-ses-veren-ali-abi-1440.webp",
+        "width": 1440,
+        "height": 1440
+      }
     ],
-    "retouched": true
+    "full": "08-zoyoya-ses-veren-ali-abi-1440.webp"
+  },
+  {
+    "id": "09",
+    "source": "4886df53-7bc1-4a46-afc6-dfa541659b52.jpg",
+    "file": "09-sinifta-kukla-gosterisi",
+    "page": "okullarda-kukla-gosterisi.html",
+    "section": "Okulda kukla gösterisi",
+    "title": "Sınıfta kukla gösterisi",
+    "category": "Okullar",
+    "alt": "Çocuklar sınıfta renkli sandalyelerden Ali Cengiz ve Zoyo’nun gösterisini izliyor",
+    "adjustments": {
+      "crop": [
+        0,
+        120,
+        1170,
+        1170
+      ],
+      "white_balance": [
+        0.995,
+        1,
+        1.015
+      ],
+      "brightness": 1,
+      "contrast": 0.99,
+      "color": 0.985,
+      "rotation": 0
+    },
+    "source_width": 1170,
+    "source_height": 1170,
+    "width": 1170,
+    "height": 1050,
+    "renditions": [
+      {
+        "file": "09-sinifta-kukla-gosterisi-480.webp",
+        "width": 480,
+        "height": 431
+      },
+      {
+        "file": "09-sinifta-kukla-gosterisi-960.webp",
+        "width": 960,
+        "height": 862
+      },
+      {
+        "file": "09-sinifta-kukla-gosterisi-1170.webp",
+        "width": 1170,
+        "height": 1050
+      }
+    ],
+    "full": "09-sinifta-kukla-gosterisi-1170.webp"
   },
   {
     "id": "10",
+    "source": "4e1763ed-34f1-4ec5-804b-72890304723b.jpg",
     "file": "10-sahneden-cocuklara",
-    "source": "image(20261123-130807).png",
+    "page": "index.html",
+    "section": "23 Nisan ve özel günler kartı",
     "title": "Sahneden çocuklara",
     "category": "Sahne",
-    "alt": "Mavi perdeli sahnede Ali Cengiz ve Zoyo’yu izleyen çocuklar",
-    "focal": [
-      0.52,
-      0.44
-    ]
+    "alt": "Ali Cengiz okul sahnesinde elleriyle gösteriyi anlatırken çocuklar onu izliyor",
+    "adjustments": {
+      "crop": [
+        0,
+        220,
+        1200,
+        1200
+      ],
+      "white_balance": [
+        1.005,
+        1,
+        0.995
+      ],
+      "brightness": 1.005,
+      "contrast": 0.995,
+      "color": 1,
+      "rotation": 0
+    },
+    "source_width": 1200,
+    "source_height": 1200,
+    "width": 1200,
+    "height": 980,
+    "renditions": [
+      {
+        "file": "10-sahneden-cocuklara-480.webp",
+        "width": 480,
+        "height": 392
+      },
+      {
+        "file": "10-sahneden-cocuklara-960.webp",
+        "width": 960,
+        "height": 784
+      },
+      {
+        "file": "10-sahneden-cocuklara-1200.webp",
+        "width": 1200,
+        "height": 980
+      }
+    ],
+    "full": "10-sahneden-cocuklara-1200.webp"
   },
   {
     "id": "11",
-    "file": "11-salonda-bulusma",
-    "source": "image(20261123-130818).png",
-    "title": "Salonda bir araya geliyoruz",
-    "category": "Sahne",
-    "alt": "Ali Cengiz bir etkinlik salonunda çocuklara ve ailelere sesleniyor",
-    "focal": [
-      0.48,
-      0.5
-    ]
+    "source": "531de9da-0b96-4500-b9a3-6e9172e6d79e.jpg",
+    "file": "11-cocuklarla-acik-hava-gosterisi",
+    "page": "cocuk-tiyatrosu.html",
+    "section": "Çocuklarla canlı kukla performansı",
+    "title": "Çocuklarla açık havada",
+    "category": "Okullar",
+    "alt": "Ali Cengiz okul bahçesinde kuklasını oynatırken çocuklar gösteriyi izliyor",
+    "adjustments": {
+      "crop": [
+        0,
+        90,
+        1170,
+        1170
+      ],
+      "white_balance": [
+        1,
+        1,
+        1
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.98,
+      "rotation": 0
+    },
+    "source_width": 1170,
+    "source_height": 1170,
+    "width": 1170,
+    "height": 1080,
+    "renditions": [
+      {
+        "file": "11-cocuklarla-acik-hava-gosterisi-480.webp",
+        "width": 480,
+        "height": 443
+      },
+      {
+        "file": "11-cocuklarla-acik-hava-gosterisi-960.webp",
+        "width": 960,
+        "height": 886
+      },
+      {
+        "file": "11-cocuklarla-acik-hava-gosterisi-1170.webp",
+        "width": 1170,
+        "height": 1080
+      }
+    ],
+    "full": "11-cocuklarla-acik-hava-gosterisi-1170.webp"
   },
   {
     "id": "12",
-    "file": "12-cocuk-etkinligi",
-    "source": "image(20261123-130835).png",
-    "title": "Çocuklarla sahne buluşması",
-    "category": "Sahne",
-    "alt": "Ali Cengiz sahnede, çocuklar sahnenin önünde etkinliği takip ediyor",
-    "focal": [
-      0.53,
-      0.49
+    "source": "83c20193-e941-46a6-bbc0-d5f77efff294.jpg",
+    "file": "12-zoyo-ve-minik-izleyiciler",
+    "page": "index.html",
+    "section": "Ali Abi ve Zoyo tanıtımı",
+    "title": "Zoyo ve minik izleyiciler",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz ve Zoyo sınıfta çocuklarla birlikte bir hatıra karesinde",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1,
+        1,
+        1.005
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.98,
+      "rotation": 0
+    },
+    "source_width": 1170,
+    "source_height": 1170,
+    "width": 1170,
+    "height": 1170,
+    "renditions": [
+      {
+        "file": "12-zoyo-ve-minik-izleyiciler-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "12-zoyo-ve-minik-izleyiciler-960.webp",
+        "width": 960,
+        "height": 960
+      },
+      {
+        "file": "12-zoyo-ve-minik-izleyiciler-1170.webp",
+        "width": 1170,
+        "height": 1170
+      }
     ],
-    "retouched": true
+    "full": "12-zoyo-ve-minik-izleyiciler-1170.webp"
   },
   {
     "id": "13",
-    "file": "13-izleyicilerle-gosteri",
-    "source": "image(20261123-130847).png",
-    "title": "Kukla gösterisinden bir an",
+    "source": "887bd7a2-12bf-4330-918e-f203037f917d.jpg",
+    "file": "13-salonda-birlikte",
+    "page": "fotograflar.html",
+    "section": "Sahne buluşmaları",
+    "title": "Salonda bir arada",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz sahnedeki buluşmada yer alırken çocuklar ve aileler salonda oturuyor",
+    "adjustments": {
+      "crop": [
+        0,
+        100,
+        1375,
+        1200
+      ],
+      "white_balance": [
+        1.005,
+        1,
+        0.995
+      ],
+      "brightness": 1.005,
+      "contrast": 0.995,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "source_width": 1600,
+    "source_height": 1200,
+    "width": 1375,
+    "height": 1100,
+    "renditions": [
+      {
+        "file": "13-salonda-birlikte-480.webp",
+        "width": 480,
+        "height": 384
+      },
+      {
+        "file": "13-salonda-birlikte-960.webp",
+        "width": 960,
+        "height": 768
+      },
+      {
+        "file": "13-salonda-birlikte-1375.webp",
+        "width": 1375,
+        "height": 1100
+      }
+    ],
+    "full": "13-salonda-birlikte-1375.webp"
+  },
+  {
+    "id": "14",
+    "source": "8fe2baa0-c5cc-4f5d-a2e4-e5e2a68be8e5.jpg",
+    "file": "14-zoyo-sahnede",
+    "page": "fotograflar.html",
+    "section": "Zoyo sahnede",
+    "title": "Zoyo sahnede",
     "category": "Sahne",
-    "alt": "Ali Cengiz ve turuncu kuklası Zoyo kalabalık bir salonda gösteri yapıyor",
-    "focal": [
-      0.48,
-      0.5
-    ]
+    "alt": "Ali Cengiz ve turuncu kuklası Zoyo salon sahnesinde çocuklarla buluşuyor",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.995,
+        1,
+        1.015
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.98,
+      "rotation": 0
+    },
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1440,
+    "renditions": [
+      {
+        "file": "14-zoyo-sahnede-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "14-zoyo-sahnede-960.webp",
+        "width": 960,
+        "height": 960
+      },
+      {
+        "file": "14-zoyo-sahnede-1440.webp",
+        "width": 1440,
+        "height": 1440
+      }
+    ],
+    "full": "14-zoyo-sahnede-1440.webp"
   },
   {
     "id": "15",
-    "file": "15-cocuk-senligi",
-    "source": "image(20261123-130919).png",
-    "title": "Çocuk şenliğinden bir kare",
+    "source": "915332c5-c6d5-4ace-91a2-9c142bf320ee.jpg",
+    "file": "15-salonda-kukla-nesesi",
+    "page": "fotograflar.html",
+    "section": "Salonda kukla neşesi",
+    "title": "Salonda kukla neşesi",
     "category": "Sahne",
-    "alt": "Ali Cengiz gri kuklasıyla bir çocuk şenliğinde sahnede",
-    "focal": [
-      0.53,
-      0.46
-    ]
+    "alt": "Çocuklar salon koltuklarından Ali Cengiz’in kukla gösterisini izliyor",
+    "adjustments": {
+      "crop": [
+        0,
+        140,
+        1440,
+        1440
+      ],
+      "white_balance": [
+        0.995,
+        1,
+        1.015
+      ],
+      "brightness": 1,
+      "contrast": 0.985,
+      "color": 0.985,
+      "rotation": 0
+    },
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1300,
+    "renditions": [
+      {
+        "file": "15-salonda-kukla-nesesi-480.webp",
+        "width": 480,
+        "height": 433
+      },
+      {
+        "file": "15-salonda-kukla-nesesi-960.webp",
+        "width": 960,
+        "height": 867
+      },
+      {
+        "file": "15-salonda-kukla-nesesi-1440.webp",
+        "width": 1440,
+        "height": 1300
+      }
+    ],
+    "full": "15-salonda-kukla-nesesi-1440.webp"
   },
   {
     "id": "16",
-    "file": "16-ailelerle-bulusma",
-    "source": "image(20261123-130935).png",
-    "title": "Gösterinin ardından",
-    "category": "Buluşmalar",
-    "alt": "Ali Cengiz, Zoyo, çocuklar ve aileler gösteri sonrasında bir arada",
-    "focal": [
-      0.55,
-      0.5
-    ]
+    "source": "e2260fe6-8647-49e8-9f38-0ddcac9dfa27.jpg",
+    "file": "16-sahne-hazirligi",
+    "page": "kukla-gosterisi-planlama.html",
+    "section": "Gösteri alanı ve sahne düzeni",
+    "title": "Bir sahne, iki dost",
+    "category": "Sahne",
+    "alt": "Ali Cengiz ve Zoyo sahnede mikrofon ve kukla gösterisi düzeniyle",
+    "adjustments": {
+      "crop": [
+        0,
+        350,
+        1500,
+        1860
+      ],
+      "white_balance": [
+        1.005,
+        1,
+        0.995
+      ],
+      "brightness": 1.045,
+      "contrast": 1.01,
+      "color": 1,
+      "rotation": 0
+    },
+    "source_width": 1500,
+    "source_height": 2000,
+    "width": 1500,
+    "height": 1510,
+    "renditions": [
+      {
+        "file": "16-sahne-hazirligi-480.webp",
+        "width": 480,
+        "height": 483
+      },
+      {
+        "file": "16-sahne-hazirligi-960.webp",
+        "width": 960,
+        "height": 966
+      },
+      {
+        "file": "16-sahne-hazirligi-1500.webp",
+        "width": 1500,
+        "height": 1510
+      }
+    ],
+    "full": "16-sahne-hazirligi-1500.webp"
   },
   {
     "id": "17",
-    "file": "17-okulda-bir-an",
-    "source": "image(20261123-130951).png",
-    "title": "Okulda neşeli bir an",
-    "category": "Okullar",
-    "alt": "Ali Cengiz okul etkinliğinde bir çocukla birlikte sahnede",
-    "focal": [
-      0.56,
-      0.49
-    ]
+    "source": "ef877b39-ab59-4cff-a02e-5b7deded58da.jpg",
+    "file": "17-cocuklarla-yuz-yuze",
+    "page": "fotograflar.html",
+    "section": "Çocuklarla canlı etkileşim",
+    "title": "Çocuklarla yüz yüze",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz kuklasını seslendirirken ön sıralardaki çocuklar onu dikkatle izliyor",
+    "adjustments": {
+      "crop": [
+        0,
+        140,
+        1440,
+        1440
+      ],
+      "white_balance": [
+        0.995,
+        1,
+        1.01
+      ],
+      "brightness": 1,
+      "contrast": 0.99,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1300,
+    "renditions": [
+      {
+        "file": "17-cocuklarla-yuz-yuze-480.webp",
+        "width": 480,
+        "height": 433
+      },
+      {
+        "file": "17-cocuklarla-yuz-yuze-960.webp",
+        "width": 960,
+        "height": 867
+      },
+      {
+        "file": "17-cocuklarla-yuz-yuze-1440.webp",
+        "width": 1440,
+        "height": 1300
+      }
+    ],
+    "full": "17-cocuklarla-yuz-yuze-1440.webp"
   },
   {
     "id": "18",
-    "file": "18-okul-salonunda",
-    "source": "new-show-photos/show-02.jpg",
-    "title": "Okul salonunda kukla gösterisi",
+    "source": "f8ac100e-3d3a-428f-ac76-a0a9018f9088.jpg",
+    "file": "18-ali-abi-zoyo-sinifta",
+    "page": "ali-cengiz.html",
+    "section": "Sahnenin ötesinde buluşmalar",
+    "title": "Ali Abi ve Zoyo sınıfta",
     "category": "Okullar",
-    "alt": "Okul salonunda oturan çocuklar Ali Cengiz ve Zoyo’nun kukla gösterisini izliyor",
-    "focal": [
-      0.56,
-      0.49
+    "alt": "Ali Cengiz ve Zoyo sınıfta yarım daire biçiminde oturan çocuklarla gösteride",
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1.01,
+        1,
+        0.99
+      ],
+      "brightness": 1.035,
+      "contrast": 1.01,
+      "color": 1,
+      "rotation": -2.8
+    },
+    "source_width": 1600,
+    "source_height": 1200,
+    "width": 1501,
+    "height": 1125,
+    "renditions": [
+      {
+        "file": "18-ali-abi-zoyo-sinifta-480.webp",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "file": "18-ali-abi-zoyo-sinifta-960.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "18-ali-abi-zoyo-sinifta-1501.webp",
+        "width": 1501,
+        "height": 1125
+      }
     ],
-    "retouched": false,
-    "source_crop": false,
-    "card_zoom": 1
-  },
-  {
-    "id": "19",
-    "file": "19-ali-cengiz-zoyo-canli-gosteri",
-    "source": "bf09aa05-39cf-426e-8726-1d5559fe564c.jpg",
-    "source_crop": false,
-    "retouched": true,
-    "title": "Ali Abi ve Zoyo ile canlı kukla gösterisi",
-    "category": "Okullar",
-    "alt": "Kukla sanatçısı Ali Cengiz, Zoyo’yu seslendirip oynatırken okul sahnesinde",
-    "focal": [
-      0.54,
-      0.48
-    ]
-  },
-  {
-    "id": "20",
-    "file": "20-cocuklarla-kukla-tiyatrosu",
-    "source": "new-show-photos/show-05.jpg",
-    "source_crop": false,
-    "title": "Çocuklarla kukla tiyatrosunda",
-    "category": "Okullar",
-    "alt": "Ali Cengiz kuklasıyla okul salonunda gösteri yaparken çocuklar izliyor",
-    "focal": [
-      0.56,
-      0.49
-    ]
-  },
-  {
-    "id": "21",
-    "file": "21-salonda-canli-gosteri",
-    "source": "new-show-photos/show-03.jpg",
-    "source_crop": false,
-    "title": "Salonda gösteri zamanı",
-    "category": "Sahne",
-    "alt": "Ali Cengiz sahnede gösteri yaparken çocuklar kırmızı koltuklardan etkinliğe katılıyor",
-    "focal": [
-      0.54,
-      0.48
-    ]
-  },
-  {
-    "id": "22",
-    "file": "22-kutuphane-cocuk-bulusmasi",
-    "source": "new-show-photos/show-07.jpg",
-    "source_crop": false,
-    "title": "Zoyo ile çocukların buluşması",
-    "category": "Buluşmalar",
-    "alt": "Ali Cengiz ve Zoyo, Akyurt İlçe Halk Kütüphanesi önünde çocuklarla bir arada",
-    "focal": [
-      0.51,
-      0.57
-    ]
+    "full": "18-ali-abi-zoyo-sinifta-1501.webp"
   }
 ]

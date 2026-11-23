@@ -197,14 +197,9 @@ body { background:#f5fcff url('../img/cartoon-sprinkles.svg') repeat; }
 .region-intro>div>.icon { color:#d28860; }
 .province-list a { border:2px solid #c8dfe8; border-radius:15px; box-shadow:0 3px 0 #dfedf0; }
 .province-list a:hover { background:#fff3ce; border-color:#e9cf92; }
-.message-maker { background:#eff7ff; border:3px solid #bcd5e8; border-radius:29px; box-shadow:0 7px 0 #d9e8f3; }
-.contact-method { border:2px solid #e5cfc1; border-radius:21px; box-shadow:0 4px 0 #f0dfd3; background:#fffefb; }
-.contact-method:hover { background:#fff4dc; }
-.contact-method>span { background:#ffe2db; border:2px solid #f7c1b6; border-radius:16px; }
 input,textarea,select { border:2px solid #c3d9e4; border-radius:13px; }
 .province-search input { background:#fffefa; }
 .read-guide { border:2px solid #efdaa7; border-radius:22px; }
-.video-dialog { background:#45417d; border:3px solid #d1c5eb; border-radius:25px; }
 
 .motion-toggle { display:none; position:fixed; z-index:35; bottom:16px; left:16px; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:9px 13px; background:#fffdf1; color:#53617c; border:2px solid #bed7e2; border-radius:17px; box-shadow:0 4px 0 #c6dce5; font-size:.875rem; font-weight:800; line-height:1.3; }
 .has-js .motion-toggle { display:inline-flex; }
@@ -270,7 +265,6 @@ body.motion-suspended *,body.motion-suspended *:before,body.motion-suspended *:a
   .page-intro .scene-bunting{height:64px}.page-intro .scene-sun{width:60px;top:7px}
   .page-intro h1{font-size:2.3rem}.page-intro>.container>p{font-size:1rem}.page-intro .breadcrumbs{font-size:.72rem;margin-bottom:23px}
   .page-intro .eyebrow{font-size:.62rem}.prose{padding:23px 20px;border-radius:25px}.prose h2{font-size:1.75rem}
-  .contact-grid>div>h2{font-size:1.9rem}.message-maker{padding:24px 18px}.message-maker .eyebrow{font-size:.61rem}
   .province-list a{padding:12px 9px;gap:5px;font-size:.83rem}.motion-toggle{left:11px;bottom:12px;padding:9px 11px;font-size:.875rem;min-height:44px;border-radius:15px}
   .motion-toggle>.icon{width:18px;height:18px}.footer-bottom{padding-bottom:76px}
 }

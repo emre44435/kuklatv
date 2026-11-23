@@ -1,32 +1,44 @@
-# Teslim öncesi kontrol
+# Tamamlanan kontroller
 
-23 Kasım 2026 güncellemesi.
+Bu rapor teslim edilen sürüm üzerinde çalıştırılan kontrolleri belirtir.
 
-| Kontrol | Sonuç |
-| --- | --- |
-| 15 HTML sayfası, başlıklar, açıklamalar, yerel dosyalar ve JSON | Geçti |
-| JavaScript söz dizimi | Geçti |
-| 81 benzersiz il | Geçti |
-| Dört YouTube ve iki Instagram kartı | Harici bağlantı; site içi video oynatıcısı yok |
-| Ana sayfadaki yeni fotoğraflar | Sekiz eşit kart; masaüstünde yaklaşık 281 × 374 CSS px |
-| Tam galeri | 20 fotoğraf |
-| WebP kart sürümleri | 480 × 640 ve 960 × 1280 px; toplam 60 dosya |
-| Büyük görseller ve kaynak yedekleri | 27 büyük WebP, 21 kaynak ölçüsünde WebP |
-| Kaldırılan kareler | 09 mavi perde ve 14 gri ceketli imza fotoğrafı pakette yok |
-| Sanatçıyı tanıtan görsel | Zoyo ile sahne fotoğrafı |
-| 320 / 390 / 768 px tarayıcı çerçeveleri | Yatay belge taşması yok; başlık sığıyor |
-| Mobil menü | Açma ve kapatma çalışıyor |
-| WhatsApp | +90 538 248 72 08; doğru wa.me hedefi, mesaj taslağı |
-| Instagram | kuklamuklatv hesabı |
-| Sabit iletişim düğmeleri | Mobilde 54 × 54, masaüstünde 60 × 60 CSS px |
-| Fotoğraf büyütme | 1920 px görsel yükleniyor, doğal oran korunuyor; Escape kapatıyor |
-| Fotoğraf penceresi başlığı | Koyu zeminde beyaz ve okunabilir |
-| Arka planı durdurma | aria-pressed ve motion-paused durumu doğrulandı |
-| Depo alt yolu ile yayın üretimi | Ayrı test kopyasında geçti; 14 sitemap URL’si |
-| Alan adı belirtilmeyen teslim | Örnek alan adı yok; başlangıç sitemap’i boş |
+## Sayfa ve ekran matrisi
 
-Renkli animasyonlu tema korunur. Gerçek fotoğraf katmanlarında sallanma veya yakınlaştırma animasyonu yoktur. 81 il sahnesi temsili dekorasyondur; gerçek turne takvimi değildir. Hareket azaltma tercihi desteklenir.
+Yerel Chromium tarayıcısında 15 sayfa, aşağıdaki yedi görünüm genişliğinin her birinde denetlendi. Toplam **105 kontrol, 0 hata**.
 
-Üç fotoğrafın düzenlenmiş kaynakları ayrı tutulur: 08, 12 ve yeni 19 numaralı sahne portresi. Diğer yeni fotoğraflar daha yüksek çözünürlüklü özgün kaynaklardan hazırlanmıştır. Büyük 3840 px dosyalar ölçeklenmiş dışa aktarımlardır; kayıp yüz ayrıntısının birebir geri getirildiği iddia edilmez. Resimli video kapakları tanıtım tasarımıdır. Instagram kartları hesaba yönlenir.
+| Genişlik | Denetlenen sayfa | Sonuç |
+| --- | --- | --- |
+| 320 px | 15 | Başarılı |
+| 360 px | 15 | Başarılı |
+| 390 px | 15 | Başarılı |
+| 430 px | 15 | Başarılı |
+| 768 px | 15 | Başarılı |
+| 1024 px | 15 | Başarılı |
+| 1440 px | 15 | Başarılı |
 
-Kontroller tarayıcı çerçevelerinde yapıldı; gerçek telefon donanım testi veya Lighthouse puanı ölçümü yapılmadı. WhatsApp mesajı gönderilmedi. GitHub hesabı ve depo verilmediğinden canlı yayın, DNS veya gerçek Actions çalıştırması yapılmadı.
+Matris; yatay sayfa taşması, içeriklerin görünüm dışına çıkması, kesilen başlıklar, mobil menü açılıp kapanması, menü üzerindeki sabit kontroller, hareket durdurma düğmesi, fotoğrafın doğal oranlı görünümü, gerçek fotoğraflarda hareket uygulanmaması, Instagram hedefleri ve sabit Instagram düğmesinin en az 44 × 44 px olması için çalıştırıldı.
+
+Fotoğraf penceresi matris boyunca toplam 126 kez açıldı. Ayrıca gerçek tıklamalarla mobil menü, fotoğrafın sonraki karesine geçiş, Escape ile kapatma, galeri kategori filtresi, filtrelenmiş fotoğraflar arasında gezinme, Mersin ve Türkçe İstanbul aramaları ile sonuç bulunamayan şehir durumu doğrulandı. Mobil banner ve iletişim bölümü görsel olarak incelendi.
+
+## Kaynak ve dosya doğrulaması
+
+`python3 scripts/check.py` başarılı:
+
+- 15 HTML sayfası, her sayfada tek ana başlık ve farklı sayfa açıklamaları.
+- 18 ayrı kaynak fotoğraf ve her biri için yalnızca bir sayfa/içerik konumu.
+- 52 WebP ekran sürümü; kaynak boyutunun üzerine büyütme yok.
+- Yerel sayfa bağlantıları, bölüm bağlantıları, görseller, srcset hedefleri ve stil dosyalarındaki varlıklar mevcut.
+- Instagram bağlantılarının tamamı belirtilen hesaba, güvenli yeni sekmede yönleniyor.
+- Altı özgün video kapağı ilgili dış platform bağlantılarıyla korunuyor.
+- 81 benzersiz il mevcut.
+- Sayfa meta verileri ve yapılandırılmış veriler geçerli.
+
+`node --check assets/js/main.js` başarılı. Yerel site kaynaklı tarayıcı hata veya uyarı kaydı gözlenmedi.
+
+Gerçek bir dış alan adı eklenmeden, yerel HTTPS adresi ve alt dizinli adres yapısı ile sayfa üretimi ayrıca sınandı. Bu üretimde canonical bağlantıları ve 14 sayfalık sitemap doğrulandı. Teslim dosyaları daha sonra göreli yerel adreslerle yeniden üretildi. GitHub yayını mevcut iş akışındaki gerçek yayın adresini kullanır.
+
+Bütün sayfalar, kaynak içerikler, JavaScript, stiller ve teslim belgeleri içerik açısından tarandı. İletişim çağrıları Instagram hesabı çevresinde birleştirildi. Artık kullanılmayan eski görsel arşivleri teslim dosyalarına eklenmedi.
+
+## Doğrulamanın sınırı
+
+Bu rapor yerel tarayıcı ve kaynak kontrollerini kapsar. Dış sosyal platformların oturum veya erişilebilirlik durumu test edilmedi; bağlantıların hedefleri doğrulandı. Canlı GitHub yayınına dosya gönderimi yapılmadı.

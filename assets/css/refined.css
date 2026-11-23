@@ -82,7 +82,7 @@ h1,h2,h3,.section-heading h2,.prose h2,.about-copy h2,.program-copy h3 { color:#
 .page-intro>.container { padding:0; border:0; border-radius:0; background:none; box-shadow:none; }
 .page-intro h1 { color:#173e43; }
 .page-intro .theatre-scene { opacity:.8; }
-.prose,.message-maker,.contact-method,.aside-card { border-width:1px; box-shadow:none; border-radius:20px; }
+.prose,.aside-card { border-width:1px; box-shadow:none; border-radius:20px; }
 .detail-section { background:#f5fcff url('../img/cartoon-sprinkles.svg') repeat; }
 .motion-toggle { box-shadow:0 3px 12px #153a3920; border-width:1px; }
 @media(max-width:1120px) {

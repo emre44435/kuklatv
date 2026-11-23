@@ -6,8 +6,6 @@
     "seo_title": "Kukla Gösterisi ve Organizasyonu | Ali Cengiz ve Zoyo",
     "description": "Ali Abi ve Zoyo ile kukla gösterisi. Okul, belediye ve çocuk etkinlikleri için Türkiye’nin 81 ilinde gösteri planlama ve organizasyon bilgileri.",
     "intro": "Çocuklarla aynı salonda buluşan, birlikte gülünen bir kukla gösterisi. Zoyo’yu seslendiren ve oynatan kukla sanatçısı Ali Cengiz, gösteri için Türkiye’nin her iline gelebiliyor.",
-    "image": "stage.webp",
-    "image_alt": "Ali Cengiz’in çocuklarla sahne buluşmasından gerçek bir fotoğraf",
     "icon": "Theater",
     "sections": [
       {
@@ -20,17 +18,13 @@
       },
       {
         "title": "Tarih, şehir ve izleyici bilgisiyle başlayalım.",
-        "text": "Kurumunuzu, etkinliğin yapılacağı il ve ilçeyi, düşündüğünüz tarihi ve çocukların yaş aralığını paylaşmanız yeterli. Tahmini izleyici sayısı ve varsa salon fotoğrafı planlamayı kolaylaştırır. Uygun tarih, gösteri süresi, teknik ihtiyaçlar ve teklif bu bilgilerle görüşülür."
+        "text": "Kurumunuzu, etkinliğin yapılacağı il ve ilçeyi, düşündüğünüz tarihi ve çocukların yaş aralığını paylaşmanız yeterli. Tahmini izleyici sayısı ve varsa salon fotoğrafı planlamayı kolaylaştırır. Uygun tarih, gösteri süresi, teknik ihtiyaçlar bu bilgilerle görüşülür."
       }
     ],
     "faqs": [
       [
         "Kukla gösterisi kaç dakika sürüyor?",
         "Süreyi yaş grubu, etkinlik akışı ve seans planına göre görüşmede netleştiriyoruz. Programınızı paylaşarak etkinliğinize uygun süreyi öğrenebilirsiniz."
-      ],
-      [
-        "Kukla gösterisi fiyatı nasıl belirleniyor?",
-        "Şehir, ulaşım, tarih, seans sayısı ve teknik hazırlık teklifin kapsamını etkiler. Etkinlik bilgilerinizi ileterek size özel teklif isteyebilirsiniz."
       ],
       [
         "Şehir dışına geliyor musunuz?",
@@ -41,6 +35,9 @@
       "okullarda-kukla-gosterisi",
       "belediye-kukla-gosterisi",
       "kukla-gosterisi-planlama"
+    ],
+    "photos": [
+      "08"
     ]
   },
   {
@@ -50,8 +47,6 @@
     "seo_title": "Okullarda Kukla Gösterisi | Anaokulu ve İlkokul | Ali Abi ve Zoyo",
     "description": "Anaokulu ve ilkokul etkinlikleri için Ali Cengiz ve Zoyo ile kukla gösterisi. Okulda tiyatro organizasyonu, yaş grubu, salon ve seans planlama bilgileri.",
     "intro": "Okulun bir günü, çocukların hatırlayacağı güzel bir buluşmaya dönüşsün. Ali Abi ve Zoyo, kukla gösterisi için okulunuza geliyor.",
-    "image": "stage.webp",
-    "image_alt": "Ali Cengiz’in çocuklarla sahne buluşmasından gerçek bir fotoğraf",
     "icon": "School",
     "sections": [
       {
@@ -64,7 +59,7 @@
       },
       {
         "title": "Okul etkinliği için hangi bilgiler gerekli?",
-        "text": "Okulun adı, il ve ilçesi, tercih edilen tarih, öğrenci sayısı ve yaş grubu ilk görüşme için yeterlidir. Salonun fotoğrafını ve okulun ders saatlerine uygun zaman aralığını da paylaşabilirsiniz. Sonrasında programın kapsamı ve teklif okulunuzla doğrudan görüşülür."
+        "text": "Okulun adı, il ve ilçesi, tercih edilen tarih, öğrenci sayısı ve yaş grubu ilk görüşme için yeterlidir. Salonun fotoğrafını ve okulun ders saatlerine uygun zaman aralığını da paylaşabilirsiniz. Sonrasında programın kapsamı okulunuzla doğrudan görüşülür."
       }
     ],
     "faqs": [
@@ -85,6 +80,10 @@
       "cocuk-tiyatrosu",
       "23-nisan-kukla-gosterisi",
       "kukla-gosterisi-planlama"
+    ],
+    "photos": [
+      "09",
+      "03"
     ]
   },
   {
@@ -94,8 +93,6 @@
     "seo_title": "Belediye Kukla Gösterisi ve Çocuk Şenliği | Ali Cengiz",
     "description": "Belediyeler, kültür merkezleri ve çocuk şenlikleri için Ali Abi ve Zoyo kukla gösterisi. Türkiye genelinde etkinlik ve sahne programı planlaması.",
     "intro": "Kültür merkezinde, mahalle etkinliğinde ya da çocuk şenliğinde… Ali Abi ve Zoyo, şehrinizdeki çocuklarla buluşmaya hazır.",
-    "image": "festival.webp",
-    "image_alt": "Ali Cengiz’in sahne gösterisine katılan çocuklar",
     "icon": "Landmark",
     "sections": [
       {
@@ -104,7 +101,7 @@
       },
       {
         "title": "Açık alanın hazırlığı farklıdır.",
-        "text": "Park ve açık hava etkinliklerinde sesin anlaşılması, çocukların sahneyi görmesi ve hava koşulları önceden değerlendirilir. Alanın yerleşim planı, elektrik erişimi ve teknik sorumlunun iletişim bilgisi görüşmede paylaşılabilir. Gerekli ekipman ve sorumluluklar teklif aşamasında açıkça netleştirilir."
+        "text": "Park ve açık hava etkinliklerinde sesin anlaşılması, çocukların sahneyi görmesi ve hava koşulları önceden değerlendirilir. Alanın yerleşim planı, elektrik erişimi ve teknik sorumlunun iletişim bilgisi görüşmede paylaşılabilir. Gerekli ekipman ve sorumluluklar gösteri öncesinde açıkça netleştirilir."
       },
       {
         "title": "Türkiye genelinde program planlayalım.",
@@ -119,16 +116,15 @@
       [
         "Açık havada kukla gösterisi yapılabilir mi?",
         "Alan, hava koşulları, ses düzeni ve sahne görüşü uygun olduğunda planlanabilir. Teknik koşullar programdan önce birlikte değerlendirilir."
-      ],
-      [
-        "Teknik ekipman kime ait oluyor?",
-        "Etkinlik alanındaki mevcut ekipman ve ihtiyaçlar ilk görüşmede konuşulur. Ses, ışık, sahne ve kurulum sorumlulukları teklifin kapsamında netleştirilir."
       ]
     ],
     "related": [
       "23-nisan-kukla-gosterisi",
       "hizmet-bolgeleri",
       "kukla-gosterisi-planlama"
+    ],
+    "photos": [
+      "02"
     ]
   },
   {
@@ -138,8 +134,6 @@
     "seo_title": "Çocuklar İçin Kukla Tiyatrosu ve Gösterisi | Ali Abi ve Zoyo",
     "description": "Çocuklar için kukla tiyatrosu arayan okul ve kurumlara Ali Abi ve Zoyo kukla gösterisi. Yaş grubu, etkinlik mekânı ve program hakkında bilgi alın.",
     "intro": "Çocuklar için tiyatro programı arıyorsanız Ali Abi ve Zoyo’nun kukla gösterisiyle tanışın. Samimi bir sahne buluşması için birlikte plan yapalım.",
-    "image": "stage.webp",
-    "image_alt": "Ali Cengiz’in çocuklarla sahne buluşmasından gerçek bir fotoğraf",
     "icon": "Theater",
     "sections": [
       {
@@ -169,6 +163,9 @@
       "okullarda-kukla-gosterisi",
       "kukla-gosterisi",
       "kukla-gosterisi-planlama"
+    ],
+    "photos": [
+      "11"
     ]
   },
   {
@@ -178,8 +175,6 @@
     "seo_title": "23 Nisan Kukla Gösterisi | Okul ve Belediye Etkinlikleri",
     "description": "23 Nisan okul ve belediye etkinlikleri için Ali Abi ve Zoyo ile kukla gösterisi planlayın. Tarih uygunluğu, seans ve organizasyon için iletişime geçin.",
     "intro": "23 Nisan programınızda çocuklara bir kukla gösterisi armağan edin. Ali Abi ve Zoyo’yla buluşmak için tarih ve etkinlik ayrıntılarını konuşalım.",
-    "image": "festival.webp",
-    "image_alt": "Ali Cengiz’in sahne gösterisine katılan çocuklar",
     "icon": "PartyPopper",
     "sections": [
       {
@@ -188,7 +183,7 @@
       },
       {
         "title": "Tarih uygunluğunu önceden görüşelim.",
-        "text": "23 Nisan ve çevresindeki günler için düşündüğünüz tarih aralığını ilk iletişimde belirtin. Kesin tarih uygunluğu doğrudan görüşmede doğrulanır. Birden fazla gün veya seans düşünüyorsanız seçenekleri de paylaşabilirsiniz. Rezervasyon ve teklif koşulları karşılıklı görüşülerek netleştirilir."
+        "text": "23 Nisan ve çevresindeki günler için düşündüğünüz tarih aralığını ilk iletişimde belirtin. Kesin tarih uygunluğu doğrudan görüşmede doğrulanır. Birden fazla gün veya seans düşünüyorsanız seçenekleri de paylaşabilirsiniz. Ayrıntılı bilgi için Instagram hesabımızdan bize mesaj atın."
       },
       {
         "title": "Şenlik alanı ve okul salonu için hazırlık.",
@@ -199,28 +194,25 @@
       [
         "23 Nisan dışında da gösteri yapıyor musunuz?",
         "Evet. Okul etkinlikleri, belediye programları ve çocuk şenlikleri için yıl boyunca tarih uygunluğuna göre gösteri planlanabilir."
-      ],
-      [
-        "23 Nisan için nasıl teklif alabilirim?",
-        "Kurum adı, şehir, etkinlik tarihi, yer ve tahmini katılımcı sayısını iletin. Tarih uygunluğu ve kapsam görüşüldükten sonra teklif alınabilir."
       ]
     ],
     "related": [
       "okullarda-kukla-gosterisi",
       "belediye-kukla-gosterisi",
       "iletisim"
+    ],
+    "photos": [
+      "05"
     ]
   },
   {
     "slug": "kukla-gosterisi-planlama",
     "eyebrow": "ETKİNLİK REHBERİ",
     "title": "Güzel bir gösteri, iyi bir hazırlıkla başlar.",
-    "seo_title": "Kukla Gösterisi Nasıl Planlanır? Fiyat ve Organizasyon Rehberi",
-    "description": "Okul ve belediye için kukla gösterisi planlarken tarih, yaş grubu, salon, teknik hazırlık ve fiyat teklifinde nelere dikkat edilmeli? Kısa organizasyon rehberi.",
+    "seo_title": "Kukla Gösterisi Etkinlik Rehberi | Ali Abi ve Zoyo",
+    "description": "Okul ve çocuk etkinliklerinde kukla gösterisi için yaş grubu, salon, ses ve sahne hazırlığı. Ali Abi ve Zoyo ile gösteri hakkında temel bilgiler.",
     "intro": "Okulunuz veya kurumunuz için kukla gösterisi düzenlerken ihtiyaç duyacağınız temel bilgileri bir araya getirdik.",
-    "image": "stage.webp",
-    "image_alt": "Ali Cengiz’in çocuklarla sahne buluşmasından gerçek bir fotoğraf",
-    "icon": "BookOpen",
+    "icon": "ClipboardList",
     "sections": [
       {
         "title": "İlk adım: tarih ve seyirci grubu.",
@@ -231,12 +223,8 @@
         "text": "Salonun fotoğrafı, sahne veya kurulum alanının ölçüsü ve oturma düzeni hazırlığı kolaylaştırır. Ses sistemi, mikrofon, elektrik, kurulum saati ve görevli kişi gibi ayrıntıları yazılı olarak netleştirin. Açık alan etkinliklerinde hava koşullarına bağlı alternatif alanı kurumunuzla birlikte değerlendirin."
       },
       {
-        "title": "Kukla gösterisi fiyatları neye göre değişir?",
-        "text": "Her etkinliğin kapsamı farklıdır. Gösterinin yapılacağı şehir, ulaşım ve varsa konaklama, seans sayısı, tarih ve teknik hazırlık teklif üzerinde etkili olabilir. Genel bir fiyatı kendi etkinliğiniz için kesin kabul etmek yerine, verdiğiniz bilgilerle hazırlanan kapsamı ve toplam teklifi isteyin."
-      },
-      {
-        "title": "Teklifte hangi ayrıntılar yer almalı?",
-        "text": "Tarih ve saat, gösteri yeri, seans sayısı, kararlaştırılan süre, ekipman sorumlulukları, ulaşım kapsamı ve ödeme koşulları açık olmalıdır. Olası tarih değişikliği veya iptal koşullarını da görüşün. Ali Abi ve Zoyo için hazırladığınız etkinlik bilgilerini iletişim sayfasından paylaşabilirsiniz."
+        "title": "Çocukların sahneyle rahatça buluşması.",
+        "text": "Oturma düzeninde her çocuğun kuklayı görebilmesi ve sesi anlayabilmesi önemlidir. Giriş ve çıkışların açık olması, teknik ekipmanların çocukların geçiş alanından uzak tutulması gösteri hazırlığının bir parçasıdır. Gösteri hakkında ayrıntılı bilgi için Instagram hesabımızdan bize mesaj atın."
       }
     ],
     "faqs": [
@@ -245,14 +233,17 @@
         "Zorunlu değil. Kurum, şehir, tarih ve yaş grubu bilgisiyle başlayabilirsiniz. Alanın ayrıntılarını sonraki görüşmede birlikte netleştirebiliriz."
       ],
       [
-        "İnternetteki genel fiyat etkinliğim için geçerli mi?",
-        "Kesin teklif etkinliğin kapsamına bağlıdır. Gösteri, ulaşım, seans ve teknik hazırlık kalemlerini kendi etkinlik bilgilerinize göre doğrulayın."
+        "Gösteriler hakkında nereden bilgi alabilirim?",
+        "Ayrıntılı bilgi için Instagram hesabımızdan bize mesaj atın."
       ]
     ],
     "related": [
       "kukla-gosterisi",
       "okullarda-kukla-gosterisi",
       "belediye-kukla-gosterisi"
+    ],
+    "photos": [
+      "16"
     ]
   }
 ]

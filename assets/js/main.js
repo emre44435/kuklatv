@@ -4,9 +4,6 @@
   document.documentElement.classList.add('has-js');
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
-  const configNode = $('#site-config');
-  let config = {};
-  try { config = JSON.parse(configNode?.textContent || '{}'); } catch { /* Static links remain usable. */ }
   $$('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
 
   // The animated theatre remains decorative; visitors can pause all motion.
@@ -33,12 +30,14 @@
   const closeMenu = () => {
     if (!toggle || !menu) return;
     menu.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Menüyü aç');
   };
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
   });
@@ -66,17 +65,19 @@
   const photoTriggers = $$('[data-photo]');
   let activePhoto = -1;
   let photoFocus = null;
-  const visiblePhotos = () => photoTriggers.filter(link => !link.closest('.photo-card').hidden);
+  const visiblePhotos = () => photoTriggers.filter(link => !link.closest('[data-photo-item]')?.hidden);
   function showPhoto(index) {
     const current = visiblePhotos();
     if (!current.length) return;
     activePhoto = ((index % current.length) + current.length) % current.length;
     const trigger = current[activePhoto];
+    photoImage.width = Number(trigger.dataset.width);
+    photoImage.height = Number(trigger.dataset.height);
     photoImage.src = trigger.href;
     photoImage.alt = trigger.dataset.alt || trigger.dataset.title || '';
     $('#photo-title').textContent = trigger.dataset.title;
     $('#photo-position').textContent = `${activePhoto+1} / ${current.length}`;
-    $('#photo-download').href = trigger.dataset.full;
+    $('#photo-download').href = trigger.href;
   }
   photoTriggers.forEach(trigger => trigger.addEventListener('click', event => {
     if (!photoDialog?.showModal) return;
@@ -131,59 +132,8 @@
       row.hidden = !normalize(row.textContent).includes(term);
       if (!row.hidden) count++;
     });
-    $('#province-count').textContent = term ? `${count} il bulundu.` : '81 ilde gösteri planlanabilir.';
+    $('#province-count').textContent = term ? `${count} il bulundu.` : '81 ilde gösteri yapılabiliyor.';
     $('#province-empty').hidden = count > 0;
   });
 
-  const form = $('#event-form');
-  if (form) {
-    const dateInput = $('#event-date');
-    const today = new Date();
-    dateInput.min = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
-    const selectedCity = new URLSearchParams(location.search).get('il');
-    if ([...$('#city').options].some(option => option.value === selectedCity)) $('#city').value = selectedCity;
-    const whatsapp = String(config.whatsapp || '').replace(/\D/g, '');
-    const send = $('#send-message');
-    if (whatsapp) {
-      send.textContent = 'WhatsApp’ı aç';
-      send.href = `https://wa.me/${whatsapp}`;
-    }
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const data = new FormData(form);
-      const value = name => String(data.get(name) || '').trim();
-      const lines = ['Merhaba Ali Abi, Ali Abi ve Zoyo kukla gösterisi için bilgi almak istiyorum.', ''];
-      if (value('kurum')) lines.push(`Kurum / okul: ${value('kurum')}`);
-      lines.push(`Şehir: ${value('il')}`, `Etkinlik: ${value('etkinlik')}`);
-      if (value('tarih')) {
-        const [year, month, day] = value('tarih').split('-');
-        lines.push(`Düşünülen tarih: ${day}.${month}.${year}`);
-      }
-      if (value('yas')) lines.push(`Yaş aralığı: ${value('yas')}`);
-      if (value('kisi')) lines.push(`Tahmini kişi sayısı: ${value('kisi')}`);
-      if (value('not')) lines.push('', value('not'));
-      lines.push('', 'Tarih uygunluğu ve gösteri teklifi hakkında bilgi paylaşabilir misiniz?');
-      const message = lines.join('\n');
-      $('#message-text').value = message;
-      $('#message-result').hidden = false;
-      $('#copy-status').textContent = 'Mesaj hazırlandı. Henüz gönderilmedi.';
-      if (whatsapp) send.href = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
-      $('#message-result').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest'});
-      $('#live-status').textContent = 'Etkinlik mesajınız hazırlandı. Kopyalayıp iletişim kanalında gönderebilirsiniz.';
-    });
-    $('#copy-message').addEventListener('click', async () => {
-      const text = $('#message-text');
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
-        await navigator.clipboard.writeText(text.value);
-        $('#copy-status').textContent = 'Mesaj kopyalandı. Görüşmeyi açıp yapıştırabilirsiniz.';
-      } catch {
-        text.focus();
-        text.select();
-        text.setSelectionRange(0, text.value.length);
-        $('#copy-status').textContent = 'Mesaj seçildi. Kopyala komutunu kullanıp görüşmeye yapıştırabilirsiniz.';
-      }
-    });
-  }
 })();

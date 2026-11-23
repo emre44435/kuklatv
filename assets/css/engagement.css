@@ -23,9 +23,7 @@
 .quick-contact { position:relative; display:grid; place-items:center; width:60px; height:60px; border:3px solid #fff9de; border-radius:20px 20px 10px 20px; color:white; box-shadow:0 4px 0 #314c543b,0 8px 24px #29444b24; transition:box-shadow .2s; }
 .quick-contact:hover { box-shadow:0 5px 0 #314c544d,0 9px 26px #29444b38; }
 .quick-contact>.icon { width:29px; height:29px; }
-.quick-whatsapp { background:#20b864; animation:contact-invite 7s ease-in-out infinite; }
 .quick-instagram { background:linear-gradient(145deg,#9462c3,#cf5380 60%,#e89b66); border-radius:20px 20px 20px 10px; }
-.quick-whatsapp:after { content:''; position:absolute; inset:-7px; border:2px solid #42bd7977; border-radius:25px; z-index:-1; animation:contact-halo 7s ease-out infinite; pointer-events:none; }
 .quick-tip { position:absolute; right:calc(100% + 13px); top:50%; transform:translateY(-50%); opacity:0; pointer-events:none; white-space:nowrap; padding:9px 13px; border:1px solid #d5d8c8; border-radius:12px; color:#31565b; background:#fffbed; font-size:.875rem; font-weight:800; box-shadow:0 3px 0 #bccfc34d; transition:opacity .2s; }
 .quick-contact:hover .quick-tip,.quick-contact:focus-visible .quick-tip { opacity:1; }
 .motion-toggle { left:16px; right:auto; }
@@ -58,7 +56,7 @@
   .footer-bottom { padding-bottom:104px; }
 }
 @media(max-width:360px) { .tour-visual { height:310px; } .tour-stat { left:11px; right:11px; padding-inline:8px; } .tour-stat small { font-size:.69rem; } }
-@media(prefers-reduced-motion:reduce) { .tour-route,.tour-curtain,.tour-pin,.tour-spark,.quick-contact,.quick-whatsapp:after { animation:none!important; } }
 
 /* Keep the viewer title readable over its dark surface. */
 .photo-dialog-top h2 { color:#fff; }
+@media(prefers-reduced-motion:reduce) { .tour-route,.tour-curtain,.tour-pin,.tour-spark,.quick-contact { animation:none!important; } }
