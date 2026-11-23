@@ -2,6 +2,14 @@
 
 Okul, belediye ve çocuk etkinlikleri için hazırlanmış Türkçe kukla gösterisi sitesi. HTML, CSS ve JavaScript ile çalışır. Ziyaretçiler için kurulum, üyelik veya uygulama indirme gerekmez.
 
+## Çizgi film ve kukla sahnesi teması
+
+Bu sürümde tüm sayfalar neşeli bir kukla sahnesi temasına uyarlandı. Açık gökyüzü, sahne perdeleri, gülümseyen bulutlar, flamalar, balonlar ve çizgi kukla detayları kullanılır. Kartlar, video alanı ve iletişim bölümü aynı renk ve çizim dilini izler.
+
+Arka plan hareketleri küçük SVG çizimleri ve CSS ile çalışır. Animasyon kütüphanesi, video arka planı veya GIF yüklenmez. Ekran dışına çıkan sahne ve gizlenen sekmedeki hareketler duraklatılır. “Hareketi durdur” düğmesi ziyaretçinin hareketleri kapatmasını sağlar; cihazın azaltılmış hareket tercihi de dikkate alınır.
+
+Tema düzeni `assets/css/cartoon.css`, sahne çizimleri `content/cartoon-scene.html` ve perde çizimi `content/stage-valance.svg` dosyalarındadır. Ana yerleşim, SEO içeriği ve video bağlantıları korunmuştur.
+
 ## Hızlı başlangıç
 
 1. ZIP dosyasını çıkartın. `index.html` ile tasarımı açabilirsiniz. Gerçek video pencerelerini denemek için siteyi HTTP üzerinden açın; dosyaya çift tıklayarak açıldığında videolar YouTube bağlantısıyla çalışır.

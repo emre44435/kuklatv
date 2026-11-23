@@ -1,5 +1,11 @@
 # Tasarım varlıkları
 
+## Çizgi film sahnesi
+
+Yeni temanın bulut, güneş, balon, flama, yıldız, tepe ve küçük dekoratif kukla çizimleri projeye özel SVG olarak yazıldı. Bunlar `content/cartoon-scene.html` içinde yer alır. Perde üstlüğü `content/stage-valance.svg`, küçük arka plan deseni `assets/img/cartoon-sprinkles.svg` dosyasındadır. Harici bir çizim veya animasyon servisine istek göndermez.
+
+Çizimler dekoratiftir; ekran okuyucu ve tıklama akışına katılmaz. Hareket CSS dönüşümleriyle sağlanır; ziyaretçi kapatabilir. Ekran dışında kalan sahne ve gizli sekmedeki hareketler duraklar. Cihazın azaltılmış hareket tercihi animasyonları kaldırır. Çizimlerin renk ve hareketleri `assets/css/cartoon.css` dosyasında düzenlenebilir.
+
 ## Yazı tipleri
 
 Başlıklardaki Fredoka, kullanıcının paylaştığı afişin dolgun ve eğlenceli harflerine yakın bir seçimdir. Gövde metinlerinde okunabilirliği korumak için Nunito Sans kullanılır. Dosyalar yereldir, Türkçe karakterleri içerir ve `font-display: swap` ile yüklenir. Lisans metinleri bu klasördedir.

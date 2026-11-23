@@ -1,5 +1,7 @@
 # Teslim öncesi kontrol
 
+Çizgi film teması güncellemesinde masaüstü ve 320 / 390 / 768 CSS piksel genişlikler yeniden incelendi. Ana sayfada yatay taşma ve bozuk görsel görülmedi. Animasyonun çalışan → duraklatılmış → çalışan geçişi, düğme etiketi ve `aria-pressed` durumu tarayıcıda doğrulandı. Sahne ekran dışına çıktığında hareketlerin duraklatılması kontrol edildi. Yeni temada gerçek YouTube oynatıcısının açılması ve kapatılınca kaldırılması da doğrulandı. Azaltılmış hareket tercihi CSS düzeyinde desteklenir.
+
 23 Kasım 2026 tarihinde uygulanan kontroller:
 
 | Kontrol | Sonuç |

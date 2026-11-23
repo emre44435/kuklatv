@@ -9,6 +9,25 @@
   try { config = JSON.parse(configNode?.textContent || '{}'); } catch { /* Static links remain usable. */ }
   $$('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
 
+  // The animated theatre remains decorative; visitors can pause all motion.
+  // No cookies, storage, timers, third-party scripts, or animation dependencies.
+  const motionToggle = $('#motion-toggle');
+  motionToggle?.addEventListener('click', () => {
+    const paused = document.body.classList.toggle('motion-paused');
+    motionToggle.setAttribute('aria-pressed', String(paused));
+    motionToggle.setAttribute('aria-label', paused ? 'Arka plan hareketini başlat' : 'Arka plan hareketini durdur');
+    $('[data-motion-label]', motionToggle).textContent = paused ? 'Hareketi başlat' : 'Hareketi durdur';
+  });
+  document.addEventListener('visibilitychange', () => {
+    document.body.classList.toggle('motion-suspended', document.hidden);
+  });
+  if ('IntersectionObserver' in window) {
+    const sceneObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('scene-asleep', !entry.isIntersecting));
+    }, {rootMargin:'80px'});
+    $$('.theatre-scene').forEach(scene => sceneObserver.observe(scene));
+  }
+
   const menu = $('#main-nav');
   const toggle = $('.menu-toggle');
   const closeMenu = () => {
