@@ -65,4 +65,4 @@ Font ve ikon lisansları `docs/` içinde korunmuştur. Kullanıcı tarafından s
 
 ## Yeni gösteri tanıtımı
 
-Gönderilen metin, TRT fotoğrafının bulunduğu eski tanıtımın yerini alır. Giriş masaüstünde fotoğrafla yan yana; içerik, katılım, mekânlar ve amaç bölümleri iki sütunda, mobilde tek sütundadır. Metin HTML içinde hazırdır ve JavaScript kapalıyken de okunabilir. `assets/css/show-story.css` yalnızca ana sayfada yüklenir.
+Gönderilen metin, TRT fotoğrafının bulunduğu eski tanıtımın yerini alır. Masaüstünde fotoğraf ve başlık üstten hizalanır. Fotoğraf solda, bütün tanıtım sağdaki tek okuma sütunundadır; kaydırırken fotoğraf yanında kalır. İçerik, katılım, mekânlar ve amaç bölümleri alt alta okunur. Mobilde giriş, fotoğraf ve metinler tek sütunda sıralanır. Metin HTML içinde hazırdır ve JavaScript kapalıyken de okunabilir. `assets/css/show-story.css` yalnızca ana sayfada yüklenir.

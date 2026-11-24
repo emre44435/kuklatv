@@ -1,8 +1,14 @@
-# V6 içerik, SEO ve yayın kontrolleri
+# V7 hizalama, içerik ve yayın kontrolleri
 
-Gösteri tanıtım metni ve kuklagosterisi.com yayın adresi eklenen V6 sürümüdür.
+## V7 tanıtım düzeni
 
-## Yeni metin ve sayfalar
+TRT fotoğrafı ile başlık masaüstünde üstten hizalandı. Giriş, dört içerik bölümü ve davet alanı sağda tek okuma sütununda toplandı. Başlıklarda, metinlerde ve listelerde ortak boşluklar kullanıldı. Mobilde giriş, fotoğraf, içerik ve davet sırası tek sütundur. Masaüstünde yeterli ekran yüksekliği varsa fotoğraf okuma sırasında görünür kalır.
+
+320, 360, 390, 430, 768, 1024 ve 1440 px genişliklerde Chromium hizalama denetimi tamamlandı: **7 ekran, 0 hata.** Sayfa taşması, metin ve başlık kesilmesi, sütun aralıkları, mobil sıralama, masaüstü fotoğraf hizası, 4 içerik bölümü, 13 liste maddesi ve fotoğraf büyütme kontrol edildi. 1024 ve 1440 px genişliklerde sabit kalan fotoğrafın üst boşluğu da ölçüldü. Mobil ve masaüstü görünümü ayrıca incelendi.
+
+Metnin tamamı, alan adı ve SEO dosyaları, diğer 14 HTML sayfası, 73 WebP dosyası, galeri bileşeni/derlenmiş JavaScript ve banner stilleri V6 arşiviyle karşılaştırıldı; bu dosyalar değişmedi. Yeni bölümün HTML yapısı ve ona ait CSS düzenlendi. Kaynak/SEO denetimleri yeniden çalıştırıldı. Test yardımcı sayfaları arşive eklenmedi.
+
+## Önceki V6 içerik ve sayfa kontrolleri
 
 15 sayfa 320, 360, 390, 430, 768, 1024 ve 1440 px genişliklerde Chromium ile denetlendi: **105 kontrol, 0 hata.** Yeni metnin dört içerik bölümü, 13 liste maddesi, sütun düzeni, başlıkların kesilmemesi, mobil menü ve Instagram hedefleri kontrol edildi. Ana sayfadaki 25 fotoğraf her genişlikte büyütüldü.
 
@@ -12,9 +18,9 @@ Yeni bölüm statik HTML olarak üretilir ve JavaScript kapalıyken de okunur. Y
 
 V6 ana sayfasında otomatik akış, iki sırada iki yönde dokunarak kaydırma, otomatik devam, fotoğraf penceresi, filtre ve dikey hareket tekrar kontrol edildi: **6 etkileşim kontrolü, 0 hata.**
 
-## Korunan galeri davranışı
+## Önceki galeri kontrolleri
 
-Aşağıdaki kaydırma kontrolleri V5 uygulamasının doğrulanmış sonuçlarıdır. React bileşeni, derlenmiş JavaScript/CSS, banner stilleri ve 73 WebP dosyası V6 ile dosya özetleri üzerinden karşılaştırılmış ve değişmedikleri doğrulanmıştır.
+Aşağıdaki kaydırma kontrolleri V5 uygulamasının doğrulanmış sonuçlarıdır. React bileşeni, derlenmiş JavaScript/CSS, banner stilleri ve 73 WebP dosyası V6 paketinde dosya özetleri üzerinden karşılaştırılmış ve değişmedikleri doğrulanmıştır.
 
 ## Otomatik ve elle kaydırma
 
@@ -36,7 +42,7 @@ Doğrudan fotoğraf bağlantıları 390 ve 1440 px genişliklerde, her iki sıra
 
 ## İçerik ve derleme
 
-`npm run build` ve `npm run check` başarılı. 15 HTML sayfası, 25 tekil fotoğraf yerleşimi, 73 responsive WebP ve 81 il denetimi geçti. React/TypeScript kaynakları, Tailwind stilleri, shadcn yapılandırması, bağımlılık kilit dosyası ve hazır tarayıcı dosyaları pakettedir.
+`npm run build` önceki sürümde başarılıydı. V7 düzenlemesinden sonra HTML üretimi, `npm run check` ve yayın dışa aktarımı yeniden başarılı tamamlandı. 15 HTML sayfası, 25 tekil fotoğraf yerleşimi, 73 responsive WebP ve 81 il denetimi geçti. React/TypeScript kaynakları, Tailwind stilleri, shadcn yapılandırması, bağımlılık kilit dosyası ve hazır tarayıcı dosyaları pakettedir.
 
 Fotoğraf dosyalarının 73’ü, mevcut banner ve tema kaynakları bir önceki sürümle dosya özetleri üzerinden karşılaştırıldı; değişmedikleri doğrulandı. Fotoğraf kopyaları oluşturulmaz. Galeri döngüsü mevcut kartların konumlandırılmasıyla sağlanır.
 
