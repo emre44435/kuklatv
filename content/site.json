@@ -2,10 +2,10 @@
   "name": "Ali Abi ve Zoyo",
   "artist": "Ali Cengiz",
   "brand": "kuklamukla TV",
-  "site_url": "",
+  "site_url": "https://kuklagosterisi.com",
   "instagram": "https://www.instagram.com/kuklamuklatv/",
   "youtube": "https://www.youtube.com/@KuklamuklaTV/shorts",
-  "description": "Kukla sanatçısı Ali Cengiz, Ali Abi ve Zoyo ile okul etkinliklerinde ve çocuk şenliklerinde buluşuyor. Ayrıntılı bilgi için Instagram hesabımızdan bize mesaj atın.",
+  "description": "Zoyo ve Ali Abi ile okullar, belediyeler ve çocuk şenlikleri için interaktif kukla gösterisi. Türkiye’nin 81 ilinde davet ve organizasyon için bize ulaşın.",
   "videos": [
     {
       "id": "B8wlJ1Jrzro",
@@ -64,5 +64,6 @@
     "city": "20",
     "special": "21",
     "feature": "22"
-  }
+  },
+  "seo_title": "Zoyo ve Ali Abi Kukla Gösterisi | Ali Cengiz"
 }

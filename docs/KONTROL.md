@@ -1,6 +1,20 @@
-# Son sürüm kontrolleri
+# V6 içerik, SEO ve yayın kontrolleri
 
-Bu rapor, fareyle ve dokunarak kaydırılabilen çift yönlü galeri içeren V5 teslim sürümünü belirtir.
+Gösteri tanıtım metni ve kuklagosterisi.com yayın adresi eklenen V6 sürümüdür.
+
+## Yeni metin ve sayfalar
+
+15 sayfa 320, 360, 390, 430, 768, 1024 ve 1440 px genişliklerde Chromium ile denetlendi: **105 kontrol, 0 hata.** Yeni metnin dört içerik bölümü, 13 liste maddesi, sütun düzeni, başlıkların kesilmemesi, mobil menü ve Instagram hedefleri kontrol edildi. Ana sayfadaki 25 fotoğraf her genişlikte büyütüldü.
+
+15 canonical adresi, 14 site haritası adresi ve 13 iç sayfa breadcrumb verisi kaynak kontrolünden geçti. Başlık, açıklama ve sosyal paylaşım meta etiketleri tutarlıdır. Resmî yayın alanı `https://kuklagosterisi.com` olarak ayarlanmıştır.
+
+Yeni bölüm statik HTML olarak üretilir ve JavaScript kapalıyken de okunur. Yeni CSS yalnızca ana sayfada yüklenir. Görseller ve gezinme bağlantıları göreli; SEO adresleri mutlak HTTPS adresidir. Yayın ayarları `docs/YAYIN-KILAVUZU.md` içinde açıklanır.
+
+V6 ana sayfasında otomatik akış, iki sırada iki yönde dokunarak kaydırma, otomatik devam, fotoğraf penceresi, filtre ve dikey hareket tekrar kontrol edildi: **6 etkileşim kontrolü, 0 hata.**
+
+## Korunan galeri davranışı
+
+Aşağıdaki kaydırma kontrolleri V5 uygulamasının doğrulanmış sonuçlarıdır. React bileşeni, derlenmiş JavaScript/CSS, banner stilleri ve 73 WebP dosyası V6 ile dosya özetleri üzerinden karşılaştırılmış ve değişmedikleri doğrulanmıştır.
 
 ## Otomatik ve elle kaydırma
 

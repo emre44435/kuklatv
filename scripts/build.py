@@ -21,6 +21,7 @@ pages = read_json('content/pages.json')
 provinces = read_json('content/provinces.json')
 photos = read_json('content/photos.json')
 icons = read_json('content/icons.json')
+show = read_json('content/home-show.json')
 scene_markup = (ROOT/'content/cartoon-scene.html').read_text()
 site_url = (args.url if args.url is not None else os.environ.get('SITE_URL') or config['site_url']).strip().rstrip('/')
 if site_url:
@@ -41,7 +42,11 @@ def esc(value):
 
 
 def link(path=''):
-    return f'{site_url}/{path}' if site_url else f'./{path or "index.html"}'
+    return f'./{path or "index.html"}'
+
+
+def public_url(path=''):
+    return f'{site_url}/{path}' if site_url else link(path)
 
 
 def icon(name, cls=''):
@@ -180,25 +185,35 @@ def page_intro(eyebrow,title,intro):
 
 
 def layout(filename,title,description,body,active='',extra_schema=None,noindex=False):
-    canonical=link('' if filename=='index.html' else filename) if site_url else ''
-    image=link('assets/img/social-cover.webp') if site_url else ''
+    canonical=public_url('' if filename=='index.html' else filename) if site_url else ''
+    image=public_url('assets/img/social-cover.webp') if site_url else ''
     ld={'@context':'https://schema.org','@graph':[]}
     if site_url:
         ld['@graph']=[
-            {'@type':'Person','@id':site_url+'/#ali-cengiz','name':'Ali Cengiz','alternateName':'Ali Abi','jobTitle':'Kukla sanatçısı','url':link('ali-cengiz.html'),'sameAs':[IG,config['youtube']]},
-            {'@type':'WebSite','@id':site_url+'/#website','name':'kuklamukla TV · Ali Abi ve Zoyo','url':link(),'inLanguage':'tr-TR','publisher':{'@id':site_url+'/#ali-cengiz'}},
+            {'@type':'Person','@id':site_url+'/#ali-cengiz','name':'Ali Cengiz','alternateName':'Ali Abi','jobTitle':'Kukla sanatçısı','url':public_url('ali-cengiz.html'),'sameAs':[IG,config['youtube']]},
+            {'@type':'WebSite','@id':site_url+'/#website','name':'kuklamukla TV · Ali Abi ve Zoyo','url':public_url(),'inLanguage':'tr-TR','publisher':{'@id':site_url+'/#ali-cengiz'}},
             {'@type':'WebPage','@id':canonical+'#webpage','url':canonical,'name':title,'description':description,'inLanguage':'tr-TR','isPartOf':{'@id':site_url+'/#website'}}]
+    if site_url and filename != '404.html':
+        if filename == 'index.html':
+            ld['@graph'][-1]['mainEntity']={'@id':public_url()+'#kukla-gosterisi'}
+        else:
+            breadcrumb_id=canonical+'#breadcrumb'
+            ld['@graph'][-1]['breadcrumb']={'@id':breadcrumb_id}
+            ld['@graph'].append({'@type':'BreadcrumbList','@id':breadcrumb_id,'itemListElement':[
+                {'@type':'ListItem','position':1,'name':'Ana sayfa','item':public_url()},
+                {'@type':'ListItem','position':2,'name':title.split('|')[0].strip(),'item':canonical}]})
     if extra_schema:
         ld['@graph']+=extra_schema
     canonical_tag=f'<link rel="canonical" href="{esc(canonical)}"><meta property="og:url" content="{esc(canonical)}">' if canonical else ''
-    social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi"><meta name="twitter:card" content="summary_large_image">' if image else '<meta name="twitter:card" content="summary">'
-    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour','harmony']+(['image-auto-slider'] if filename=='index.html' else []))
+    social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{esc(image)}">' if image else '<meta name="twitter:card" content="summary">'
+    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour','harmony']+(['image-auto-slider','show-story'] if filename=='index.html' else []))
     slider_script=f'<script src="{link("assets/js/image-auto-slider.js")}" defer></script>' if filename=='index.html' else ''
     ld_text=json.dumps(ld,ensure_ascii=False).replace('<','\\u003c')
+    base_tag=f'<base href="{esc(urlparse(site_url).path.rstrip(chr(47))+chr(47))}">' if filename=='404.html' and site_url else ''
     output=f'''<!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(title)}</title>
+<html lang="tr"><head><meta charset="utf-8">{base_tag}<meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}"><meta name="robots" content="{'noindex, follow' if noindex else 'index, follow, max-image-preview:large'}"><meta name="theme-color" content="#665697"><meta name="referrer" content="strict-origin-when-cross-origin">
-{canonical_tag}<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="kuklamukla TV"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}">{social_image}
+{canonical_tag}<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="kuklamukla TV"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}">{social_image}<meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
 <link rel="icon" href="{link('assets/icons/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="{link('assets/icons/favicon.png')}" type="image/png"><link rel="apple-touch-icon" href="{link('assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="{link('site.webmanifest')}">
 <link rel="preload" href="{link('assets/fonts/fredoka-600.ttf')}" as="font" type="font/ttf" crossorigin><link rel="preload" href="{link('assets/fonts/nunito-sans-400.ttf')}" as="font" type="font/ttf" crossorigin>
 {styles}<script src="{link('assets/js/main.js')}" defer></script>{slider_script}<script type="application/ld+json">{ld_text}</script></head>
@@ -218,7 +233,7 @@ for photo in home_gallery_photos:
     if photo['page']!='index.html' or photo['id'] in photo_uses:
         raise SystemExit('Fotoğraf konumu yineleniyor: '+photo['id'])
     photo_uses[photo['id']]='index.html'
-slider_base=site_url+'/' if site_url else './'
+slider_base='./'
 home_gallery_cards=(ROOT/'content/photo-slider.html').read_text().replace('__SITE_BASE__',slider_base)
 slider_data=json.dumps(slider_props,ensure_ascii=False).replace('__SITE_BASE__',slider_base).replace('<','\\u003c')
 
@@ -228,11 +243,21 @@ home=f'''
 <section class="home-intro">{scene_markup}<div class="container home-intro-grid"><div><span class="eyebrow">ALİ CENGİZ · KUKLA SANATÇISI</span><h2>Bir kukla, bir ses.<br>Birlikte atılan kahkahalar.</h2></div><div class="home-intro-copy"><p>Ali Abi ve Zoyo; okullarda, belediye etkinliklerinde ve çocuk şenliklerinde çocuklarla buluşuyor.</p><a class="text-link" href="{link('videolar.html')}">{icon('Play')} Zoyo’yu izleyin</a></div></div></section>
 <div class="audience-strip"><div class="container"><span>{icon('School')}Okul etkinlikleri</span><span>{icon('Landmark')}Belediye programları</span><span>{icon('Theater')}Çocuk şenlikleri</span><span>{icon('MapPin')}Türkiye’nin 81 ili</span></div></div>
 <section class="section" id="gosteriler"><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE BULUŞALIM</span><h2>Her buluşmada bir kahkaha.</h2></div><p>Okulda, kültür merkezinde, şenlikte…<br> Ali Abi ve Zoyo’yla gösteri zamanı.</p></div><div class="program-grid">{program_cards}</div></div></section>
-<section class="section about-section"><div class="container about-grid">{photo_figure(config['homepage_photos']['feature'],'index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('index.html#fotograflar')}">Gösterilerden fotoğraflar</a></div></div></section>
+<section class="section about-section show-story" id="zoyo-ali-abi-kukla-gosterisi" aria-labelledby="show-story-title"><div class="container show-story-panel">
+<div class="show-story-intro">{photo_figure(config['homepage_photos']['feature'],'index.html','feature-photo show-story-photo','(max-width:760px) min(410px, calc(100vw - 88px)), 420px')}
+<div class="show-story-copy"><h2 class="show-story-title" id="show-story-title">{esc(show['title'])}</h2><p class="show-story-subtitle">{esc(show['subtitle'])}</p><p class="show-story-lead">{esc(show['lead'])}</p><p class="show-story-description">{esc(show['intro'])}</p><div class="show-story-links"><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('index.html#fotograflar')}">Gösterilerden fotoğraflar</a></div></div></div>
+<div class="show-story-details"><section class="show-story-block"><h3>{esc(show['content_title'])}</h3><p>{esc(show['content_intro'])}</p><p>{esc(show['values_intro'])}</p><ul class="show-story-list show-story-values">{''.join(f'<li>{esc(item)}</li>' for item in show['values'])}</ul><p>{esc(show['values_outro'])}</p></section>
+<section class="show-story-block"><h3>{esc(show['participation_title'])}</h3>{''.join(f'<p>{esc(text)}</p>' for text in show['participation'])}</section>
+<section class="show-story-block"><h3>{esc(show['audience_title'])}</h3><p>{esc(show['audience_intro'])}</p><ul class="show-story-list">{''.join(f'<li>{esc(item)}</li>' for item in show['audiences'])}</ul><p>{esc(show['audience_outro'])}</p></section>
+<section class="show-story-block"><h3>{esc(show['purpose_title'])}</h3><p>{esc(show['purpose'])}</p></section></div>
+<div class="show-story-contact"><div class="show-story-contact-copy"><strong>{esc(show['invitation'])}</strong><p>{esc(show['contact'])}</p></div>{instagram('Instagram’dan mesaj atın')}</div></div></section>
 {home_gallery}
 <section class="section videos-section" id="videolar"><div class="container"><div class="section-heading"><div><span class="eyebrow">kuklamukla TV</span><h2>Biraz Zoyo, bolca neşe.</h2></div><a class="text-link text-link--light" href="{link('videolar.html')}">Gösteri videolarını keşfedin</a></div><p class="section-lead">YouTube ve Instagram’da neşeli anlar. İzlemek için bir kapak seçin.</p>{video_cards()}<p class="video-privacy">Kapaklar sizi YouTube veya Instagram’a götürür.</p></div></section>
 <section class="section faq-section"><div class="container faq-grid"><div><span class="eyebrow">AKLINIZDAKİLER</span><h2>Birkaç küçük<br> soru, açık cevaplar.</h2><p>Gösteriler hakkında merak ettikleriniz.</p><a class="text-link" href="{link('sik-sorulan-sorular.html')}">Tüm soruları görün</a></div>{faq_html(common_faqs[:4])}</div></section>{cta()}'''
-layout('index.html','Ali Cengiz | Ali Abi ve Zoyo Kukla Gösterisi · kuklamukla TV',config['description'],home,extra_schema=[faq_schema(common_faqs[:4])])
+home_schema=[faq_schema(common_faqs[:4])]
+if site_url:
+    home_schema.append({'@type':'Service','@id':public_url()+'#kukla-gosterisi','name':config['seo_title'].split('|')[0].strip(),'description':config['description'],'serviceType':'İnteraktif kukla gösterisi','areaServed':{'@type':'Country','name':'Türkiye'},'provider':{'@id':site_url+'/#ali-cengiz'},'url':public_url()+'#zoyo-ali-abi-kukla-gosterisi'})
+layout('index.html',config['seo_title'],config['description'],home,extra_schema=home_schema)
 
 service_titles={p['slug']:p['eyebrow'].capitalize() for p in pages}
 service_titles.update({'hizmet-bolgeleri':'81 ilde gösteri','iletisim':'İletişim'})
@@ -247,7 +272,7 @@ for page in pages:
     body+=f'<div class="aside-card">{icon(page["icon"])}<h2>Instagram’da buluşalım.</h2><p>{IG_DESCRIPTION}</p>{instagram()}<span>{icon("MapPin")} Türkiye’nin 81 ilinde</span></div></aside></div></section>{cta()}'
     schema=[faq_schema(page['faqs'])]
     if site_url:
-        schema.append({'@type':'Service','name':page['seo_title'].split('|')[0].strip(),'description':page['description'],'serviceType':'Kukla gösterisi','areaServed':{'@type':'Country','name':'Türkiye'},'provider':{'@id':site_url+'/#ali-cengiz'},'url':link(name)})
+        schema.append({'@type':'Service','name':page['seo_title'].split('|')[0].strip(),'description':page['description'],'serviceType':'Kukla gösterisi','areaServed':{'@type':'Country','name':'Türkiye'},'provider':{'@id':site_url+'/#ali-cengiz'},'url':public_url(name)})
     layout(name,page['seo_title'],page['description'],body,page['slug'],schema)
 
 about=page_intro('ALİ CENGİZ & ZOYO','Ali Abi’yle tanışın.','Zoyo’nun sesi ve sahnedeki yol arkadaşı: kukla sanatçısı Ali Cengiz.')
@@ -294,9 +319,9 @@ if set(photo_uses) != set(photo_by_id) or len(photo_by_id) != expected_photo_cou
 
 filenames=[name for name in rendered if name!='404.html']
 if site_url:
-    entries=''.join(f'<url><loc>{xml_escape(link("" if name=="index.html" else name))}</loc></url>\n' for name in filenames)
+    entries=''.join(f'<url><loc>{xml_escape(public_url("" if name=="index.html" else name))}</loc></url>\n' for name in filenames)
     sitemap=f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}</urlset>\n'
-    robots=f'User-agent: *\nAllow: /\n\nSitemap: {link("sitemap.xml")}\n'
+    robots=f'User-agent: *\nAllow: /\n\nSitemap: {public_url("sitemap.xml")}\n'
 else:
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><!-- GitHub yayını sırasında gerçek URL ile otomatik oluşturulur. --></urlset>\n'
     robots='User-agent: *\nAllow: /\n'

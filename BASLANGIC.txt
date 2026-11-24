@@ -19,3 +19,8 @@ GALERİYİ KAYDIRMA
 Masaüstü: Fare tuşunu basılı tutup sağa veya sola sürükleyin.
 Mobil: Parmağınızla sağa veya sola kaydırın.
 Bıraktıktan bir saniye sonra otomatik akış devam eder.
+
+YAYIN ADRESİ
+SEO adresleri https://kuklagosterisi.com için hazırdır.
+Alan adı bağlantısı ve HTTPS kurulumu: docs/YAYIN-KILAVUZU.md
+Yeni tanıtım metni: content/home-show.json

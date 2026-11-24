@@ -8,7 +8,7 @@ Ali Cengiz’in Zoyo’yu seslendirip oynattığı canlı kukla gösterilerini t
 
 `index.html` dosyasını tarayıcıda açabilirsiniz. Sunucu tarafı uygulama veya veritabanı gerekmez. Bütün HTML sayfaları, yazı tipleri, logo, dekoratif çizimler ve görseller bu arşivde bulunur.
 
-GitHub’da mevcut projenin kökündeki dosyaları bu sürümdekilerle değiştirin. Güncellerken daha önceki gerçek fotoğraf klasörlerini ve artık kaynaklarda yer almayan eski dosyaları da kaldırın. Arşivdeki `.github/workflows/pages.yml` yayın düzeni korunmuştur. GitHub Pages kaynağı **GitHub Actions** olmalıdır. Ana dala gönderimden sonra mevcut iş akışı gerçek yayın adresiyle sayfaları üretir, bağlantıları denetler ve yalnızca yayın dosyalarını aktarır.
+GitHub’da mevcut projenin kökündeki dosyaları bu sürümdekilerle değiştirin. Güncellerken daha önceki gerçek fotoğraf klasörlerini ve artık kaynaklarda yer almayan eski dosyaları da kaldırın. Arşivdeki `.github/workflows/pages.yml` yayın düzeni korunmuştur. GitHub Pages kaynağı **GitHub Actions** olmalıdır. Ana dala gönderimden sonra iş akışı `content/site.json` içindeki `https://kuklagosterisi.com` adresiyle sayfaları üretir, SEO ve bağlantıları denetler ve yalnızca yayın dosyalarını aktarır. Domain, DNS ve HTTPS adımları `docs/YAYIN-KILAVUZU.md` içindedir.
 
 ## İki sıralı otomatik galeri
 
@@ -16,7 +16,8 @@ GitHub’da mevcut projenin kökündeki dosyaları bu sürümdekilerle değişti
 
 ## İçerikleri güncelleme
 
-- `content/site.json`: marka, Instagram hesabı ve dış platformlarda açılan video bağlantıları.
+- `content/site.json`: alan adı, SEO başlığı, marka, Instagram hesabı ve video bağlantıları.
+- `content/home-show.json`: ana sayfadaki gösteri tanıtım metni, alt başlıklar ve listeler.
 - `content/pages.json`: gösteri sayfaları, açıklamalar ve sık sorulan sorular.
 - `content/photos.json`: 25 özgün fotoğrafın tekil sayfa konumları, boyutları ve ekran sürümleri.
 - `content/cartoon-scene.html`, `content/tour-scene.html`: dekoratif sahne ve otomatik perdeli 81 il sahnesi.
@@ -28,7 +29,7 @@ npm ci
 npm run build
 ```
 
-`SITE_URL` ortam değişkeni gerçek yayın adresini belirler. GitHub iş akışı bunu otomatik sağlar. Adres bilinmiyorsa yerel bağlantılar göreli kalır; alan adı uydurulmaz. İsteğe bağlı `python3 scripts/build.py --url GERÇEK_HTTPS_YAYIN_ADRESİNİZ` komutuyla kendi yayın adresinizi kullanabilirsiniz.
+Yayın adresi `content/site.json` içinde `https://kuklagosterisi.com` olarak ayarlanmıştır. Canonical, sosyal paylaşım, yapılandırılmış veri ve site haritası bu adresi kullanır. Görsellerin ve sayfaların bağlantıları göreli kaldığından yerel önizleme de çalışır. `SITE_URL` ortam değişkeni derleme adresini geçici olarak değiştirebilir. İsteğe bağlı `python3 scripts/build.py --url GERÇEK_HTTPS_YAYIN_ADRESİNİZ` komutuyla kendi yayın adresinizi kullanabilirsiniz.
 
 Yalnızca yayın dosyalarını dışa aktarmak için `python3 scripts/export.py` çalıştırın. Sonuç `_site/` dizinine yazılır. Kaynaklar ve bu belgeler dışa aktarıma eklenmez.
 
@@ -61,3 +62,7 @@ Video kapakları ilgili YouTube videosunu veya Instagram hesabını güvenli yen
 ## Lisanslar
 
 Font ve ikon lisansları `docs/` içinde korunmuştur. Kullanıcı tarafından sağlanan logo, karakter çizimleri ve etkinlik görselleri mevcut görsel kimliğin parçalarıdır.
+
+## Yeni gösteri tanıtımı
+
+Gönderilen metin, TRT fotoğrafının bulunduğu eski tanıtımın yerini alır. Giriş masaüstünde fotoğrafla yan yana; içerik, katılım, mekânlar ve amaç bölümleri iki sütunda, mobilde tek sütundadır. Metin HTML içinde hazırdır ve JavaScript kapalıyken de okunabilir. `assets/css/show-story.css` yalnızca ana sayfada yüklenir.
