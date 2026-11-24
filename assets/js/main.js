@@ -110,11 +110,11 @@
   // Photographs open in an accessible local viewer; social videos are ordinary external links.
   const photoDialog = $('#photo-dialog');
   const photoImage = $('#photo-full');
-  const photoTriggers = $$('[data-photo]');
+  const photoTriggers = () => $$('[data-photo]');
   let activePhoto = -1;
   let photoFocus = null;
   let photoGroup = null;
-  const visiblePhotos = () => photoTriggers.filter(link => (!photoGroup || photoGroup.contains(link)) && !link.closest('[data-photo-item]')?.hidden);
+  const visiblePhotos = () => photoTriggers().filter(link => (!photoGroup || photoGroup.contains(link)) && !link.closest('[data-photo-item]')?.hidden).sort((a,b)=>Number(a.dataset.photoOrder)-Number(b.dataset.photoOrder));
   function showPhoto(index) {
     const current = visiblePhotos();
     if (!current.length) return;
@@ -126,17 +126,17 @@
     photoImage.alt = trigger.dataset.alt || trigger.dataset.title || '';
     $('#photo-title').textContent = trigger.dataset.title;
     $('#photo-position').textContent = `${activePhoto+1} / ${current.length}`;
-    $('#photo-download').href = trigger.href;
   }
-  photoTriggers.forEach(trigger => trigger.addEventListener('click', event => {
-    if (!photoDialog?.showModal) return;
+  document.addEventListener('click', event => {
+    const trigger=event.target instanceof Element ? event.target.closest('a[data-photo]') : null;
+    if (!trigger || !photoDialog?.showModal) return;
     event.preventDefault();
     photoFocus = trigger;
     photoGroup = trigger.closest('[data-photo-gallery]');
     showPhoto(visiblePhotos().indexOf(trigger));
     photoDialog.showModal();
     document.body.classList.add('dialog-open');
-  }));
+  });
   $('[data-close-photo]')?.addEventListener('click', () => photoDialog.close());
   $('[data-prev-photo]')?.addEventListener('click', () => showPhoto(activePhoto-1));
   $('[data-next-photo]')?.addEventListener('click', () => showPhoto(activePhoto+1));
@@ -173,6 +173,7 @@
     const count=$$('.photo-card', gallery).filter(card=>!card.hidden).length;
     const counter=$('#photo-count', gallery);
     if (counter) counter.textContent = `${count} fotoğraf`;
+    gallery.querySelector('[data-auto-slider]')?.dispatchEvent(new CustomEvent('photo-gallery-filter',{detail:{category}}));
   }));
 
   const normalize = text => text.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ı/g, 'i').trim();

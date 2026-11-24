@@ -46,7 +46,10 @@
         "height": 1280
       }
     ],
-    "full": "01-salonda-cocuklarla-1440.webp"
+    "full": "01-salonda-cocuklarla-1440.webp",
+    "priority": 100,
+    "source_sha256": "e9783f5c5fa70b7284ac47884075c3a191c21a0b8049f73268e44fb0d30897cd",
+    "source_pixel_sha256": "6cceb9a7456f5aaf7d616cf41f96f2a3500d302fe12a7e002141a5c7203bd876"
   },
   {
     "id": "02",
@@ -90,7 +93,10 @@
         "height": 1333
       }
     ],
-    "full": "02-kultur-merkezinde-gosteri-1600.webp"
+    "full": "02-kultur-merkezinde-gosteri-1600.webp",
+    "priority": 100,
+    "source_sha256": "c78bca7325d27d6af58846b0f5db70e9f15e4fe856ebcd9004a102bfb73a134e",
+    "source_pixel_sha256": "fa5652fd86560475ee3a96fa03333b608901ac2618313e8d1799e811aa423ec2"
   },
   {
     "id": "03",
@@ -139,14 +145,17 @@
         "height": 1259
       }
     ],
-    "full": "03-sinifta-zoyoyla-1171.webp"
+    "full": "03-sinifta-zoyoyla-1171.webp",
+    "priority": 100,
+    "source_sha256": "ee1d7c485edfffd4ae0edae98b7333cbdf142412d0fb58a0ba60e8abdf102117",
+    "source_pixel_sha256": "ef1cff3e4f8cb62855627af37a586da02ef205914564087ac4aea78fc62280e7"
   },
   {
     "id": "04",
     "source": "0bd11e4c-f2f1-4a21-9c79-64241780aea0.jpg",
     "file": "04-okulda-sahne-bulusmasi",
     "page": "index.html",
-    "section": "Okullar için gösteri kartı",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
     "title": "Okulda sahne buluşması",
     "category": "Okullar",
     "alt": "Ali Cengiz mikrofonuyla okul salonunda çocukların karşısında",
@@ -178,7 +187,10 @@
         "height": 900
       }
     ],
-    "full": "04-okulda-sahne-bulusmasi-900.webp"
+    "full": "04-okulda-sahne-bulusmasi-900.webp",
+    "priority": 100,
+    "source_sha256": "91db3c9565792247bbe34b3dc03527a11f9f8acfcf617bb6a5e2c8ce403c758b",
+    "source_pixel_sha256": "e3d42787b651eb661d41d04447402e953ac0b3a166ba60e5a5840ce923b8316f"
   },
   {
     "id": "05",
@@ -217,7 +229,10 @@
         "height": 900
       }
     ],
-    "full": "05-ozel-gunde-kukla-sahnesi-900.webp"
+    "full": "05-ozel-gunde-kukla-sahnesi-900.webp",
+    "priority": 100,
+    "source_sha256": "ec1dc7b4f72cc683e4db40dc3bf22d732372bea2c357721674b4da8a5712a299",
+    "source_pixel_sha256": "387269f740804fc18e52f82b30201f935044a64dac965a6deab2fc2af3bf131a"
   },
   {
     "id": "06",
@@ -261,14 +276,17 @@
         "height": 1200
       }
     ],
-    "full": "06-ali-abi-ve-zoyo-1600.webp"
+    "full": "06-ali-abi-ve-zoyo-1600.webp",
+    "priority": 100,
+    "source_sha256": "9a68ad32fd57dd6a142a26dac3195e6544653908f0bce042b533da4a4424cc18",
+    "source_pixel_sha256": "8db0af1422426fa20aadb49defdd96e6067ca4d33eaca29af21b634e5ce00c10"
   },
   {
     "id": "07",
     "source": "21ddf0cb-b86d-46b7-b39e-cf03607f8dfb.jpg",
     "file": "07-acik-havada-cocuklarla",
     "page": "index.html",
-    "section": "Belediyeler için gösteri kartı",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
     "title": "Açık havada birlikte",
     "category": "Okullar",
     "alt": "Ali Cengiz açık hava etkinliğinde çocuklarla kukla gösterisinde buluşuyor",
@@ -310,7 +328,10 @@
         "height": 1070
       }
     ],
-    "full": "07-acik-havada-cocuklarla-1170.webp"
+    "full": "07-acik-havada-cocuklarla-1170.webp",
+    "priority": 100,
+    "source_sha256": "2c9dade264aaf0b29fb8a7186c10e2b6fa8f006ffb79176c302da7e84ab1f6ca",
+    "source_pixel_sha256": "4706c4c251ec04e11ed6ab1d371ab9c744a319d55014d375d2e6d0ae833f0747"
   },
   {
     "id": "08",
@@ -354,7 +375,10 @@
         "height": 1440
       }
     ],
-    "full": "08-zoyoya-ses-veren-ali-abi-1440.webp"
+    "full": "08-zoyoya-ses-veren-ali-abi-1440.webp",
+    "priority": 100,
+    "source_sha256": "954b6461eeca22197061eb79c47bcf71d3b8a00baf541f1e4c0abb65402f2afc",
+    "source_pixel_sha256": "10d864bd76177e9b5105ea86dc9fa1d4b270f17bc47461859d9caf7c5453f8be"
   },
   {
     "id": "09",
@@ -403,14 +427,17 @@
         "height": 1050
       }
     ],
-    "full": "09-sinifta-kukla-gosterisi-1170.webp"
+    "full": "09-sinifta-kukla-gosterisi-1170.webp",
+    "priority": 100,
+    "source_sha256": "15bcbd25d811fa6495c26b38cfefbf01b8860885925d010a68d066d0edd5fd4c",
+    "source_pixel_sha256": "8598dfe032b8923a42ffe12ce8e175754cbbc975db9bdcd32971bd5394cda794"
   },
   {
     "id": "10",
     "source": "4e1763ed-34f1-4ec5-804b-72890304723b.jpg",
     "file": "10-sahneden-cocuklara",
     "page": "index.html",
-    "section": "23 Nisan ve özel günler kartı",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
     "title": "Sahneden çocuklara",
     "category": "Sahne",
     "alt": "Ali Cengiz okul sahnesinde elleriyle gösteriyi anlatırken çocuklar onu izliyor",
@@ -452,7 +479,10 @@
         "height": 980
       }
     ],
-    "full": "10-sahneden-cocuklara-1200.webp"
+    "full": "10-sahneden-cocuklara-1200.webp",
+    "priority": 100,
+    "source_sha256": "802ebed69f6f84fc71cba0765293034d2248a319beb4d20abc2750a892933422",
+    "source_pixel_sha256": "a61c118412789a9df8ec2bc0be95687264310cbdc37e2c7f5ff396050f7a75db"
   },
   {
     "id": "11",
@@ -501,14 +531,17 @@
         "height": 1080
       }
     ],
-    "full": "11-cocuklarla-acik-hava-gosterisi-1170.webp"
+    "full": "11-cocuklarla-acik-hava-gosterisi-1170.webp",
+    "priority": 100,
+    "source_sha256": "224f7809121d1b06f4de9b36ba0a9c9548145d93dfdfa9ad7098529c9966655b",
+    "source_pixel_sha256": "499775e0211d76c15debae2f822b4834b37add88d39b0a68714bae24b4a1b5a0"
   },
   {
     "id": "12",
     "source": "83c20193-e941-46a6-bbc0-d5f77efff294.jpg",
     "file": "12-zoyo-ve-minik-izleyiciler",
     "page": "index.html",
-    "section": "Ali Abi ve Zoyo tanıtımı",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
     "title": "Zoyo ve minik izleyiciler",
     "category": "Buluşmalar",
     "alt": "Ali Cengiz ve Zoyo sınıfta çocuklarla birlikte bir hatıra karesinde",
@@ -545,7 +578,10 @@
         "height": 1170
       }
     ],
-    "full": "12-zoyo-ve-minik-izleyiciler-1170.webp"
+    "full": "12-zoyo-ve-minik-izleyiciler-1170.webp",
+    "priority": 100,
+    "source_sha256": "ed75fab79f3832d6b57d5f4aaf822db4e8b6eaf5131e12599e401eb3b5dc36df",
+    "source_pixel_sha256": "0ded0e895f103014a9392868fe8860e54eaa3b8991df8c0abb2a0e87704652a1"
   },
   {
     "id": "13",
@@ -594,7 +630,10 @@
         "height": 1100
       }
     ],
-    "full": "13-salonda-birlikte-1375.webp"
+    "full": "13-salonda-birlikte-1375.webp",
+    "priority": 100,
+    "source_sha256": "be4d0d54f308507cfd475709c962514df0d3bf9246226833b4abb938ccbffa55",
+    "source_pixel_sha256": "0d1c8d75846560ffc53d88e49d11c46983a8d3bf45a03d66d96b1d21173d1964"
   },
   {
     "id": "14",
@@ -638,7 +677,10 @@
         "height": 1440
       }
     ],
-    "full": "14-zoyo-sahnede-1440.webp"
+    "full": "14-zoyo-sahnede-1440.webp",
+    "priority": 100,
+    "source_sha256": "c80f836487830207cf708d9aca6c0c02a6e6b992ebed52c76d20ea2dfd88b094",
+    "source_pixel_sha256": "7b5c120c08a080f7c69de507e663a2cdf0a38f78c011a644019bd64f295aba78"
   },
   {
     "id": "15",
@@ -687,7 +729,10 @@
         "height": 1300
       }
     ],
-    "full": "15-salonda-kukla-nesesi-1440.webp"
+    "full": "15-salonda-kukla-nesesi-1440.webp",
+    "priority": 100,
+    "source_sha256": "d824f6c50a1c3e991e7b1754110b3fa1b91f80d29e11cc4af15103ffa0cfb75d",
+    "source_pixel_sha256": "b4b29084a22a9414c6ab9794b60a1707fac583d4946567e8c849ae540e9acda5"
   },
   {
     "id": "16",
@@ -736,7 +781,10 @@
         "height": 1510
       }
     ],
-    "full": "16-sahne-hazirligi-1500.webp"
+    "full": "16-sahne-hazirligi-1500.webp",
+    "priority": 100,
+    "source_sha256": "f0213f4f95f3e3c062758cae87d48bbafb1f8669fefd96901ba849931ba6de7e",
+    "source_pixel_sha256": "3d9eb5b42304156e6f1a636a8cc8d3dce6b386c9e895b322e314cb8730e2b46a"
   },
   {
     "id": "17",
@@ -785,7 +833,10 @@
         "height": 1300
       }
     ],
-    "full": "17-cocuklarla-yuz-yuze-1440.webp"
+    "full": "17-cocuklarla-yuz-yuze-1440.webp",
+    "priority": 100,
+    "source_sha256": "6111d27040903ffc2d04f4a2d6a34ff6e39f49921b7138a7e65b824314e4bde0",
+    "source_pixel_sha256": "217709a57a5cbe36b9c63e4d7bd79640d75f1b9d78f80b3e2cb1243ca9e4372e"
   },
   {
     "id": "18",
@@ -829,6 +880,376 @@
         "height": 1125
       }
     ],
-    "full": "18-ali-abi-zoyo-sinifta-1501.webp"
+    "full": "18-ali-abi-zoyo-sinifta-1501.webp",
+    "priority": 100,
+    "source_sha256": "cc6956f925bdb78e0b3112d8137120b664e310f03050ca3e8aca1095a56ae1fc",
+    "source_pixel_sha256": "69ef34468d81e7521f5494e4dad8c89f14ec224bf83b20c9595af6fd619b8641"
+  },
+  {
+    "id": "19",
+    "source": "209a8cda-adbf-4751-b87c-6a95963f312e.jpg",
+    "file": "19-okul-sahnesinde-zoyo",
+    "page": "index.html",
+    "section": "Okullar için gösteri kartı",
+    "title": "Okul sahnesinde Zoyo",
+    "category": "Sahne",
+    "alt": "Ali Cengiz ve turuncu Zoyo kuklası, okul sahnesinde kürsünün yanında gösteri yapıyor",
+    "priority": 0,
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1,
+        1,
+        1.01
+      ],
+      "brightness": 1.01,
+      "contrast": 1.015,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "70465cc0cf11eceb182e14a2aead20a3d01b2b9b850562ad5f456897aa7cf754",
+    "source_pixel_sha256": "454fc84a3b13579e382553b3a90bc4801a93e72ddfdda29741a3228827c25785",
+    "source_width": 1170,
+    "source_height": 1170,
+    "width": 1170,
+    "height": 1170,
+    "renditions": [
+      {
+        "file": "19-okul-sahnesinde-zoyo-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "19-okul-sahnesinde-zoyo-960.webp",
+        "width": 960,
+        "height": 960
+      },
+      {
+        "file": "19-okul-sahnesinde-zoyo-1170.webp",
+        "width": 1170,
+        "height": 1170
+      }
+    ],
+    "full": "19-okul-sahnesinde-zoyo-1170.webp"
+  },
+  {
+    "id": "20",
+    "source": "eaf61406-02a4-4522-9d8e-5dd7372e6c04.jpg",
+    "file": "20-kutuphane-onunde-birlikte",
+    "page": "index.html",
+    "section": "Belediyeler için gösteri kartı",
+    "title": "Kütüphane önünde birlikte",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz ve Zoyo, kütüphane binasının önünde çocuklar ve yetişkinlerle birlikte",
+    "priority": 0,
+    "adjustments": {
+      "crop": [
+        0,
+        270,
+        1440,
+        1330
+      ],
+      "white_balance": [
+        1.005,
+        1,
+        0.995
+      ],
+      "brightness": 1.025,
+      "contrast": 1.02,
+      "color": 1.01,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "7a983f8d0eece4c3e814ac86a06cac23ab0e71748e871085682bc5017d33b020",
+    "source_pixel_sha256": "b89ac71b42bce9f73e3d67f5a8b8b15115f4a06d5ee6a87e4795288a78706c2b",
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1060,
+    "renditions": [
+      {
+        "file": "20-kutuphane-onunde-birlikte-480.webp",
+        "width": 480,
+        "height": 353
+      },
+      {
+        "file": "20-kutuphane-onunde-birlikte-960.webp",
+        "width": 960,
+        "height": 707
+      },
+      {
+        "file": "20-kutuphane-onunde-birlikte-1440.webp",
+        "width": 1440,
+        "height": 1060
+      }
+    ],
+    "full": "20-kutuphane-onunde-birlikte-1440.webp"
+  },
+  {
+    "id": "21",
+    "source": "2f80de7c-4258-4767-8c64-1f99ced9c979.jpg",
+    "file": "21-salonda-sahne-bulusmasi",
+    "page": "index.html",
+    "section": "23 Nisan ve özel günler kartı",
+    "title": "Salonda sahne buluşması",
+    "category": "Sahne",
+    "alt": "Ali Cengiz, kırmızı koltuklu salonda çocuklara sahneden sesleniyor",
+    "priority": 0,
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.997,
+        1,
+        1.008
+      ],
+      "brightness": 1.005,
+      "contrast": 1.015,
+      "color": 0.985,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "2ec9697cfff923b3a03b80c809e52e25210859e6a362d7112b18eb134c513451",
+    "source_pixel_sha256": "2558ef41711467cc8e7d170dfa23e8fd0c53bdc8b03486890afe0d71e4a7cf5d",
+    "source_width": 1170,
+    "source_height": 878,
+    "width": 1170,
+    "height": 878,
+    "renditions": [
+      {
+        "file": "21-salonda-sahne-bulusmasi-480.webp",
+        "width": 480,
+        "height": 360
+      },
+      {
+        "file": "21-salonda-sahne-bulusmasi-960.webp",
+        "width": 960,
+        "height": 720
+      },
+      {
+        "file": "21-salonda-sahne-bulusmasi-1170.webp",
+        "width": 1170,
+        "height": 878
+      }
+    ],
+    "full": "21-salonda-sahne-bulusmasi-1170.webp"
+  },
+  {
+    "id": "22",
+    "source": "6ae49ce5-7316-4af3-b5b6-eb40cfe05791.jpg",
+    "file": "22-ali-abi-zoyo-acik-havada",
+    "page": "index.html",
+    "section": "Ali Abi ve Zoyo tanıtımı",
+    "title": "Ali Abi ve Zoyo açık havada",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz ve turuncu Zoyo kuklası, kırmızı TRT aracının önünde birlikte",
+    "priority": 0,
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        1,
+        1,
+        0.99
+      ],
+      "brightness": 1,
+      "contrast": 1.02,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "a68d6c78909d663097e0192f496e3040a84ad8539d048ef9474231b50d612f5b",
+    "source_pixel_sha256": "80e7f205ca8171e5e4ba5b6a9dd29889d4e8ca1d634e82fdfedc4a1d6be253b9",
+    "source_width": 1440,
+    "source_height": 1920,
+    "width": 1200,
+    "height": 1600,
+    "renditions": [
+      {
+        "file": "22-ali-abi-zoyo-acik-havada-480.webp",
+        "width": 480,
+        "height": 640
+      },
+      {
+        "file": "22-ali-abi-zoyo-acik-havada-960.webp",
+        "width": 960,
+        "height": 1280
+      },
+      {
+        "file": "22-ali-abi-zoyo-acik-havada-1200.webp",
+        "width": 1200,
+        "height": 1600
+      }
+    ],
+    "full": "22-ali-abi-zoyo-acik-havada-1200.webp"
+  },
+  {
+    "id": "23",
+    "source": "a7becf3b-bd38-4544-a4f5-23addb3675fe.jpg",
+    "file": "23-renkli-sahnede-zoyo",
+    "page": "index.html",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
+    "title": "Renkli sahnede Zoyo",
+    "category": "Sahne",
+    "alt": "Ali Cengiz ve Zoyo, çiçek ve yıldızlarla süslü renkli okul sahnesinde",
+    "priority": 0,
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.995,
+        1,
+        1.012
+      ],
+      "brightness": 1.005,
+      "contrast": 1.015,
+      "color": 0.99,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "b4b1dfa134b9eea8e92371bab966d92212c2e992857c1feb95e652b91d6a8150",
+    "source_pixel_sha256": "5a1267765dd85224ce4f3517f12a891518f67c09e09614ab45f03e138fce632a",
+    "source_width": 1440,
+    "source_height": 1440,
+    "width": 1440,
+    "height": 1440,
+    "renditions": [
+      {
+        "file": "23-renkli-sahnede-zoyo-480.webp",
+        "width": 480,
+        "height": 480
+      },
+      {
+        "file": "23-renkli-sahnede-zoyo-960.webp",
+        "width": 960,
+        "height": 960
+      },
+      {
+        "file": "23-renkli-sahnede-zoyo-1440.webp",
+        "width": 1440,
+        "height": 1440
+      }
+    ],
+    "full": "23-renkli-sahnede-zoyo-1440.webp"
+  },
+  {
+    "id": "24",
+    "source": "c95b4216-b8c9-48e9-8e2e-7921fd574614.jpg",
+    "file": "24-acik-havada-cocuklarla-bulusma",
+    "page": "index.html",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
+    "title": "Açık havada çocuklarla buluşma",
+    "category": "Buluşmalar",
+    "alt": "Ali Cengiz ve Zoyo, gezici sinema aracının önünde çocuklar ve yetişkinlerle bir arada",
+    "priority": 0,
+    "adjustments": {
+      "crop": [
+        0,
+        180,
+        1440,
+        1540
+      ],
+      "white_balance": [
+        1,
+        1,
+        1
+      ],
+      "brightness": 1.045,
+      "contrast": 1.005,
+      "color": 1,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "8cae3cb020ea8ea8cd00798d8d915d23ac541b0625ceefe8c8fdc81602be68ff",
+    "source_pixel_sha256": "9dce42b1385b640f04977cf4ad9b177d3f8d10e2f2c23dc1c9dd570ee35406d6",
+    "source_width": 1440,
+    "source_height": 1919,
+    "width": 1440,
+    "height": 1360,
+    "renditions": [
+      {
+        "file": "24-acik-havada-cocuklarla-bulusma-480.webp",
+        "width": 480,
+        "height": 453
+      },
+      {
+        "file": "24-acik-havada-cocuklarla-bulusma-960.webp",
+        "width": 960,
+        "height": 907
+      },
+      {
+        "file": "24-acik-havada-cocuklarla-bulusma-1440.webp",
+        "width": 1440,
+        "height": 1360
+      }
+    ],
+    "full": "24-acik-havada-cocuklarla-bulusma-1440.webp"
+  },
+  {
+    "id": "25",
+    "source": "5c05f5cf-d51e-49ba-8046-62c49b563be2.jpg",
+    "file": "25-cocuklarla-salon-gosterisi",
+    "page": "index.html",
+    "section": "Ana sayfa / Sahneden gerçek anlar galerisi",
+    "title": "Çocuklarla salon gösterisi",
+    "category": "Okullar",
+    "alt": "Ali Cengiz, basamaklı okul salonunda oturan çocuklara kuklasıyla gösteri yapıyor",
+    "priority": 0,
+    "adjustments": {
+      "crop": null,
+      "white_balance": [
+        0.995,
+        1,
+        1.008
+      ],
+      "brightness": 1,
+      "contrast": 1.015,
+      "color": 0.985,
+      "rotation": 0
+    },
+    "quality": {
+      "full": 90,
+      "responsive": 86
+    },
+    "source_sha256": "a50a34042203acbb9438b3c1051a99e0700e85b0be0c70d7bf2b6ca085d22d12",
+    "source_pixel_sha256": "5eb57f5f59b7aebf47803388972f81217fba636ef12efbc838561c7f965955f7",
+    "source_width": 1170,
+    "source_height": 1164,
+    "width": 1170,
+    "height": 1164,
+    "renditions": [
+      {
+        "file": "25-cocuklarla-salon-gosterisi-480.webp",
+        "width": 480,
+        "height": 478
+      },
+      {
+        "file": "25-cocuklarla-salon-gosterisi-960.webp",
+        "width": 960,
+        "height": 955
+      },
+      {
+        "file": "25-cocuklarla-salon-gosterisi-1170.webp",
+        "width": 1170,
+        "height": 1164
+      }
+    ],
+    "full": "25-cocuklarla-salon-gosterisi-1170.webp"
   }
 ]

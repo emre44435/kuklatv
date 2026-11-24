@@ -85,3 +85,7 @@
   .home-photo-gallery .photo-card figcaption { min-height:90px; padding:16px 18px; }
   .home-photo-gallery .photo-card figcaption strong { font-size:16px; }
 }
+
+/* A clear, touch-friendly photo viewer. */
+.photo-dialog-bottom { justify-content:center; }
+.photo-dialog .icon-button { width:44px; height:44px; }

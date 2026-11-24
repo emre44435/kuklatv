@@ -1,0 +1,23 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) prefix(sg);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(sg) source(none);
+@import "../components/ui/image-auto-slider.css";
+@source "../components";
+@source "../frontend";
+
+@theme inline {
+  --color-background:var(--background);
+  --color-foreground:var(--foreground);
+  --color-primary:var(--primary);
+  --color-primary-foreground:var(--primary-foreground);
+  --color-card:var(--card);
+  --color-card-foreground:var(--card-foreground);
+  --color-border:var(--border);
+  --color-ring:var(--ring);
+}
+.auto-image-slider {
+  --background:#3d2f54; --foreground:#fff5e5;
+  --primary:#e7d17e; --primary-foreground:#352843;
+  --card:#fffdf7; --card-foreground:#173e43;
+  --border:#736180; --ring:#e7d17e; --radius:.875rem;
+}

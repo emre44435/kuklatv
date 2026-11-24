@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Validate generated pages, responsive assets, destinations and photo ownership."""
+"""Validate site pages, responsive assets, destinations and photo ownership."""
 import json
+import hashlib
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -15,6 +16,7 @@ config=json.loads((ROOT/'content/site.json').read_text())
 IG='https://www.instagram.com/kuklamuklatv/'
 photos=json.loads((ROOT/'content/photos.json').read_text())
 by_id={p['id']:p for p in photos}
+expected_photo_count=int(config.get('photo_count',len(photos)))
 uses=Counter()
 
 class Page(HTMLParser):
@@ -64,6 +66,7 @@ for file in files:
     if not desc or desc in descriptions:errors.append(name+': empty or duplicate description')
     descriptions.add(desc)
     if not any(t=='html' and a.get('lang')=='tr' for t,a in doc.tags):errors.append(name+': language missing')
+    if any(t=='a' and ('download' in a or a.get('id')=='photo-download') for t,a in doc.tags):errors.append(name+': unexpected download control')
     for tag,a in doc.tags:
         if tag in ('form','textarea','select','iframe','video'):errors.append(name+': unexpected interactive content: '+tag)
         if tag=='input' and not (name=='hizmet-bolgeleri.html' and a.get('type')=='search'):errors.append(name+': unexpected input')
@@ -104,10 +107,18 @@ for name in ('index.html','hizmet-bolgeleri.html'):
     if not any(t=='img' and 'data-stage-image' in a and a.get('srcset') for t,a in doc.tags):errors.append(name+': responsive theatre image missing')
     if any({'tour-route','tour-pin'} & set(a.get('class','').split()) for t,a in doc.tags):errors.append(name+': obsolete route decoration')
 
-if any(p['page']!='index.html' for p in photos):errors.append('All 18 real photographs must be on the home page')
-if sum(t=='img' and 'real-photo' in a.get('class','').split() for t,a in docs['index.html'].tags)!=18:errors.append('Home page must display all 18 real photographs exactly once')
+slider_rows=[a.get('data-direction') for t,a in docs['index.html'].tags if t=='div' and 'auto-slider-row' in a.get('class','').split()]
+if slider_rows!=['left','right']:errors.append('Expected two opposing photo rows')
+if not (ROOT/'components/ui/image-auto-slider.tsx').is_file():errors.append('React slider source missing')
+if not (ROOT/'styles/globals.css').is_file():errors.append('Tailwind stylesheet source missing')
 
-if len(photos)!=18 or len(by_id)!=18 or len({p['source'] for p in photos})!=18:errors.append('Expected exactly 18 distinct photographic sources')
+if any(p['page']!='index.html' for p in photos):errors.append('All real photographs must be on the home page')
+if sum(t=='img' and 'real-photo' in a.get('class','').split() for t,a in docs['index.html'].tags)!=expected_photo_count:errors.append('Home page must display every real photograph exactly once')
+
+if len(photos)!=expected_photo_count or len(by_id)!=expected_photo_count or len({p['source'] for p in photos})!=expected_photo_count:errors.append('Photographic source count mismatch')
+if len({p.get('source_pixel_sha256') for p in photos})!=expected_photo_count:errors.append('Duplicate decoded photographic sources')
+full_hashes=[hashlib.sha256((ROOT/'assets/img/photos'/p['full']).read_bytes()).hexdigest() for p in photos]
+if len(set(full_hashes))!=expected_photo_count:errors.append('Duplicate full-size photographs')
 if set(uses)!=set(by_id) or any(n!=1 for n in uses.values()):errors.append('Every photograph must appear in exactly one content position')
 expected_files=set()
 for p in photos:
@@ -133,4 +144,4 @@ if locs and (len(locs)!=len(files)-1 or len(locs)!=len(set(locs)) or any(not x.s
 if errors:
     print('\n'.join(errors),file=sys.stderr)
     raise SystemExit(1)
-print(f'PASS · {len(files)} pages · 18 unique photo placements · {len(actual_files)} responsive WebP files · 81 provinces · external Instagram and YouTube destinations')
+print(f'PASS · {len(files)} pages · {expected_photo_count} unique photo placements · {len(actual_files)} responsive WebP files · 81 provinces · external Instagram and YouTube destinations')

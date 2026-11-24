@@ -1,62 +1,36 @@
 # Tamamlanan kontroller
 
-Bu rapor teslim edilen sürüm üzerinde çalıştırılan kontrolleri belirtir.
+Bu rapor çift yönlü React galerisi bulunan 25 fotoğraflı teslim sürümünü belirtir.
 
-## Sayfa ve ekran matrisi
+## Sayfa ve fotoğraf kontrolü
 
-Yerel Chromium tarayıcısında 15 sayfa, aşağıdaki yedi görünüm genişliğinin her birinde denetlendi. Toplam **105 kontrol, 0 hata**.
+15 sayfa; 320, 360, 390, 430, 768, 1024 ve 1440 px genişliklerde Chromium tarayıcısında denetlendi. **105 kontrol, 0 hata.** Yatay sayfa taşması, kesilen başlıklar, mobil menü, Instagram hedefleri ve sabit bağlantının dokunma boyutu kontrol edildi. Galerinin kendi içindeki yatay fotoğraf akışı sayfa taşmasından ayrı denetlendi.
 
-| Genişlik | Denetlenen sayfa | Sonuç |
-| --- | --- | --- |
-| 320 px | 15 | Başarılı |
-| 360 px | 15 | Başarılı |
-| 390 px | 15 | Başarılı |
-| 430 px | 15 | Başarılı |
-| 768 px | 15 | Başarılı |
-| 1024 px | 15 | Başarılı |
-| 1440 px | 15 | Başarılı |
+25 fotoğraf yedi genişlikte açıldı: **175 büyük görünüm kontrolü, 0 hata.** Doğal oranlı gösterim ve indirme bağlantısının bulunmaması doğrulandı. Galeri filtrelerinin üst bölümlerdeki dört fotoğrafı gizlemediği de denetlendi.
 
-Matris; yatay sayfa taşması, içeriklerin görünüm dışına çıkması, kesilen başlıklar, mobil menü açılıp kapanması, menü üzerindeki sabit kontroller, elle animasyon kontrolü bulunmaması, fotoğrafın doğal oranlı görünümü, gerçek fotoğraflarda hareket uygulanmaması, Instagram hedefleri ve sabit Instagram düğmesinin en az 44 × 44 px olması için çalıştırıldı.
+## İki sıralı galeri kontrolü
 
-Fotoğraf penceresi bu sürümün matrisinde toplam 126 kez açıldı. Her açılışta görsel boyutları ve doğal oranlı gösterim doğrulandı. Mobil ve masaüstü sahne düzeni tarayıcıda ayrıca görsel olarak incelendi. 390 px mobil görünümde menünün açılıp kapanması, Sahne filtresi, gerçek fotoğrafın açılması, sonraki kareye geçilmesi ve Escape ile kapatılması gerçek tıklamalarla ayrıca doğrulandı.
+**11 kontrol, 0 hata:** yedi ekran genişliği, iki hızlandırılmış döngü ve JavaScript kapalı iki görünüm.
 
-## Otomatik sahne kontrolü
+- Üst sıranın sola, alt sıranın sağa hareket ettiği ölçüldü.
+- İki sıranın sol kenarları, genişlikleri ve aralarındaki boşluk denetlendi.
+- Hızlandırılmış 390 px denemesinde sıralar 10 ve 12; 1440 px denemesinde 8 ve 9 döngü tamamladı.
+- Döngüler sonunda ana sayfada 25 fotoğraf ve 25 farklı fotoğraf kimliği kaldı. Görsel kopyası oluşturulmadı.
+- Fareyle bekletme, büyük fotoğraf penceresi açılınca akışın durması, filtreleme ve büyütme sınandı.
+- JavaScript kapalı 390 ve 1440 px görünümlerinde fotoğraflar yatay kaydırmayla erişilebilir kaldı.
 
-Ana sayfanın ilk bölümündeki banner ve 81 il sayfasındaki sahne, yedi ekran genişliğinin her birinde sınandı: **14 kontrol, 0 hata**. Bu kontrollerde perde görsel ekrana geldikten sonra açıldı, son konumu doğrulandı ve sayfa yeniden kaydırıldığında açılış tekrarlanmadı. Metin, başlık ve ana bağlantının sol hizaları; sahnenin ve alt bilgi satırının genişlikleri; mobil bağlantının tam genişliği ölçüldü. Karakter çiziminde hareket, sahnede aç/kapa düğmesi, çizgili çember veya konum işareti bulunmadığı denetlendi.
+Animasyon ölçümleri, tarayıcının animasyon başlangıcına hazır olduğunu bildirmesinden sonra alındı. Azaltılmış hareket için CSS ve JavaScript davranışı kaynakta denetlendi; ayrı bir işletim sistemi ayarı testi yapılmadı.
 
-JavaScript kapalı görünüm 320, 390 ve 1440 px genişliklerde ayrıca sınandı: **3 kontrol, 0 hata**. Perde varsayılan olarak açık kaldı ve çizim görünür oldu. Toplam **17 yeni sahne kontrolü başarılı**.
+Doğrudan fotoğraf bağlantıları 390 ve 1440 px genişlikte iki sıradan örneklerle sınandı: **4 kontrol, 0 hata.** Hedef fotoğrafın sıra içinde görünmesi ve doğru büyütme penceresinin açılması doğrulandı.
 
-### Görünür animasyon ölçümü
+## Dosyalar ve derleme
 
-Perdenin yalnızca sınıf değiştirmediği, ekranda gerçekten hareket ettiği ölçüldü. 390 px ve 1440 px genişliklerde ilk perde ölçeği `1`, ara ölçüm yaklaşık `0,43`, bitiş ölçeği `0,11` oldu. Spot ışığının dönüş matrisi aynı aralıkta değişti; ışık hareketi de doğrulandı. Perde yaklaşık 2,3 saniyede açılır; ışıklar 8 ve 10 saniyelik otomatik döngülerde devam eder. Sahne ilk açılış bannerındadır; görmek için aşağı kaydırmak gerekmez.
+`npm run build:slider`, `npm run typecheck`, `python3 scripts/check.py` ve JavaScript sözdizimi kontrolleri başarılı. React bileşeni, TypeScript kaynakları, Tailwind giriş dosyası, shadcn yapılandırması, kilit dosyası ve hazır tarayıcı çıktıları teslim paketindedir.
 
-### Fotoğraflar ve filtreler
+Galeri React ile önceden HTML olarak üretilir; tarayıcıda aynı HTML’e bağlanır. Hazır tarayıcı kodu yalnızca ana sayfada yüklenir. Tema sıfırlaması eklenmez; Tailwind sınıfları kendi önekini kullanır. GitHub iş akışına galeri derlemesi eklenmiştir.
 
-Bu sürümde 18 gerçek fotoğrafın tümü ana sayfadadır: üç gösteri kartında 3, tanıtım bölümünde 1, galeride 14 kare. Yedi genişlikte 18’er fotoğraf açılarak toplam 126 büyük görünüm kontrol edildi. Galeri filtresinin diğer dört ana sayfa fotoğrafını gizlemediği de denetlendi. Fotoğraf dizini ve diğer sayfalardaki bağlantılar tekil ana sayfa konumlarına gider; bütün bu bölüm bağlantıları kaynak kontrolünden geçti.
+73 WebP sürümü 25 ayrı kaynaktan gelir. Kaynak ve kaynak piksel özetleriyle tekrar kontrolü yapılır. Önceki fotoğraf dosyaları, ana banner ve çizgi film dekoru korunmuştur. Yeni kareler kaynak çözünürlüğü üzerine büyütülmemiştir.
 
-Azaltılmış hareket için hem CSS kuralı hem JavaScript başlangıç ve tercih değişikliği davranışı kaynakta denetlendi. Bu özel işletim sistemi ayarı için ayrı bir cihaz testi yapılmadı.
+## Kapsam
 
-Kaynak ZIP ile dosya karşılaştırmasında 52 WebP fotoğraf dosyasının ve GitHub yayın iş akışının değişmediği doğrulandı. Önceki fotoğraf düzenlemeleri aynen korunmuştur.
-
-## Kaynak ve dosya doğrulaması
-
-`python3 scripts/check.py` başarılı:
-
-- 15 HTML sayfası, her sayfada tek ana başlık ve farklı sayfa açıklamaları.
-- 18 ayrı kaynak fotoğraf; tamamı ana sayfada ve her biri yalnızca bir içerik konumunda.
-- 52 WebP ekran sürümü; kaynak boyutunun üzerine büyütme yok.
-- Yerel sayfa bağlantıları, bölüm bağlantıları, görseller, srcset hedefleri ve stil dosyalarındaki varlıklar mevcut.
-- Instagram bağlantılarının tamamı belirtilen hesaba, güvenli yeni sekmede yönleniyor.
-- Altı özgün video kapağı ilgili dış platform bağlantılarıyla korunuyor.
-- 81 benzersiz il mevcut.
-- Sayfa meta verileri ve yapılandırılmış veriler geçerli.
-
-`node --check assets/js/main.js` başarılı. Normal açılışta yerel site kaynaklı JavaScript hatası gözlenmedi. JavaScript kapalı kontrolü, yürütmeyi özellikle engelleyen bir test çerçevesiyle yapıldı.
-
-Gerçek bir dış alan adı eklenmeden, yerel HTTPS adresi ve alt dizinli adres yapısı ile sayfa üretimi ayrıca sınandı. Bu üretimde canonical bağlantıları ve 14 sayfalık sitemap doğrulandı. Teslim dosyaları daha sonra göreli yerel adreslerle yeniden üretildi. GitHub yayını mevcut iş akışındaki gerçek yayın adresini kullanır.
-
-Bütün sayfalar, kaynak içerikler, JavaScript, stiller ve teslim belgeleri içerik açısından tarandı. İletişim çağrıları Instagram hesabı çevresinde birleştirildi. Artık kullanılmayan eski görsel arşivleri teslim dosyalarına eklenmedi.
-
-## Doğrulamanın sınırı
-
-Bu rapor yerel tarayıcı ve kaynak kontrollerini kapsar. Dış sosyal platformların oturum veya erişilebilirlik durumu test edilmedi; bağlantıların hedefleri doğrulandı. Canlı GitHub yayınına dosya gönderimi yapılmadı.
+Kontroller yerel tarayıcı ve kaynakları kapsar. Dış sosyal platformlardaki oturum durumu sınanmadı. Canlı GitHub yayınına dosya gönderilmedi.

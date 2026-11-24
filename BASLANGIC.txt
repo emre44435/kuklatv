@@ -1,14 +1,16 @@
-kuklamukla TV · Mobil öncelikli son düzenleme
+kuklamukla TV · Çift yönlü otomatik galeri
 
 1. Bu ZIP'in tamamını yeni bir klasöre çıkarın.
 2. Klasördeki index.html dosyasını tarayıcıda açın.
 3. Mor sahne artık ana sayfanın açılış bannerıdır.
    Perde sahne görünür olduğunda yaklaşık 2,3 saniyede otomatik açılır.
    Işıklar hareket etmeyi sürdürür. Aç/kapa düğmesi yoktur.
-4. Ana sayfada 18 gerçek fotoğrafın tamamı birer kez yer alır.
+4. Ana sayfada 25 gerçek fotoğrafın tamamı birer kez yer alır.
    Fotoğraflara dokunarak büyük ve tam oranlı görünümünü açabilirsiniz.
-5. Cihazın azaltılmış hareket tercihi açıksa perde doğrudan açık gösterilir.
-6. GitHub yayını ve içerik güncelleme bilgileri README.md içindedir.
+5. Galerinin üst sırası sola, alt sırası sağa otomatik akar.
+   Fotoğraflar tekil kalır; büyütme sırasında akış bekler.
+6. Cihazın azaltılmış hareket tercihi açıksa perde doğrudan açık gösterilir.
+7. GitHub yayını ve içerik güncelleme bilgileri README.md içindedir.
 
 Görseller, yazı tipleri, stiller ve animasyon kodu arşivdedir.
 Klasör yapısını koruyun.

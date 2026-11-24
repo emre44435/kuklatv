@@ -57,5 +57,12 @@
       "url": "https://www.instagram.com/kuklamuklatv/",
       "cover": "instagram-02.webp"
     }
-  ]
+  ],
+  "photo_count": 25,
+  "homepage_photos": {
+    "school": "19",
+    "city": "20",
+    "special": "21",
+    "feature": "22"
+  }
 }

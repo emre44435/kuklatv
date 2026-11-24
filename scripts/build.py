@@ -31,6 +31,7 @@ if site_url:
 IG = config['instagram']
 IG_DESCRIPTION = 'Ayrıntılı bilgi için Instagram hesabımızdan bize mesaj atın.'
 photo_by_id = {p['id']:p for p in photos}
+expected_photo_count = int(config.get('photo_count', len(photos)))
 photo_uses = {}
 rendered = []
 
@@ -126,7 +127,7 @@ def photo_media(photo_id, page, sizes='(max-width:600px) calc(100vw - 40px), (ma
     variants = p['renditions']
     default = next((r for r in variants if r['width']>=min(960,p['width'])),variants[-1])
     srcset = ', '.join(f'{link(prefix+r["file"])} {r["width"]}w' for r in variants)
-    return f'''<a class="photo-launch" href="{link(prefix+p['full'])}" data-photo="{p['id']}" data-title="{esc(p['title'])}" data-alt="{esc(p['alt'])}" data-width="{p['width']}" data-height="{p['height']}" aria-label="{esc(p['title'])} fotoğrafını büyüt">
+    return f'''<a class="photo-launch" href="{link(prefix+p['full'])}" data-photo="{p['id']}" data-photo-order="{list(config['homepage_photos'].values()).index(photo_id)}" data-title="{esc(p['title'])}" data-alt="{esc(p['alt'])}" data-width="{p['width']}" data-height="{p['height']}" aria-label="{esc(p['title'])} fotoğrafını büyüt">
     <img class="real-photo" src="{link(prefix+default['file'])}" srcset="{srcset}" sizes="{esc(sizes)}" alt="{esc(p['alt'])}" width="{p['width']}" height="{p['height']}" loading="lazy" decoding="async"><span class="photo-zoom">{icon('Search')}<span>Büyüt</span></span></a>'''
 
 
@@ -136,7 +137,7 @@ def photo_figure(photo_id, page, cls='', sizes='(max-width:600px) calc(100vw - 4
 
 
 def photo_dialog():
-    return f'''<dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-title"><div class="photo-dialog-inner"><div class="photo-dialog-top"><h2 id="photo-title">Gösterilerden bir kare</h2><button class="icon-button" data-close-photo type="button" aria-label="Fotoğrafı kapat">{icon('X')}</button></div><div class="photo-viewer-media"><img id="photo-full" alt="" width="1600" height="1200"></div><div class="photo-dialog-bottom"><div class="photo-navigation"><button class="icon-button" data-prev-photo type="button" aria-label="Önceki fotoğraf">{icon('ChevronLeft')}</button><span id="photo-position" aria-live="polite"></span><button class="icon-button" data-next-photo type="button" aria-label="Sonraki fotoğraf">{icon('ChevronRight')}</button></div><a id="photo-download" href="{link('index.html#fotograflar')}" download>WebP indir</a></div></div></dialog>'''
+    return f'''<dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-title"><div class="photo-dialog-inner"><div class="photo-dialog-top"><h2 id="photo-title">Gösterilerden bir kare</h2><button class="icon-button" data-close-photo type="button" aria-label="Fotoğrafı kapat">{icon('X')}</button></div><div class="photo-viewer-media"><img id="photo-full" alt="" width="1600" height="1200"></div><div class="photo-dialog-bottom"><div class="photo-navigation"><button class="icon-button" data-prev-photo type="button" aria-label="Önceki fotoğraf">{icon('ChevronLeft')}</button><span id="photo-position" aria-live="polite"></span><button class="icon-button" data-next-photo type="button" aria-label="Sonraki fotoğraf">{icon('ChevronRight')}</button></div></div></div></dialog>'''
 
 
 def video_cards():
@@ -190,8 +191,9 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
     if extra_schema:
         ld['@graph']+=extra_schema
     canonical_tag=f'<link rel="canonical" href="{esc(canonical)}"><meta property="og:url" content="{esc(canonical)}">' if canonical else ''
-    social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi tanıtım illüstrasyonu"><meta name="twitter:card" content="summary_large_image">' if image else '<meta name="twitter:card" content="summary">'
-    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour','harmony'])
+    social_image=f'<meta property="og:image" content="{esc(image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ali Abi ve Zoyo kukla gösterisi"><meta name="twitter:card" content="summary_large_image">' if image else '<meta name="twitter:card" content="summary">'
+    styles=''.join(f'<link rel="stylesheet" href="{link("assets/css/"+name+".css")}">' for name in ['style','cartoon','media','refined','engagement','revision','tour','harmony']+(['image-auto-slider'] if filename=='index.html' else []))
+    slider_script=f'<script src="{link("assets/js/image-auto-slider.js")}" defer></script>' if filename=='index.html' else ''
     ld_text=json.dumps(ld,ensure_ascii=False).replace('<','\\u003c')
     output=f'''<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{esc(title)}</title>
@@ -199,24 +201,34 @@ def layout(filename,title,description,body,active='',extra_schema=None,noindex=F
 {canonical_tag}<meta property="og:type" content="website"><meta property="og:locale" content="tr_TR"><meta property="og:site_name" content="kuklamukla TV"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}">{social_image}
 <link rel="icon" href="{link('assets/icons/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="{link('assets/icons/favicon.png')}" type="image/png"><link rel="apple-touch-icon" href="{link('assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="{link('site.webmanifest')}">
 <link rel="preload" href="{link('assets/fonts/fredoka-600.ttf')}" as="font" type="font/ttf" crossorigin><link rel="preload" href="{link('assets/fonts/nunito-sans-400.ttf')}" as="font" type="font/ttf" crossorigin>
-{styles}<script src="{link('assets/js/main.js')}" defer></script><script type="application/ld+json">{ld_text}</script></head>
+{styles}<script src="{link('assets/js/main.js')}" defer></script>{slider_script}<script type="application/ld+json">{ld_text}</script></head>
 <body class="cartoon-theme">{header(active)}<main id="icerik">{body}</main>{footer()}{floating_contacts()}{photo_dialog()}<div id="live-status" class="sr-only" role="status" aria-live="polite"></div></body></html>'''
     (ROOT/filename).write_text(output,encoding='utf-8')
     rendered.append(filename)
 
 
 # Home: each photograph belongs only to this one content position.
-programs=[('04','school','School','Okullar için','Anaokulu ve ilkokul etkinliklerinde Ali Abi ve Zoyo çocuklarla buluşsun.','okullarda-kukla-gosterisi.html','Okul gösterisini inceleyin'),('07','city','Landmark','Belediyeler için','Kültür merkezlerinde ve çocuk şenliklerinde şehrin çocuklarıyla bir araya gelelim.','belediye-kukla-gosterisi.html','Belediye gösterisini inceleyin'),('10','special','PartyPopper','23 Nisan & özel günler','Çocukların bayramına, okul şenliğine ve özel etkinliğinize neşe katalım.','23-nisan-kukla-gosterisi.html','Özel günleri inceleyin')]
+programs=[(config['homepage_photos']['school'],'school','School','Okullar için','Anaokulu ve ilkokul etkinliklerinde Ali Abi ve Zoyo çocuklarla buluşsun.','okullarda-kukla-gosterisi.html','Okul gösterisini inceleyin'),(config['homepage_photos']['city'],'city','Landmark','Belediyeler için','Kültür merkezlerinde ve çocuk şenliklerinde şehrin çocuklarıyla bir araya gelelim.','belediye-kukla-gosterisi.html','Belediye gösterisini inceleyin'),(config['homepage_photos']['special'],'special','PartyPopper','23 Nisan & özel günler','Çocukların bayramına, okul şenliğine ve özel etkinliğinize neşe katalım.','23-nisan-kukla-gosterisi.html','Özel günleri inceleyin')]
 program_cards=''.join(f'<article class="program-card program-card--{kind}" id="foto-{pid}" data-photo-item><div class="program-image">{photo_media(pid,"index.html","(max-width:760px) calc(100vw - 40px), 30vw")}<span>{icon(symbol)}</span></div><div class="program-copy"><h3>{esc(title)}</h3><p>{esc(text)}</p><a href="{link(path)}">{esc(action)}</a></div></article>' for pid,kind,symbol,title,text,path,action in programs)
-home_gallery_photos=[p for p in photos if p['id'] not in {'04','07','10','12'}]
-home_gallery_cards=''.join(photo_figure(p['id'],'index.html',sizes='(max-width:359px) calc(100vw - 40px), (max-width:600px) calc((100vw - 54px) / 2), (max-width:900px) 44vw, 360px') for p in home_gallery_photos)
-home_gallery=f'''<section class="section photo-section home-photo-gallery" id="fotograflar" data-photo-gallery><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE YAŞANAN ANLAR</span><h2>Sahneden gerçek hatıralar.</h2></div><p>Okullarda, salonlarda, şenliklerde…<br>Birlikte güldüğümüz buluşmalardan.</p></div><div class="gallery-filters js-only" role="group" aria-label="Fotoğraf kategorileri"><button class="gallery-filter" type="button" data-photo-filter="Tümü" aria-pressed="true">Tümü</button><button class="gallery-filter" type="button" data-photo-filter="Sahne" aria-pressed="false">Sahne</button><button class="gallery-filter" type="button" data-photo-filter="Buluşmalar" aria-pressed="false">Buluşmalar</button></div><p class="photo-count" id="photo-count" role="status">{len(home_gallery_photos)} fotoğraf</p><div class="photo-grid">{home_gallery_cards}</div></div></section>'''
+home_gallery_photos=sorted((p for p in photos if p['id'] not in set(config['homepage_photos'].values())), key=lambda p:(p.get('priority',100),p['id']))
+slider_props=read_json('content/photo-slider-data.json')
+if [p['id'] for p in home_gallery_photos] != [p['id'] for p in slider_props['images']]:
+    raise SystemExit('Galeri kaynağını güncellemek için npm run build:slider çalıştırın.')
+for photo in home_gallery_photos:
+    if photo['page']!='index.html' or photo['id'] in photo_uses:
+        raise SystemExit('Fotoğraf konumu yineleniyor: '+photo['id'])
+    photo_uses[photo['id']]='index.html'
+slider_base=site_url+'/' if site_url else './'
+home_gallery_cards=(ROOT/'content/photo-slider.html').read_text().replace('__SITE_BASE__',slider_base)
+slider_data=json.dumps(slider_props,ensure_ascii=False).replace('__SITE_BASE__',slider_base).replace('<','\\u003c')
+
+home_gallery=f'''<section class="section photo-section home-photo-gallery" id="fotograflar" data-photo-gallery><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE YAŞANAN ANLAR</span><h2>Sahneden gerçek hatıralar.</h2></div><p>Okullarda, salonlarda, şenliklerde…<br>Birlikte güldüğümüz buluşmalardan.</p></div><div class="gallery-filters js-only" role="group" aria-label="Fotoğraf kategorileri"><button class="gallery-filter" type="button" data-photo-filter="Tümü" aria-pressed="true">Tümü</button><button class="gallery-filter" type="button" data-photo-filter="Sahne" aria-pressed="false">Sahne</button><button class="gallery-filter" type="button" data-photo-filter="Buluşmalar" aria-pressed="false">Buluşmalar</button></div><p class="photo-count" id="photo-count" role="status">{len(home_gallery_photos)} fotoğraf</p><div id="image-auto-slider-root">{home_gallery_cards}</div><script id="image-auto-slider-data" type="application/json">{slider_data}</script></div></section>'''
 home=f'''
 {tour_banner(hero=True)}
 <section class="home-intro">{scene_markup}<div class="container home-intro-grid"><div><span class="eyebrow">ALİ CENGİZ · KUKLA SANATÇISI</span><h2>Bir kukla, bir ses.<br>Birlikte atılan kahkahalar.</h2></div><div class="home-intro-copy"><p>Ali Abi ve Zoyo; okullarda, belediye etkinliklerinde ve çocuk şenliklerinde çocuklarla buluşuyor.</p><a class="text-link" href="{link('videolar.html')}">{icon('Play')} Zoyo’yu izleyin</a></div></div></section>
 <div class="audience-strip"><div class="container"><span>{icon('School')}Okul etkinlikleri</span><span>{icon('Landmark')}Belediye programları</span><span>{icon('Theater')}Çocuk şenlikleri</span><span>{icon('MapPin')}Türkiye’nin 81 ili</span></div></div>
 <section class="section" id="gosteriler"><div class="container"><div class="section-heading"><div><span class="eyebrow">BİRLİKTE BULUŞALIM</span><h2>Her buluşmada bir kahkaha.</h2></div><p>Okulda, kültür merkezinde, şenlikte…<br> Ali Abi ve Zoyo’yla gösteri zamanı.</p></div><div class="program-grid">{program_cards}</div></div></section>
-<section class="section about-section"><div class="container about-grid">{photo_figure('12','index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('index.html#fotograflar')}">Gösterilerden fotoğraflar</a></div></div></section>
+<section class="section about-section"><div class="container about-grid">{photo_figure(config['homepage_photos']['feature'],'index.html','feature-photo')}<div class="about-copy"><span class="eyebrow">SAHNEDE İKİ DOST</span><h2>Sahnede Ali Cengiz,<br> yanında Zoyo.</h2><p>Ali Cengiz, Zoyo’yu seslendiren ve oynatan bir kukla sanatçısı. Sahnedeki adıyla Ali Abi, çocuklarla canlı gösterilerde buluşuyor.</p><p>Turuncu tüyleri, mavi burnu ve merakıyla Zoyo; Ali Abi’nin sesi ve elleriyle sahnede canlanıyor.</p><a class="text-link" href="{link('ali-cengiz.html')}">Ali Abi ve Zoyo’yu tanıyın</a><a class="text-link" href="{link('index.html#fotograflar')}">Gösterilerden fotoğraflar</a></div></div></section>
 {home_gallery}
 <section class="section videos-section" id="videolar"><div class="container"><div class="section-heading"><div><span class="eyebrow">kuklamukla TV</span><h2>Biraz Zoyo, bolca neşe.</h2></div><a class="text-link text-link--light" href="{link('videolar.html')}">Gösteri videolarını keşfedin</a></div><p class="section-lead">YouTube ve Instagram’da neşeli anlar. İzlemek için bir kapak seçin.</p>{video_cards()}<p class="video-privacy">Kapaklar sizi YouTube veya Instagram’a götürür.</p></div></section>
 <section class="section faq-section"><div class="container faq-grid"><div><span class="eyebrow">AKLINIZDAKİLER</span><h2>Birkaç küçük<br> soru, açık cevaplar.</h2><p>Gösteriler hakkında merak ettikleriniz.</p><a class="text-link" href="{link('sik-sorulan-sorular.html')}">Tüm soruları görün</a></div>{faq_html(common_faqs[:4])}</div></section>{cta()}'''
@@ -248,11 +260,11 @@ videos+=f'<section class="section videos-section videos-page"><div class="contai
 video_schema={'@type':'ItemList','name':'kuklamukla TV YouTube ve Instagram paylaşımları','itemListElement':[{'@type':'ListItem','position':i+1,'name':v.get('full_title',v['title']),'url':v['url']} for i,v in enumerate(config['videos'])]}
 layout('videolar.html','Zoyo Videoları | YouTube ve Instagram | kuklamukla TV','Ali Abi ve Zoyo’nun kuklamukla TV YouTube videolarını ve Instagram paylaşımlarını keşfedin. İzlemek için ilgili platforma geçin.',videos,'videolar',[video_schema])
 
-gallery=page_intro('FOTOĞRAFLAR','Birlikte yaşanan gerçek anlar.','Ali Abi ve Zoyo’nun okul, salon ve çocuk şenliği buluşmalarından 18 gerçek fotoğrafı ana sayfada keşfedin.')
+gallery=page_intro('FOTOĞRAFLAR','Birlikte yaşanan gerçek anlar.',f'Ali Abi ve Zoyo’nun okul, salon ve çocuk şenliği buluşmalarından {expected_photo_count} gerçek fotoğrafı ana sayfada keşfedin.')
 gallery+=f'<section class="section"><div class="container"><div class="gallery-directory-intro"><h2>Sahneden hatıralar.</h2><p>Bir kare seçerek fotoğrafın bulunduğu bölüme geçebilirsiniz.</p>{button("Fotoğraf galerisini açın","index.html#fotograflar","primary","Search")}</div><div class="photo-directory">'
 gallery+=''.join(f'<a class="photo-directory-card" href="{link("index.html#foto-"+p["id"])}">{icon("Search")}<span><small>{esc(p["category"])}</small><strong>{esc(p["title"])}</strong></span></a>' for p in photos)
 gallery+='</div></div></section>'+cta()
-layout('fotograflar.html','Ali Cengiz ve Zoyo Fotoğrafları | kuklamukla TV','Ali Cengiz ve Zoyo’nun sahne ve çocuk etkinliklerinden 18 gerçek fotoğrafını ana sayfada inceleyin.',gallery,'fotograflar')
+layout('fotograflar.html','Ali Cengiz ve Zoyo Fotoğrafları | kuklamukla TV',f'Ali Cengiz ve Zoyo’nun sahne ve çocuk etkinliklerinden {expected_photo_count} gerçek fotoğrafını ana sayfada inceleyin.',gallery,'fotograflar')
 
 regions=page_intro('TÜRKİYE’NİN 81 İLİNDE','Bir sonraki durak sizin şehriniz.','Ali Abi ve Zoyo, kukla gösterisi için Türkiye’nin her ilinde çocuklarla buluşabiliyor.')
 regions+=tour_banner(regions_page=True)
@@ -277,8 +289,8 @@ not_found=page_intro('SAYFA BULUNAMADI','Bu sahne henüz kurulmamış.','Aradı�
 not_found+=f'<section class="section"><div class="container">{button("Ana sayfaya dönün","","primary","Theater")}</div></section>'
 layout('404.html','Sayfa Bulunamadı | Ali Abi ve Zoyo','Aradığınız sayfa bulunamadı. Ali Abi ve Zoyo ana sayfasına dönebilirsiniz.',not_found,noindex=True)
 
-if set(photo_uses) != set(photo_by_id) or len(photo_by_id) != 18:
-    raise SystemExit('18 fotoğrafın tamamı tam birer içerik konumunda bulunmalı.')
+if set(photo_uses) != set(photo_by_id) or len(photo_by_id) != expected_photo_count:
+    raise SystemExit(f'{expected_photo_count} fotoğrafın tamamı tam birer içerik konumunda bulunmalı.')
 
 filenames=[name for name in rendered if name!='404.html']
 if site_url:
@@ -292,4 +304,4 @@ else:
 (ROOT/'robots.txt').write_text(robots)
 (ROOT/'site.webmanifest').write_text(json.dumps({'name':'kuklamukla TV · Ali Abi ve Zoyo','short_name':'kuklamukla TV','lang':'tr','start_url':'./','display':'browser','background_color':'#e4f6ff','theme_color':'#665697','icons':[{'src':'assets/icons/apple-touch-icon.png','sizes':'180x180','type':'image/png'}]},ensure_ascii=False,indent=2))
 (ROOT/'.nojekyll').touch()
-print(f'{len(rendered)} HTML sayfası; 18 tekil fotoğraf. Yayın adresi: {site_url or "GitHub yayınında otomatik belirlenecek"}')
+print(f'{len(rendered)} HTML sayfası; {len(photo_by_id)} tekil fotoğraf. Yayın adresi: {site_url or "GitHub yayınında otomatik belirlenecek"}')

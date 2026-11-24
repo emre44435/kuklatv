@@ -1,0 +1,32 @@
+{
+  "name": "kuklamukla-tv",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:slider": "node scripts/build-slider.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run build:slider && npm run typecheck && python3 scripts/build.py && python3 scripts/check.py && python3 scripts/export.py",
+    "check": "npm run typecheck && python3 scripts/check.py && node --check assets/js/main.js && node --check assets/js/image-auto-slider.js"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.468.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.0",
+    "class-variance-authority": "^0.7.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/cli": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

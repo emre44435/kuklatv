@@ -13,6 +13,7 @@ from PIL import Image, ImageEnhance, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--source-dir', required=True, type=Path)
+parser.add_argument('--ids', nargs='*', help='Prepare only the selected photo IDs; existing files stay untouched')
 args = parser.parse_args()
 manifest = ROOT/'content/photos.json'
 photos = json.loads(manifest.read_text())
@@ -20,6 +21,8 @@ out = ROOT/'assets/img/photos'
 out.mkdir(exist_ok=True)
 
 for photo in photos:
+    if args.ids and photo['id'] not in args.ids:
+        continue
     with Image.open(args.source_dir/photo['source']) as original:
         im = ImageOps.exif_transpose(original).convert('RGB')
         photo['source_width'], photo['source_height'] = im.size
@@ -51,7 +54,8 @@ for photo in photos:
         height=round(im.height*width/im.width)
         rendition=im if width==im.width else im.resize((width,height),Image.Resampling.LANCZOS)
         filename=f"{photo['file']}-{width}.webp"
-        rendition.save(out/filename, 'WEBP', quality=87 if width==im.width else 84, method=6)
+        quality = photo.get('quality', {})
+        rendition.save(out/filename, 'WEBP', quality=quality.get('full',87) if width==im.width else quality.get('responsive',84), method=6)
         renditions.append({'file':filename,'width':width,'height':height})
     photo['renditions']=renditions
     photo['full']=renditions[-1]['file']
