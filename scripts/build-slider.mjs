@@ -14,7 +14,7 @@ const images=selected.map((p,order)=>({id:p.id,title:p.title,alt:p.alt,category:
   src:prefix+(p.renditions.find(r=>r.width>=Math.min(960,p.width))??p.renditions.at(-1)).file,
   srcSet:p.renditions.map(r=>`${prefix}${r.file} ${r.width}w`).join(', '),
   full:prefix+p.full,width:p.width,height:p.height,order:order+4}));
-const props={images,pixelsPerSecond:24};
+const props={images,pixelsPerSecond:26};
 await writeFile(path.join(root,'content/photo-slider-data.json'),JSON.stringify(props,null,2)+'\n');
 const common={absWorkingDir:root,bundle:true,jsx:'automatic',target:'es2020',tsconfig:'tsconfig.json',
   define:{'process.env.NODE_ENV':'"production"'},logLevel:'info'};

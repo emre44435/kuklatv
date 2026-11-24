@@ -1,6 +1,6 @@
 # React galeri bileşeni
 
-Ana sayfadaki galeri iki hizalı sıradan oluşur. Üst sıra sola, alt sıra sağa otomatik akar. Fotoğraflar çoğaltılmaz; mevcut kartların sırası döngü sonunda değiştirilir. 25 gerçek fotoğraf ana sayfada birer kez bulunur: dört fotoğraf üst bölümlerde, 21 fotoğraf iki galeri sırasında.
+Ana sayfadaki galeri iki hizalı sıradan oluşur. Üst sıra sola, alt sıra sağa otomatik akar. Fotoğraflar çoğaltılmaz; döngü için mevcut kartların görsel konumu değiştirilir. 25 gerçek fotoğraf ana sayfada birer kez bulunur: dört fotoğraf üst bölümlerde, 21 fotoğraf iki galeri sırasında.
 
 ## Dosya düzeni
 
@@ -44,7 +44,7 @@ python3 scripts/check.py
 Bağımlılıkları kilit dosyası bulunmayan başka bir projede elle eklemek için:
 
 ```bash
-npm install react react-dom lucide-react clsx tailwind-merge class-variance-authority
+npm install react react-dom lucide-react clsx tailwind-merge class-variance-authority embla-carousel-react@8.6.0 embla-carousel-auto-scroll@8.6.0
 npm install -D typescript @types/react @types/react-dom @types/node esbuild tailwindcss @tailwindcss/cli
 ```
 
@@ -58,11 +58,11 @@ Teslim edilen projede TypeScript, Tailwind, import adresleri ve `components.json
 
 ## Props ve davranış
 
-`images`, `id`, `src`, `srcSet`, `full`, `width`, `height`, `title`, `alt`, `category` ve `order` alanları bulunan fotoğraf listesidir. `pixelsPerSecond` hızı belirler; varsayılan değer 24’tür. `className` ek kapsayıcı sınıflarını kabul eder. Demo dosyası gerçek yerel galeri verisini kullanır.
+`images`, `id`, `src`, `srcSet`, `full`, `width`, `height`, `title`, `alt`, `category` ve `order` alanları bulunan fotoğraf listesidir. `pixelsPerSecond` hızı belirler; varsayılan değer 26’dır; önceki 24 değerine göre yaklaşık %8 artıştır. `className` ek kapsayıcı sınıflarını kabul eder. Demo dosyası gerçek yerel galeri verisini kullanır.
 
-Bileşen yerel React state ve ref’lerini kullanır; ek context provider veya genel state yöneticisi gerekmez. Lucide fotoğraf büyütme ikonunu sağlar. Görseller `content/photos.json`, öncelikli yerleşimler `content/site.json` içinden üretilir.
+Bileşen, Embla Carousel 8.6.0 ve Auto Scroll eklentisini, yerel React state ve ref’lerini kullanır; ek context provider veya genel state yöneticisi gerekmez. Lucide fotoğraf büyütme ikonunu sağlar. Görseller `content/photos.json`, öncelikli yerleşimler `content/site.json` içinden üretilir.
 
-İmleç, klavye odağı veya fotoğraf penceresi açıkken akış durur. Görünüm dışındayken ve sekme gizliyken de bekler. Cihazın azaltılmış hareket tercihi etkinse otomatik hareket durur ve fotoğraflar yatay kaydırmayla erişilebilir kalır. Gerçek fotoğraflara yakınlaştırma veya şekil değiştirme efekti uygulanmaz.
+Masaüstünde fare tuşuna basılı tutup sürükleyerek, mobilde parmakla iki yönde kaydırılabilir. Basılı tutarken otomatik akış durur; bırakıldıktan bir saniye sonra bulunduğu yerden devam eder. Yalnızca imlecin üzerinde durması akışı kesmez. Klavye odağı veya fotoğraf penceresi açıkken akış durur. Görünüm dışındayken ve sekme gizliyken de bekler. Cihazın azaltılmış hareket tercihi etkinse otomatik hareket durur ve fotoğraflar yatay kaydırmayla erişilebilir kalır. Gerçek fotoğraflara yakınlaştırma veya şekil değiştirme efekti uygulanmaz.
 
 ## Resmî kaynaklar
 
@@ -71,3 +71,6 @@ Bileşen yerel React state ve ref’lerini kullanır; ek context provider veya g
 - https://ui.shadcn.com/docs/cli
 - https://tailwindcss.com/docs/preflight
 - https://react.dev/reference/react-dom/client/hydrateRoot
+
+- https://www.embla-carousel.com/docs/v8/get-started/react
+- https://www.embla-carousel.com/docs/v8/plugins/auto-scroll

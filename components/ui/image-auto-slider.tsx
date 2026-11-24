@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { flushSync } from 'react-dom';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -30,11 +31,11 @@ function PhotoCard({ image, filter }: { image: SliderImage; filter: string }) {
   return (
     <figure className="photo-card" id={`foto-${image.id}`} data-photo-item=""
       data-category={image.category} hidden={filter !== 'Tümü' && image.category !== filter}>
-      <a className="photo-launch" href={image.full} data-photo={image.id}
+      <a className="photo-launch" href={image.full} data-photo={image.id} draggable={false}
         data-title={image.title} data-alt={image.alt} data-width={image.width}
         data-height={image.height} data-photo-order={image.order}
         aria-label={`${image.title} fotoğrafını büyüt`}>
-        <img className="real-photo" src={image.src} srcSet={image.srcSet}
+        <img className="real-photo" src={image.src} srcSet={image.srcSet} draggable={false}
           sizes="(max-width:600px) 225px, 300px" alt={image.alt}
           width={image.width} height={image.height} loading="lazy" decoding="async" />
         <span className="photo-zoom"><Search className="icon" size={18} aria-hidden="true" />
@@ -48,122 +49,143 @@ function PhotoCard({ image, filter }: { image: SliderImage; filter: string }) {
 function SliderRow({ images, direction, filter, speed }: {
   images: readonly SliderImage[]; direction: Direction; filter: string; speed: number;
 }) {
-  const [order, setOrder] = useState<SliderImage[]>(() => direction === 'right' && images.length
-    ? [images[images.length - 1], ...images.slice(0, -1)] : [...images]);
-  const rowRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const orderRef = useRef(order);
-  orderRef.current = order;
-  const matches = (image: SliderImage) => filter === 'Tümü' || image.category === filter;
-  const count = images.filter(matches).length;
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const count = images.filter(image => filter === 'Tümü' || image.category === filter).length;
+  const autoScroll = useMemo(() => AutoScroll({
+    speed: Math.max(1, speed) / 60,
+    direction: direction === 'left' ? 'forward' : 'backward',
+    playOnInit: false,
+    startDelay: 1000,
+    stopOnInteraction: true,
+    stopOnMouseEnter: false,
+    stopOnFocusIn: false,
+  }), [direction, speed]);
+  const [viewportRef, api] = useEmblaCarousel({
+    align: 'start', loop: true, dragFree: true, dragThreshold: 8,
+    slides: '.photo-card:not([hidden])', watchDrag: true,
+  }, [autoScroll]);
+  const attachViewport = useCallback((node: HTMLDivElement | null) => {
+    rowRef.current = node;
+    viewportRef(node);
+  }, [viewportRef]);
 
   useEffect(() => {
     const row = rowRef.current;
-    const track = trackRef.current;
-    if (!row || !track || count < 2) return;
+    if (!row || !api || !count) return;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-    const pause = { hover: false, focus: false, pointer: false, hidden: document.hidden,
-      outside: true, dialog: document.body.classList.contains('dialog-open') };
+    const pause = { pointer: false, cooldown: false, focus: false, linked: false,
+      hidden: document.hidden, outside: true, reduced: reduced.matches,
+      dialog: document.body.classList.contains('dialog-open') };
     let resumeTimer = 0;
-    const updatePause = () => {
-      row.classList.toggle('is-paused',Object.values(pause).some(Boolean));
-      row.dataset.pausedReasons=Object.entries(pause).filter(([,value])=>value).map(([key])=>key).join(',');
+    const playing = () => row.classList.toggle('is-running', autoScroll.isPlaying());
+    const resetNativeScroll = () => { if (row.scrollLeft) row.scrollLeft = 0; };
+    const update = () => {
+      const paused = Object.values(pause).some(Boolean);
+      const looping = api.internalEngine().options.loop && count > 1;
+      row.classList.toggle('is-paused', paused);
+      row.classList.toggle('is-static', !looping);
+      row.dataset.pausedReasons = Object.entries(pause).filter(([, value]) => value).map(([key]) => key).join(',');
+      if (!paused && looping) {
+        if (!autoScroll.isPlaying()) autoScroll.play(0);
+      } else autoScroll.stop();
+      playing();
     };
-    const measure = () => {
-      const first = track.querySelector<HTMLElement>('.photo-card:not([hidden])');
-      const gap=parseFloat(getComputedStyle(track).columnGap || '0');
-      const step=first ? first.getBoundingClientRect().width + gap : 0;
-      const canMove=step>0 && step*count-gap>row.clientWidth+step;
-      track.style.setProperty('--slider-step',`${step}px`);
-      track.style.setProperty('--slider-duration',`${step / speed}s`);
-      row.classList.toggle('is-running', canMove && !reduced.matches);
-      row.classList.toggle('is-static', !canMove || reduced.matches);
-      updatePause();
+    const resumeLater = () => {
+      clearTimeout(resumeTimer);
+      pause.cooldown = true;
+      update();
+      resumeTimer = window.setTimeout(() => { pause.cooldown = false; update(); }, 1000);
     };
-
-    // Move existing keyed cards between the ends. No image is cloned.
-    const rotate = (toEnd: boolean) => {
-      const current = orderRef.current;
-      const visible = current.filter(matches);
-      const item = toEnd ? visible[0] : visible[visible.length - 1];
-      if (!item) return;
-      const rest = current.filter(image => image.id !== item.id);
-      const next = toEnd ? [...rest, item] : [item, ...rest];
-      orderRef.current = next;
-      flushSync(() => setOrder(next));
+    const pointerDown = () => {
+      clearTimeout(resumeTimer);
+      pause.pointer = true;
+      pause.cooldown = false;
+      pause.linked = false;
+      row.classList.add('is-dragging');
+      update();
     };
-    const iteration = (event: AnimationEvent) => {
-      if (event.target === track && event.animationName.startsWith('gallery-flow-')) rotate(direction === 'left');
+    const pointerUp = () => {
+      pause.pointer = false;
+      row.classList.remove('is-dragging');
+      resumeLater();
     };
-    const hoverIn = (event: PointerEvent) => { if (event.pointerType === 'mouse') {pause.hover=true;updatePause();} };
-    const hoverOut = () => { pause.hover=false;updatePause(); };
-    const focusIn = () => { pause.focus=Boolean(row.querySelector(':focus-visible'));updatePause(); };
+    const focus = () => { pause.focus = Boolean(row.querySelector(':focus-visible')) || row.matches(':focus-visible'); update(); };
     const focusOut = (event: FocusEvent) => {
-      if (!row.contains(event.relatedTarget as Node | null)) { pause.focus=false;row.scrollLeft=0;updatePause(); }
+      if (!row.contains(event.relatedTarget as Node | null)) { pause.focus = false; update(); }
     };
-    const pointerDown = () => { clearTimeout(resumeTimer);pause.pointer=true;updatePause(); };
-    const pointerUp = () => { resumeTimer=window.setTimeout(()=>{pause.pointer=false;updatePause();},700); };
-    const visibility = () => { pause.hidden=document.hidden;updatePause(); };
-    const preference = () => { measure(); };
+    const visibility = () => { pause.hidden = document.hidden; update(); };
+    const preference = () => { pause.reduced = reduced.matches; update(); };
     const revealLinkedPhoto = () => {
-      const id=decodeURIComponent(location.hash.slice(1));
-      const photo=id.startsWith('foto-') ? document.getElementById(id) : null;
-      const linked=Boolean(photo && row.contains(photo));
-      row.classList.toggle('is-linked',linked);
-      if(linked && photo) photo.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
-      else row.scrollLeft=0;
+      resetNativeScroll();
+      const id = location.hash.slice(1);
+      const index = api.slideNodes().findIndex(photo => photo.id === id);
+      pause.linked = index !== -1;
+      update();
+      if (index !== -1) {
+        api.scrollTo(index, true);
+        row.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+      }
     };
-    const resize = new ResizeObserver(measure);
+    const keyDown = (event: KeyboardEvent) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      pause.linked = false;
+      resumeLater();
+      if (event.key === 'ArrowLeft') api.scrollPrev(reduced.matches);
+      if (event.key === 'ArrowRight') api.scrollNext(reduced.matches);
+      if (event.key === 'Home') api.scrollTo(0, reduced.matches);
+      if (event.key === 'End') api.scrollTo(api.scrollSnapList().length - 1, reduced.matches);
+    };
     const observer = new IntersectionObserver(entries => {
       pause.outside = !entries.some(entry => entry.isIntersecting);
-      updatePause();
+      update();
     }, { rootMargin: '40px' });
-    const dialog = new MutationObserver(() => {pause.dialog=document.body.classList.contains('dialog-open');updatePause();});
-
-    measure();
+    const dialog = new MutationObserver(() => {
+      pause.dialog = document.body.classList.contains('dialog-open');
+      update();
+    });
+    const reinitialize = () => { revealLinkedPhoto(); update(); };
+    api.on('pointerDown', pointerDown).on('pointerUp', pointerUp)
+      .on('reInit', reinitialize).on('autoScroll:play', playing).on('autoScroll:stop', playing);
+    row.dataset.ready = 'true';
     revealLinkedPhoto();
-    window.addEventListener('hashchange',revealLinkedPhoto);
-    resize.observe(row);
     observer.observe(row);
     dialog.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    row.addEventListener('pointerenter', hoverIn);
-    row.addEventListener('pointerleave', hoverOut);
-    row.addEventListener('focusin', focusIn);
+    row.addEventListener('scroll', resetNativeScroll, { passive: true });
+    row.addEventListener('focusin', focus);
     row.addEventListener('focusout', focusOut);
-    row.addEventListener('pointerdown', pointerDown);
-    window.addEventListener('pointerup', pointerUp);
-    window.addEventListener('pointercancel', pointerUp);
+    row.addEventListener('keydown', keyDown);
     document.addEventListener('visibilitychange', visibility);
+    window.addEventListener('hashchange', revealLinkedPhoto);
     reduced.addEventListener('change', preference);
-    track.addEventListener('animationiteration',iteration);
     return () => {
       clearTimeout(resumeTimer);
-      track.removeEventListener('animationiteration',iteration);
-      resize.disconnect(); observer.disconnect(); dialog.disconnect();
-      window.removeEventListener('hashchange',revealLinkedPhoto);
-      row.removeEventListener('pointerenter', hoverIn);
-      row.removeEventListener('pointerleave', hoverOut);
-      row.removeEventListener('focusin', focusIn);
+      observer.disconnect(); dialog.disconnect();
+      autoScroll.stop();
+      api.off('pointerDown', pointerDown).off('pointerUp', pointerUp)
+        .off('reInit', reinitialize).off('autoScroll:play', playing).off('autoScroll:stop', playing);
+      row.removeEventListener('scroll', resetNativeScroll);
+      row.removeEventListener('focusin', focus);
       row.removeEventListener('focusout', focusOut);
-      row.removeEventListener('pointerdown', pointerDown);
-      window.removeEventListener('pointerup', pointerUp);
-      window.removeEventListener('pointercancel', pointerUp);
+      row.removeEventListener('keydown', keyDown);
       document.removeEventListener('visibilitychange', visibility);
+      window.removeEventListener('hashchange', revealLinkedPhoto);
       reduced.removeEventListener('change', preference);
     };
-  }, [count, direction, filter, speed]);
+  }, [api, autoScroll, count]);
 
   return (
-    <div ref={rowRef} className="auto-slider-row" data-direction={direction} hidden={!count}
-      role="group" aria-label={direction === 'left' ? 'Üst fotoğraf sırası' : 'Alt fotoğraf sırası'}>
-      <div ref={trackRef} className="auto-slider-track sg:flex sg:w-max sg:items-stretch">
-        {order.map(image => <PhotoCard key={image.id} image={image} filter={filter} />)}
+    <div ref={attachViewport} className="auto-slider-row" data-direction={direction} hidden={!count}
+      tabIndex={0} role="group" aria-live="off"
+      aria-label={direction === 'left' ? 'Üst fotoğraf sırası' : 'Alt fotoğraf sırası'}>
+      <div className="auto-slider-track sg:flex sg:items-stretch">
+        {images.map(image => <PhotoCard key={image.id} image={image} filter={filter} />)}
       </div>
     </div>
   );
 }
 
-export function ImageAutoSlider({ images, pixelsPerSecond = 24, className }: ImageAutoSliderProps) {
+export function ImageAutoSlider({ images, pixelsPerSecond = 26, className }: ImageAutoSliderProps) {
   const [filter, setFilter] = useState('Tümü');
   const split = Math.ceil(images.length / 2);
   const root = useRef<HTMLDivElement>(null);

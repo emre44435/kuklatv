@@ -129,7 +129,7 @@
   }
   document.addEventListener('click', event => {
     const trigger=event.target instanceof Element ? event.target.closest('a[data-photo]') : null;
-    if (!trigger || !photoDialog?.showModal) return;
+    if (event.defaultPrevented || !trigger || !photoDialog?.showModal) return;
     event.preventDefault();
     photoFocus = trigger;
     photoGroup = trigger.closest('[data-photo-gallery]');

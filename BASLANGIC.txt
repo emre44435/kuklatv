@@ -14,3 +14,8 @@ kuklamukla TV · Çift yönlü otomatik galeri
 
 Görseller, yazı tipleri, stiller ve animasyon kodu arşivdedir.
 Klasör yapısını koruyun.
+
+GALERİYİ KAYDIRMA
+Masaüstü: Fare tuşunu basılı tutup sağa veya sola sürükleyin.
+Mobil: Parmağınızla sağa veya sola kaydırın.
+Bıraktıktan bir saniye sonra otomatik akış devam eder.

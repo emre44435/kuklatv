@@ -12,7 +12,7 @@ GitHub’da mevcut projenin kökündeki dosyaları bu sürümdekilerle değişti
 
 ## İki sıralı otomatik galeri
 
-Üst sıra sola, alt sıra sağa otomatik akar. Kareler çoğaltılmadan döngüye alınır. React, TypeScript, Tailwind ve shadcn bileşen düzeni projeye eklenmiştir. Kurulum, varsayılan klasörler, bileşen props’ları ve demo bilgileri `docs/REACT-GALERI-KURULUMU.md` dosyasındadır. ZIP hazır JavaScript ve CSS içerir; `index.html` doğrudan açılabilir.
+Üst sıra sola, alt sıra sağa otomatik akar. Kareler çoğaltılmadan döngüye alınır. Masaüstünde fare tuşuna basılı tutup sürükleyin; mobilde parmağınızla sağa sola kaydırın. Bıraktıktan bir saniye sonra otomatik akış devam eder. Hız önceki sürüme göre yaklaşık %8 artırılmıştır. React, TypeScript, Tailwind ve shadcn bileşen düzeni projeye eklenmiştir. Kurulum, varsayılan klasörler, bileşen props’ları ve demo bilgileri `docs/REACT-GALERI-KURULUMU.md` dosyasındadır. ZIP hazır JavaScript ve CSS içerir; `index.html` doğrudan açılabilir.
 
 ## İçerikleri güncelleme
 
@@ -34,7 +34,7 @@ Yalnızca yayın dosyalarını dışa aktarmak için `python3 scripts/export.py`
 
 ## Referanstaki açılış bannerı
 
-Ana sayfanın ilk ekranında ve 81 il sayfasında referanstaki hizalı, mor/altın sahne tasarımı kullanılır. Çizgili çember ve konum işaretleri kaldırılmıştır. Görsel, bilgi satırı ve metin sütunu ortak ölçülere oturur. Mobilde önce iki satırlı başlık ve tam genişlikte Instagram bağlantısı, ardından sahne gelir. Eski çizgi film dekoru, renkli bayraklar ve kukla arka planı bannerın devamındaki tanıtım bölümünde korunur. Galeri dar ekranlarda taşmadan tek veya iki sütuna uyarlanır. Perde yaklaşık 2,3 saniyede açılır ve açık kalır; arka plan ışıkları görünür biçimde otomatik hareket eder. Ali Abi ve Zoyo’nun çizimi sabittir. Stil kaynakları `assets/css/tour.css` ve `assets/css/harmony.css`, davranış kaynağı `assets/js/main.js` dosyasıdır; bir kurulum veya harici animasyon servisi gerekmez.
+Ana sayfanın ilk ekranında ve 81 il sayfasında referanstaki hizalı, mor/altın sahne tasarımı kullanılır. Çizgili çember ve konum işaretleri kaldırılmıştır. Görsel, bilgi satırı ve metin sütunu ortak ölçülere oturur. Mobilde önce iki satırlı başlık ve tam genişlikte Instagram bağlantısı, ardından sahne gelir. Eski çizgi film dekoru, renkli bayraklar ve kukla arka planı bannerın devamındaki tanıtım bölümünde korunur. Galeri dar ekranlarda aynı hizada iki yatay sıra olarak kalır. Perde yaklaşık 2,3 saniyede açılır ve açık kalır; arka plan ışıkları görünür biçimde otomatik hareket eder. Ali Abi ve Zoyo’nun çizimi sabittir. Stil kaynakları `assets/css/tour.css` ve `assets/css/harmony.css`, davranış kaynağı `assets/js/main.js` dosyasıdır; bir kurulum veya harici animasyon servisi gerekmez.
 
 ## Fotoğraflar
 
